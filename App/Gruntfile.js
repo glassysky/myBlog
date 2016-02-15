@@ -22,11 +22,19 @@ module.exports = function(grunt) {
             options: {
                 jshintrc: '.jshintrc'
             }
+        },
+
+        csslint: {
+            build: ['src/*.css'],
+            options: {
+                csslint: '.csslintrc'
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-csslint');
 
-    grunt.registerTask('default', ['jshint','uglify']);
+    grunt.registerTask('default', ['csslint','jshint','uglify']);
 };
