@@ -29,12 +29,23 @@ module.exports = function(grunt) {
             options: {
                 csslint: '.csslintrc'
             }
+        },
+
+        watch: {
+            build: {
+                files: ['src/*.js', 'src/*.css'],
+                tasks: ['jshint', 'uglify'],
+                options: {
+                    spawn: false
+                }
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-csslint');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('default', ['csslint','jshint','uglify']);
+    grunt.registerTask('default', ['csslint','jshint','uglify','watch']);
 };
