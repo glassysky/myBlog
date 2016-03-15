@@ -25,8 +25,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
-// 静态资源
+// 静态资源(可以使用多个文件夹)
 app.use(express.static('public'));
+// 挂载的虚拟文件夹
+app.use('/static', express.static('public'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
