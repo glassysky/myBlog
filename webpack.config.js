@@ -1,12 +1,11 @@
+var webpack = require('webpack');
+
 module.exports = {
-	entry: "./entry.js",
-	output: {
-		path: __dirname,
-		filename: "bundle.js"
+	entry: {
+		bundle1: './main1.js',
+		bundle2: './main2.js'
 	},
-	module: {
-		loaders: [
-			{ test: /\.css$/, loader: "style!css" }
-		]
+	output: {
+		filename: './public/javascripts/[name].js'
 	}
-};
+}
