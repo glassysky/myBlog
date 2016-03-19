@@ -10,7 +10,12 @@ module.exports = {
 	},
 	module: {
 		loaders:[
-			{ test: /\.js[x]?$/, exclude: /node_modules/, loader: 'jsx-loader'},
+			{ 
+				test: /\.jsx]?$/, 
+				exclude: /node_modules/, 
+				loader: 'babel',
+				query: ['react', 'es2015']
+			},
 			{ test: /\.scss$/, loader: 'style!css!sass'}
 		]
 	},

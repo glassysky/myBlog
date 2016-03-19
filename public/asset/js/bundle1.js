@@ -48,6 +48,8 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(/*! ./public/src/css/style */ 1);
+	
+	__webpack_require__(/*! ./public/src/js/test.jsx */ 5);
 
 /***/ },
 /* 1 */
@@ -410,6 +412,20 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
+
+/***/ },
+/* 5 */
+/*!********************************!*\
+  !*** ./public/src/js/test.jsx ***!
+  \********************************/
+/***/ function(module, exports) {
+
+	
+	{
+		let a = 1;
+		console.log(a);
+	}
+	console.log(a);
 
 /***/ }
 /******/ ]);
