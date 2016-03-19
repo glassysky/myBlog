@@ -13,5 +13,8 @@ module.exports = {
 			{ test: /\.js[x]?$/, exclude: /node_modules/, loader: 'jsx-loader'},
 			{ test: /\.scss$/, loader: 'style!css!sass'}
 		]
+	},
+	resolve: {
+		extensions: ['', '.js', '.json', '.scss', '.jsx']
 	}
 }
