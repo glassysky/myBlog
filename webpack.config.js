@@ -6,6 +6,12 @@ module.exports = {
 		bundle2: './main2.js'
 	},
 	output: {
-		filename: './public/javascripts/[name].js'
+		filename: './public/asset/js/[name].js'
+	},
+	module: {
+		loaders:[
+			{ test: /\.js[x]?$/, exclude: /node_modules/, loader: 'jsx-loader'},
+			{ test: /\.scss$/, loader: 'style!css!sass'}
+		]
 	}
 }
