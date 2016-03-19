@@ -47,9 +47,10 @@
   \******************/
 /***/ function(module, exports, __webpack_require__) {
 
+	// styles
 	__webpack_require__(/*! ./public/src/css/style */ 1);
 	
-	__webpack_require__(/*! ./public/src/js/test.jsx */ 5);
+	// require('./public/src/js/test.jsx');
 
 /***/ },
 /* 1 */
@@ -92,7 +93,7 @@
 	
 	
 	// module
-	exports.push([module.id, "html, body {\n  margin: 0;\n  padding: 0; }\n\nh1 {\n  color: red; }\n", ""]);
+	exports.push([module.id, "", ""]);
 	
 	// exports
 
@@ -412,20 +413,6 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
-
-/***/ },
-/* 5 */
-/*!********************************!*\
-  !*** ./public/src/js/test.jsx ***!
-  \********************************/
-/***/ function(module, exports) {
-
-	
-	{
-		let a = 1;
-		console.log(a);
-	}
-	console.log(a);
 
 /***/ }
 /******/ ]);

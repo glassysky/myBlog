@@ -8,7 +8,7 @@ module.exports = {
 	output: {
 		filename: './public/asset/js/[name].js'
 	},
-	module: {
+	module: {conf
 		loaders:[
 			{ 
 				test: /\.jsx]?$/, 
