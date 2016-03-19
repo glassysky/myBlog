@@ -42,15 +42,16 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/*!******************!*\
-  !*** ./main1.js ***!
-  \******************/
+/*!*********************!*\
+  !*** ./homepage.js ***!
+  \*********************/
 /***/ function(module, exports, __webpack_require__) {
 
 	// styles
 	__webpack_require__(/*! ./public/src/css/style */ 1);
 	
 	// require('./public/src/js/test.jsx');
+	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./public/src/js/fullpageConf.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()))
 
 /***/ },
 /* 1 */

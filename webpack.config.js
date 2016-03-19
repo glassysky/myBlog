@@ -2,13 +2,13 @@ var webpack = require('webpack');
 
 module.exports = {
 	entry: {
-		bundle1: './main1.js',
+		bundle1: './homepage.js',
 		bundle2: './main2.js'
 	},
 	output: {
 		filename: './public/asset/js/[name].js'
 	},
-	module: {conf
+	module: {
 		loaders:[
 			{ 
 				test: /\.jsx]?$/, 
