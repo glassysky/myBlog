@@ -47,7 +47,7 @@
 	// styles
 	__webpack_require__(1);
 
-	// require('./public/src/js/test.jsx');
+	// fullpage config
 	__webpack_require__(5)
 
 /***/ },
@@ -85,7 +85,7 @@
 
 
 	// module
-	exports.push([module.id, "", ""]);
+	exports.push([module.id, "body {\n  min-width: 800px; }\n\nli {\n  list-style: none; }\n\nnav.hh-nav {\n  position: fixed;\n  top: 0;\n  width: 100%;\n  height: 48px;\n  background-color: #333; }\n  nav.hh-nav ul {\n    height: 48px;\n    margin: 0;\n    padding: 0 40px; }\n    nav.hh-nav ul li {\n      float: left; }\n      nav.hh-nav ul li a {\n        display: inline-block;\n        height: 48px;\n        padding: 0 20px;\n        line-height: 48px;\n        color: #ddd;\n        text-decoration: none; }\n      nav.hh-nav ul li a:hover {\n        color: #fff;\n        background-color: #000; }\n    nav.hh-nav ul .nav-logo {\n      padding: 4px 0; }\n      nav.hh-nav ul .nav-logo a {\n        margin-right: 40px;\n        height: 40px; }\n        nav.hh-nav ul .nav-logo a img {\n          height: 100%; }\n      nav.hh-nav ul .nav-logo a:hover {\n        background-color: #333; }\n\ndiv.hh-welcome {\n  width: 100%;\n  height: 100%;\n  background: url(/asset/img/firstpage.jpeg) no-repeat;\n  -webkit-background-size: cover;\n  background-size: cover; }\n", ""]);
 
 	// exports
 
@@ -447,9 +447,9 @@
 	        controlArrows: true,
 	        verticalCentered: true,
 	        resize : false,
-	        sectionsColor : ['#00BFFF', '#fff'],
+	        sectionsColor : ['#fff', '#ccc', '#999', '#666', '#333', '#000'],
 	        paddingTop: '3em',
-	        paddingBottom: '10px',
+	        paddingBottom: '0px',
 	        fixedElements: '#header, .footer',
 	        responsiveWidth: 0,
 	        responsiveHeight: 0,
