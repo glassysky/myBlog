@@ -41,7 +41,7 @@ $(document).ready(function(){
         controlArrows: true,
         verticalCentered: true,
         resize : false,
-        sectionsColor : ['#00BFFF', '#fff'],
+        sectionsColor : ['#fff', '#fff'],
         paddingTop: '3em',
         paddingBottom: '10px',
         fixedElements: '#header, .footer',
