@@ -12,7 +12,7 @@ module.exports = {
 		loaders:[
 			{ 
 				test: /\.jsx]?$/, 
-				exclude: /node_modules/, 
+				exclude: [/node_modules/],
 				loader: 'babel',
 				query: ['react', 'es2015']
 			},
