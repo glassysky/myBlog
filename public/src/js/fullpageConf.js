@@ -2,6 +2,7 @@
  * Created by cuitianhao on 16/3/19.
  */
 $(document).ready(function(){
+    //official settings
     $("#fullpage").fullpage({
         //Navigation
         menu: '#menu',
@@ -59,5 +60,10 @@ $(document).ready(function(){
         afterResize: function(){},
         afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex){},
         onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){}
+    });
+
+    //personal settings
+    $(".page-down").on("click", function(){
+        $.fn.fullpage.moveSectionDown();
     });
 });

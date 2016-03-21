@@ -85,7 +85,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\n  min-width: 800px; }\n\nli {\n  list-style: none; }\n\nnav.hh-nav {\n  position: fixed;\n  top: 0;\n  width: 100%;\n  height: 48px;\n  background-color: #333; }\n  nav.hh-nav ul {\n    height: 48px;\n    margin: 0;\n    padding: 0 40px; }\n    nav.hh-nav ul li {\n      float: left; }\n      nav.hh-nav ul li a {\n        display: inline-block;\n        height: 48px;\n        padding: 0 20px;\n        line-height: 48px;\n        color: #ddd;\n        text-decoration: none; }\n      nav.hh-nav ul li a:hover {\n        color: #fff;\n        background-color: #000; }\n    nav.hh-nav ul .nav-logo {\n      padding: 4px 0; }\n      nav.hh-nav ul .nav-logo a {\n        margin-right: 40px;\n        height: 40px; }\n        nav.hh-nav ul .nav-logo a img {\n          height: 100%; }\n      nav.hh-nav ul .nav-logo a:hover {\n        background-color: #333; }\n\ndiv.hh-welcome {\n  width: 100%;\n  height: 100%;\n  background: url(/asset/img/firstpage.jpeg) no-repeat;\n  -webkit-background-size: cover;\n  background-size: cover; }\n", ""]);
+	exports.push([module.id, "body {\n  min-width: 800px; }\n\nli {\n  list-style: none; }\n\nnav.hh-nav {\n  position: fixed;\n  top: 0;\n  width: 100%;\n  height: 48px;\n  background-color: #333; }\n  nav.hh-nav ul {\n    height: 48px;\n    margin: 0;\n    padding: 0 40px; }\n    nav.hh-nav ul li {\n      float: left; }\n      nav.hh-nav ul li a {\n        display: inline-block;\n        height: 48px;\n        padding: 0 20px;\n        line-height: 48px;\n        color: #ddd;\n        text-decoration: none; }\n      nav.hh-nav ul li a:hover {\n        color: #fff;\n        background-color: #000; }\n    nav.hh-nav ul .nav-logo {\n      padding: 4px 0; }\n      nav.hh-nav ul .nav-logo a {\n        margin-right: 40px;\n        height: 40px; }\n        nav.hh-nav ul .nav-logo a img {\n          height: 100%; }\n      nav.hh-nav ul .nav-logo a:hover {\n        background-color: #333; }\n\ndiv.hh-welcome {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  padding: 10px 0;\n  background: url(/asset/img/firstpage.jpeg) no-repeat;\n  -webkit-background-size: cover;\n  background-size: cover; }\n  div.hh-welcome .describe-part {\n    position: absolute;\n    top: 50%;\n    right: 50px;\n    height: 300px;\n    margin-top: -150px;\n    text-align: right; }\n    div.hh-welcome .describe-part h1 {\n      font-size: 5em; }\n    div.hh-welcome .describe-part h2 {\n      font-size: 1.5em; }\n    div.hh-welcome .describe-part h3 {\n      font-size: 1em; }\n  div.hh-welcome .bottom-btn {\n    position: absolute;\n    bottom: 30px;\n    width: 100%; }\n    div.hh-welcome .bottom-btn button {\n      display: block;\n      width: 80px;\n      height: 80px;\n      margin: 0 auto;\n      text-align: center;\n      border: none;\n      -webkit-border-radius: 50%;\n      -moz-border-radius: 50%;\n      border-radius: 50%;\n      background-color: #bbb;\n      outline: none; }\n      div.hh-welcome .bottom-btn button i {\n        padding-top: 20px;\n        font-size: 2em;\n        color: #333; }\n    div.hh-welcome .bottom-btn button:hover {\n      background-color: #fff;\n      border: 2px solid #ddd;\n      -webkit-box-shadow: 0px 2px 2px #777;\n      -moz-box-shadow: 0px 2px 2px #777;\n      box-shadow: 0px 2px 2px #777; }\n      div.hh-welcome .bottom-btn button:hover i {\n        color: #000; }\n", ""]);
 
 	// exports
 
@@ -408,6 +408,7 @@
 	 * Created by cuitianhao on 16/3/19.
 	 */
 	$(document).ready(function(){
+	    //official settings
 	    $("#fullpage").fullpage({
 	        //Navigation
 	        menu: '#menu',
@@ -465,6 +466,11 @@
 	        afterResize: function(){},
 	        afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex){},
 	        onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){}
+	    });
+
+	    //personal settings
+	    $(".page-down").on("click", function(){
+	        $.fn.fullpage.moveSectionDown();
 	    });
 	});
 

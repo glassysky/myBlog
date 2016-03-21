@@ -8,6 +8,8 @@ $nav-height: 48px;
 $a-hover-bg-color: #000;
 $a-hover-font-color: #fff;
 
+$page-down-btn-side: 80px;
+
 nav.hh-nav {
   position: fixed;
   top: 0;
@@ -56,9 +58,68 @@ nav.hh-nav {
 }
 
 div.hh-welcome {
+  position: relative;
   width: 100%;
   height: 100%;
+  padding: 10px 0;
   background: url(/asset/img/firstpage.jpeg) no-repeat ;
   -webkit-background-size: cover;
   background-size: cover;
+
+  .describe-part {
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    height: 300px;
+    margin-top: -150px;
+    text-align: right;
+
+    h1 {
+      font-size: 5em;
+    }
+
+    h2 {
+      font-size: 1.5em;
+    }
+
+    h3 {
+      font-size: 1em;
+    }
+  }
+
+  .bottom-btn {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    button {
+      display: block;
+      width: $page-down-btn-side;
+      height: $page-down-btn-side;
+      margin: 0 auto;
+      text-align: center;
+      border: none;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      background-color: #bbb;
+      outline: none;
+
+      i {
+        padding-top: 20px;
+        font-size: 2em;
+        color: #333;
+      }
+    }
+    
+    button:hover {
+      background-color: #fff;
+      border: 2px solid #ddd;
+      -webkit-box-shadow: 0px 2px 2px #777;
+      -moz-box-shadow: 0px 2px 2px #777;
+      box-shadow: 0px 2px 2px #777;
+      i {
+        color: #000;
+      }
+    }
+  }
 }
