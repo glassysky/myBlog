@@ -16,8 +16,8 @@ router.get('/photography', function(req, res, next) {
   res.render('photography', { title: CONFIG.title });
 });
 
-router.get('./application/index', function(req, res, next) {
-  res.render('application', { title: CONFIG.title });
+router.get('/application', function(req, res, next) {
+  res.render('./application/index', { title: CONFIG.title });
 });
 
 router.get('/about', function(req, res, next) {

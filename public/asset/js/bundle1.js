@@ -50,22 +50,22 @@
 	'use strict';
 	
 	// styles
-	__webpack_require__(/*! ./public/src/css/style */ 1);
+	__webpack_require__(/*! ./public/src/css/IndexStyle */ 1);
 	
 	// fullpage config
 	__webpack_require__(/*! ./public/src/js/fullpageConf.js */ 5);
 
 /***/ },
 /* 1 */
-/*!***********************************!*\
-  !*** ./public/src/css/style.scss ***!
-  \***********************************/
+/*!****************************************!*\
+  !*** ./public/src/css/IndexStyle.scss ***!
+  \****************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./style.scss */ 2);
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./IndexStyle.scss */ 2);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 4)(content, {});
@@ -74,8 +74,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./style.scss", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./style.scss");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./IndexStyle.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./IndexStyle.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -86,9 +86,9 @@
 
 /***/ },
 /* 2 */
-/*!******************************************************************!*\
-  !*** ./~/css-loader!./~/sass-loader!./public/src/css/style.scss ***!
-  \******************************************************************/
+/*!***********************************************************************!*\
+  !*** ./~/css-loader!./~/sass-loader!./public/src/css/IndexStyle.scss ***!
+  \***********************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 3)();
