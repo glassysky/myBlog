@@ -3,7 +3,7 @@ var webpack = require('webpack');
 module.exports = {
 	entry: {
 		homepage: './public/src/js/entry/homepage.js',
-		bundle2: './main2.js'
+		application: './public/src/js/entry/application.js'
 	},
 	output: {
 		filename: './public/asset/js/[name].js'

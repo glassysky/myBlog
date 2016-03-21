@@ -50,58 +50,14 @@
 	'use strict';
 	
 	// styles
-	__webpack_require__(/*! ../../css/IndexStyle */ 1);
+	__webpack_require__(/*! ../../css/IndexStyle */ 5);
 	
 	// fullpage config
-	__webpack_require__(/*! ../fullpageConf.js */ 5);
+	__webpack_require__(/*! ../fullpageConf.js */ 7);
 
 /***/ },
-/* 1 */
-/*!****************************************!*\
-  !*** ./public/src/css/IndexStyle.scss ***!
-  \****************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./IndexStyle.scss */ 2);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 4)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./IndexStyle.scss", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./IndexStyle.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 2 */
-/*!***********************************************************************!*\
-  !*** ./~/css-loader!./~/sass-loader!./public/src/css/IndexStyle.scss ***!
-  \***********************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 3)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, "body {\n  min-width: 800px; }\n\nli {\n  list-style: none; }\n\nnav.hh-nav {\n  position: fixed;\n  top: 0;\n  width: 100%;\n  height: 48px;\n  background-color: #333; }\n  nav.hh-nav ul {\n    height: 48px;\n    margin: 0;\n    padding: 0 40px; }\n    nav.hh-nav ul li {\n      float: left; }\n      nav.hh-nav ul li a {\n        display: inline-block;\n        height: 48px;\n        padding: 0 20px;\n        line-height: 48px;\n        color: #ddd;\n        text-decoration: none; }\n      nav.hh-nav ul li a:hover {\n        color: #fff;\n        background-color: #000; }\n    nav.hh-nav ul .nav-logo {\n      padding: 4px 0; }\n      nav.hh-nav ul .nav-logo a {\n        margin-right: 40px;\n        height: 40px; }\n        nav.hh-nav ul .nav-logo a img {\n          height: 100%; }\n      nav.hh-nav ul .nav-logo a:hover {\n        background-color: #333; }\n\ndiv.hh-welcome {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  padding: 10px 0;\n  background: url(/asset/img/firstpage.jpeg) no-repeat;\n  -webkit-background-size: cover;\n  background-size: cover; }\n  div.hh-welcome .describe-part {\n    position: absolute;\n    top: 50%;\n    right: 50px;\n    height: 300px;\n    margin-top: -150px;\n    text-align: right; }\n    div.hh-welcome .describe-part h1 {\n      font-size: 5em; }\n    div.hh-welcome .describe-part h2 {\n      font-size: 1.5em; }\n    div.hh-welcome .describe-part h3 {\n      font-size: 1em; }\n  div.hh-welcome .bottom-btn {\n    position: absolute;\n    bottom: 30px;\n    width: 100%; }\n    div.hh-welcome .bottom-btn button {\n      display: block;\n      width: 80px;\n      height: 80px;\n      margin: 0 auto;\n      text-align: center;\n      border: none;\n      -webkit-border-radius: 50%;\n      -moz-border-radius: 50%;\n      border-radius: 50%;\n      background-color: #bbb;\n      outline: none; }\n      div.hh-welcome .bottom-btn button i {\n        padding-top: 20px;\n        font-size: 2em;\n        color: #333; }\n    div.hh-welcome .bottom-btn button:hover {\n      background-color: #fff;\n      border: 2px solid #ddd;\n      -webkit-box-shadow: 0px 2px 2px #777;\n      -moz-box-shadow: 0px 2px 2px #777;\n      box-shadow: 0px 2px 2px #777; }\n      div.hh-welcome .bottom-btn button:hover i {\n        color: #000; }\n", ""]);
-	
-	// exports
-
-
-/***/ },
+/* 1 */,
+/* 2 */,
 /* 3 */
 /*!**************************************!*\
   !*** ./~/css-loader/lib/css-base.js ***!
@@ -419,6 +375,52 @@
 
 /***/ },
 /* 5 */
+/*!****************************************!*\
+  !*** ./public/src/css/IndexStyle.scss ***!
+  \****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./IndexStyle.scss */ 6);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./IndexStyle.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./IndexStyle.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 6 */
+/*!***********************************************************************!*\
+  !*** ./~/css-loader!./~/sass-loader!./public/src/css/IndexStyle.scss ***!
+  \***********************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 3)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "body {\n  min-width: 800px; }\n\nli {\n  list-style: none; }\n\nnav.hh-nav {\n  position: fixed;\n  top: 0;\n  width: 100%;\n  height: 48px;\n  background-color: #333; }\n  nav.hh-nav ul {\n    height: 48px;\n    margin: 0;\n    padding: 0 40px; }\n    nav.hh-nav ul li {\n      float: left; }\n      nav.hh-nav ul li a {\n        display: inline-block;\n        height: 48px;\n        padding: 0 20px;\n        line-height: 48px;\n        color: #ddd;\n        text-decoration: none; }\n      nav.hh-nav ul li a:hover {\n        color: #fff;\n        background-color: #000; }\n    nav.hh-nav ul .nav-logo {\n      padding: 4px 0; }\n      nav.hh-nav ul .nav-logo a {\n        margin-right: 40px;\n        height: 40px; }\n        nav.hh-nav ul .nav-logo a img {\n          height: 100%; }\n      nav.hh-nav ul .nav-logo a:hover {\n        background-color: #333; }\n\ndiv.hh-welcome {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  padding: 10px 0;\n  background: url(/asset/img/firstpage.jpeg) no-repeat;\n  -webkit-background-size: cover;\n  background-size: cover; }\n  div.hh-welcome .describe-part {\n    position: absolute;\n    top: 50%;\n    right: 50px;\n    height: 300px;\n    margin-top: -150px;\n    text-align: right; }\n    div.hh-welcome .describe-part h1 {\n      font-size: 5em; }\n    div.hh-welcome .describe-part h2 {\n      font-size: 1.5em; }\n    div.hh-welcome .describe-part h3 {\n      font-size: 1em; }\n  div.hh-welcome .bottom-btn {\n    position: absolute;\n    bottom: 30px;\n    width: 100%; }\n    div.hh-welcome .bottom-btn button {\n      display: block;\n      width: 80px;\n      height: 80px;\n      margin: 0 auto;\n      text-align: center;\n      border: none;\n      -webkit-border-radius: 50%;\n      -moz-border-radius: 50%;\n      border-radius: 50%;\n      background-color: #bbb;\n      outline: none; }\n      div.hh-welcome .bottom-btn button i {\n        padding-top: 20px;\n        font-size: 2em;\n        color: #333; }\n    div.hh-welcome .bottom-btn button:hover {\n      background-color: #fff;\n      border: 2px solid #ddd;\n      -webkit-box-shadow: 0px 2px 2px #777;\n      -moz-box-shadow: 0px 2px 2px #777;\n      box-shadow: 0px 2px 2px #777; }\n      div.hh-welcome .bottom-btn button:hover i {\n        color: #000; }\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 7 */
 /*!***************************************!*\
   !*** ./public/src/js/fullpageConf.js ***!
   \***************************************/
