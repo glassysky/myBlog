@@ -44,11 +44,13 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	// styles
 	__webpack_require__(1);
 
 	// fullpage config
-	__webpack_require__(5)
+	__webpack_require__(5);
 
 /***/ },
 /* 1 */
@@ -404,16 +406,18 @@
 /* 5 */
 /***/ function(module, exports) {
 
+	'use strict';
+
 	/**
 	 * Created by cuitianhao on 16/3/19.
 	 */
-	$(document).ready(function(){
+	$(document).ready(function () {
 	    //official settings
 	    $("#fullpage").fullpage({
 	        //Navigation
 	        menu: '#menu',
 	        lockAnchors: false,
-	        anchors:['firstPage', 'secondPage', 'thirdPage', 'fourthPage'],
+	        anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage'],
 	        navigation: false,
 	        navigationPosition: 'right',
 	        navigationTooltips: ['firstSlide', 'secondSlide'],
@@ -447,8 +451,8 @@
 	        //Design
 	        controlArrows: true,
 	        verticalCentered: true,
-	        resize : false,
-	        sectionsColor : ['#fff', '#ccc', '#999', '#666', '#333', '#000'],
+	        resize: false,
+	        sectionsColor: ['#fff', '#ccc', '#999', '#666', '#333', '#000'],
 	        paddingTop: '3em',
 	        paddingBottom: '0px',
 	        fixedElements: '#header, .footer',
@@ -460,16 +464,16 @@
 	        slideSelector: '.slide',
 
 	        //events
-	        onLeave: function(index, nextIndex, direction){},
-	        afterLoad: function(anchorLink, index){},
-	        afterRender: function(){},
-	        afterResize: function(){},
-	        afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex){},
-	        onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){}
+	        onLeave: function onLeave(index, nextIndex, direction) {},
+	        afterLoad: function afterLoad(anchorLink, index) {},
+	        afterRender: function afterRender() {},
+	        afterResize: function afterResize() {},
+	        afterSlideLoad: function afterSlideLoad(anchorLink, index, slideAnchor, slideIndex) {},
+	        onSlideLeave: function onSlideLeave(anchorLink, index, slideIndex, direction, nextSlideIndex) {}
 	    });
 
 	    //personal settings
-	    $(".page-down").on("click", function(){
+	    $(".page-down").on("click", function () {
 	        $.fn.fullpage.moveSectionDown();
 	    });
 	});

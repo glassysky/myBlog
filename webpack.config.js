@@ -11,12 +11,21 @@ module.exports = {
 	module: {
 		loaders:[
 			{ 
-				test: /\.jsx]?$/, 
-				exclude: [/node_modules/],
+				test: /\.jsx?$/,
+				exclude: /(node_modules)/,
 				loader: 'babel',
-				query: ['react', 'es2015']
+				query: {
+					presets: ['react', 'es2015']
+				}
 			},
-			{ test: /\.scss$/, loader: 'style!css!sass'}
+			{
+				test: /\.scss$/,
+				loader: 'style!css!sass'
+			},
+			{
+				test: /\.(png|jpg|jpeg)$/,
+				loader: 'url-loader?limit=8192'
+			}
 		]
 	},
 	resolve: {
