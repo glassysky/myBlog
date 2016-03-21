@@ -2,7 +2,7 @@ var webpack = require('webpack');
 
 module.exports = {
 	entry: {
-		bundle1: './homepage.js',
+		homepage: './public/src/js/entry/homepage.js',
 		bundle2: './main2.js'
 	},
 	output: {
