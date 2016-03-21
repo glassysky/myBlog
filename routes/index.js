@@ -16,7 +16,7 @@ router.get('/photography', function(req, res, next) {
   res.render('photography', { title: CONFIG.title });
 });
 
-router.get('/application', function(req, res, next) {
+router.get('./application/index', function(req, res, next) {
   res.render('application', { title: CONFIG.title });
 });
 
