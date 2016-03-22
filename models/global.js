@@ -16,6 +16,9 @@ Methods.prototype = {
     constructor: Methods,
     getAppsInfo: function(){
         return apps;
+    },
+    changeApps: function(){
+        apps[0].name = "changed";
     }
 }
 

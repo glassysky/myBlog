@@ -50,10 +50,10 @@
 	'use strict';
 	
 	// styles
-	__webpack_require__(/*! ../../css/IndexStyle */ 5);
+	__webpack_require__(/*! ../../css/IndexStyle */ 7);
 	
 	// fullpage config
-	__webpack_require__(/*! ../fullpageConf.js */ 7);
+	__webpack_require__(/*! ../fullpageConf.js */ 9);
 
 /***/ },
 /* 1 */,
@@ -374,7 +374,9 @@
 
 
 /***/ },
-/* 5 */
+/* 5 */,
+/* 6 */,
+/* 7 */
 /*!****************************************!*\
   !*** ./public/src/css/IndexStyle.scss ***!
   \****************************************/
@@ -383,7 +385,7 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./IndexStyle.scss */ 6);
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./IndexStyle.scss */ 8);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 4)(content, {});
@@ -403,7 +405,7 @@
 	}
 
 /***/ },
-/* 6 */
+/* 8 */
 /*!***********************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./public/src/css/IndexStyle.scss ***!
   \***********************************************************************/
@@ -420,7 +422,7 @@
 
 
 /***/ },
-/* 7 */
+/* 9 */
 /*!***************************************!*\
   !*** ./public/src/js/fullpageConf.js ***!
   \***************************************/

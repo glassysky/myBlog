@@ -3,3 +3,8 @@
  */
 // styles
 require('../../css/ApplicationStyle');
+
+//controller
+var controller = require('../../../../controller/application.js');
+
+controller.changeApps();

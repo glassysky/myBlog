@@ -54,6 +54,11 @@
 	 */
 	// styles
 	__webpack_require__(/*! ../../css/ApplicationStyle */ 1);
+	
+	//controller
+	var controller = __webpack_require__(/*! ../../../../controller/application.js */ 5);
+	
+	controller.changeApps();
 
 /***/ },
 /* 1 */
@@ -96,7 +101,7 @@
 	
 	
 	// module
-	exports.push([module.id, "body {\n  min-width: 800px; }\n\nli {\n  list-style: none; }\n\nnav.hh-nav {\n  position: fixed;\n  top: 0;\n  width: 100%;\n  height: 48px;\n  background-color: #333; }\n  nav.hh-nav ul {\n    height: 48px;\n    margin: 0;\n    padding: 0 40px; }\n    nav.hh-nav ul li {\n      float: left; }\n      nav.hh-nav ul li a {\n        display: inline-block;\n        height: 48px;\n        padding: 0 20px;\n        line-height: 48px;\n        color: #ddd;\n        text-decoration: none; }\n      nav.hh-nav ul li a:hover {\n        color: #fff;\n        background-color: #000; }\n    nav.hh-nav ul .nav-logo {\n      padding: 4px 0; }\n      nav.hh-nav ul .nav-logo a {\n        margin-right: 40px;\n        height: 40px; }\n        nav.hh-nav ul .nav-logo a img {\n          height: 100%; }\n      nav.hh-nav ul .nav-logo a:hover {\n        background-color: #333; }\n", ""]);
+	exports.push([module.id, "body {\n  min-width: 800px; }\n\nli {\n  list-style: none; }\n\nnav.hh-nav {\n  position: fixed;\n  top: 0;\n  width: 100%;\n  height: 48px;\n  background-color: #333; }\n  nav.hh-nav ul {\n    height: 48px;\n    margin: 0;\n    padding: 0 40px; }\n    nav.hh-nav ul li {\n      float: left; }\n      nav.hh-nav ul li a {\n        display: inline-block;\n        height: 48px;\n        padding: 0 20px;\n        line-height: 48px;\n        color: #ddd;\n        text-decoration: none; }\n      nav.hh-nav ul li a:hover {\n        color: #fff;\n        background-color: #000; }\n    nav.hh-nav ul .nav-logo {\n      padding: 4px 0; }\n      nav.hh-nav ul .nav-logo a {\n        margin-right: 40px;\n        height: 40px; }\n        nav.hh-nav ul .nav-logo a img {\n          height: 100%; }\n      nav.hh-nav ul .nav-logo a:hover {\n        background-color: #333; }\n\n.hh-application-wrap {\n  margin-top: 48px; }\n", ""]);
 	
 	// exports
 
@@ -416,6 +421,64 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
+
+/***/ },
+/* 5 */
+/*!***********************************!*\
+  !*** ./controller/application.js ***!
+  \***********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	/**
+	 * Created by cuitianhao on 16/3/22.
+	 */
+	var GLOBAL = __webpack_require__(/*! ../models/global */ 6);
+	
+	var controller = {};
+	
+	controller.changeApps = function () {
+	    setTimeout(function () {
+	        GLOBAL.changeApps();
+	        console.log("changed");
+	    }, 2000);
+	};
+	
+	module.exports = controller;
+
+/***/ },
+/* 6 */
+/*!**************************!*\
+  !*** ./models/global.js ***!
+  \**************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	/**
+	 * Created by cuitianhao on 16/3/22.
+	 */
+	var apps = [{
+	    name: "正则表达式",
+	    introduce: "在线正则表达式匹配测试"
+	}];
+	
+	function Methods() {}
+	
+	Methods.prototype = {
+	    constructor: Methods,
+	    getAppsInfo: function getAppsInfo() {
+	        return apps;
+	    },
+	    changeApps: function changeApps() {
+	        apps[0].name = "changed";
+	    }
+	};
+	
+	var method = new Methods();
+	
+	module.exports = method;
 
 /***/ }
 /******/ ]);
