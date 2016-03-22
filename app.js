@@ -5,6 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+//config
+var CONFIG = require('./public/conf/config');
+
+var commonRouter = require('./routes/common');
 var indexRouter = require('./routes/index');
 var articleRouter = require('./routes/article');
 var applicationRouter = require('./routes/application');
@@ -27,6 +31,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //route settings
+app.all('*', function(req, res, next){
+  app.locals.title = CONFIG.title;
+  next();
+});
 app.use('/', indexRouter);
 app.use('/article', articleRouter);
 app.use('/application', applicationRouter);

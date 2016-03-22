@@ -5,7 +5,7 @@ var CONFIG = require('../public/conf/config');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('./index/index', { title: CONFIG.title });
+  res.render('./index/index', {  });
 });
 
 module.exports = router;
