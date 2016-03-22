@@ -8,7 +8,7 @@ var CONFIG = require('../public/conf/config');
 
 /* GET home page. */
 
-router.get('/application', function(req, res, next) {
+router.get('/', function(req, res, next) {
     res.render('./application/index', { title: CONFIG.title });
 });
 
