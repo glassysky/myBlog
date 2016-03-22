@@ -7,8 +7,8 @@ var controller = {};
 
 controller.changeApps = function(){
     setTimeout(function(){
-        GLOBAL.changeApps();
-        console.log("changed");
+        // GLOBAL.changeApps();
+        console.log(GLOBAL.getAppsInfo());
     },2000);
 }
 

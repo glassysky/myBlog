@@ -4,10 +4,23 @@
 
     <% include ../public/nav %>
     <div class="hh-application-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>应用名称</th>
+                    <th>描述</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(var i = 0;i < apps.length;i++){ %>
+                    <tr>
+                        <td><%= apps[i].name %></td>
+                        <td><%= apps[i].introduce %></td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
 
-        <% for(var i = 0;i < apps.length;i++){ %>
-            <p><%= apps[i].name %></p>
-        <% } %>
     </div>
 
     <script type="text/javascript" src="/asset/js/application.js"></script>
