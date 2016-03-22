@@ -8,13 +8,17 @@ var apps = [
     }
 ];
 
-var method = function(){
-    return {
-        getAppsInfo: function(){
-            return apps;
-        }
-    }
+function Methods(){
 
-};
+}
+
+Methods.prototype = {
+    constructor: Methods,
+    getAppsInfo: function(){
+        return apps;
+    }
+}
+
+var method = new Methods();
 
 module.exports = method;

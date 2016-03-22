@@ -10,7 +10,7 @@ var GLOBAL = require('../models/global');
 /* GET home page. */
 
 router.get('/', function(req, res, next) {
-    res.render('./application/index', {  });
+    res.render('./application/index', { apps: GLOBAL.getAppsInfo() });
 });
 
 module.exports = router;
