@@ -2,6 +2,7 @@
 @import "Nav";
 
 $table-head-border-bottom-color: #ddd;
+$table-body-border-bottom-color: #eee;
 
 .hh-application-wrap {
   margin-top: 48px;
@@ -22,6 +23,7 @@ $table-head-border-bottom-color: #ddd;
     }
     tbody {
       tr {
+        border-bottom: 1px solid $table-body-border-bottom-color;
         td {
           height: 30px;
           padding: 5px 10px;
