@@ -9,6 +9,7 @@
                 <tr>
                     <th>应用名称</th>
                     <th>描述</th>
+                    <th>操作</th>
                 </tr>
             </thead>
             <tbody>
@@ -16,6 +17,7 @@
                     <tr>
                         <td><%= apps[i].name %></td>
                         <td><%= apps[i].introduce %></td>
+                        <td><a href="#" class="hh-btn enter-btn" data-index=<%= apps[i].index %>>进入</a></td>
                     </tr>
                 <% } %>
             </tbody>

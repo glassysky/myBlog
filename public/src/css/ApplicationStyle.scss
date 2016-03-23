@@ -1,6 +1,32 @@
 @import "Common";
 @import "Nav";
 
+$table-head-border-bottom-color: #ddd;
+
 .hh-application-wrap {
   margin-top: 48px;
+  padding: 50px 30px;
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    thead {
+      border-bottom: 1px solid $table-head-border-bottom-color;
+      tr {
+        th {
+          padding: 5px 10px;
+          text-align: left;
+          font-size: 1.5em;
+        }
+      }
+    }
+    tbody {
+      tr {
+        td {
+          height: 30px;
+          padding: 5px 10px;
+        }
+      }
+    }
+  }
 }

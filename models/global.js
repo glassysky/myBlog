@@ -3,6 +3,7 @@
  */
 var apps = [
     {
+        index: 1,
         name: "正则匹配",
         introduce: "在线正则表达式匹配测试"
     }
