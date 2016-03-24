@@ -3,6 +3,7 @@
  */
 var express = require('express');
 var router = express.Router();
+var fs = require('fs');
 
 var CONFIG = require('../public/conf/config');
 var GLOBAL = require('../models/global');
@@ -10,7 +11,6 @@ var GLOBAL = require('../models/global');
 //根目录
 
 router.get('/', function(req, res, next) {
-    console.log(req.baseUrl);
     var apps = GLOBAL.getAppsInfo();
 
     apps.map(function(item){
@@ -27,7 +27,7 @@ router.get('/appShow/:index', function(req, res, next) {
     // console.log(req.baseUrl);
     // console.log(req.index);
     res.render('./application/appShow', {
-        appIndex: req.params.index
+        appContent: req.params.index
     });
 });
 
