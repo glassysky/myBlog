@@ -17,7 +17,7 @@
                     <tr>
                         <td><%= apps[i].name %></td>
                         <td><%= apps[i].introduce %></td>
-                        <td><a href="#" class="hh-btn enter-btn" data-index=<%= apps[i].index %>>进入</a></td>
+                        <td><a href=<%= apps[i].src %> class="hh-btn enter-btn" data-index=<%= apps[i].index %> >进入</a></td>
                     </tr>
                 <% } %>
             </tbody>
@@ -26,5 +26,5 @@
     </div>
 
     <script type="text/javascript" src="/asset/js/application.js"></script>
-</body>
-</html>
+
+<% include ../public/footer %>
