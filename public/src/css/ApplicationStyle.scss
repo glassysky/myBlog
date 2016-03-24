@@ -4,6 +4,8 @@
 $table-head-border-bottom-color: #ddd;
 $table-body-border-bottom-color: #eee;
 
+$location-bar-bottom-border-color: #eee;
+
 .hh-application-wrap {
   margin-top: 48px;
   padding: 50px 30px;
@@ -29,6 +31,34 @@ $table-body-border-bottom-color: #eee;
           padding: 5px 10px;
         }
       }
+    }
+  }
+}
+
+.hh-iframe {
+  display: block;
+  width: 80%;
+  height: 600px;
+  margin: 0 auto;
+}
+
+.hh-container {
+  #location-bar {
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    border-bottom: 3px solid $location-bar-bottom-border-color;
+    span {
+      font-size: 2em;
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+      a:hover {
+
+      }
+    }
+    span.parent-location {
+      font-weight: 700;
     }
   }
 }

@@ -6,13 +6,15 @@ var apps = [
         index: 1,
         name: "正则匹配",
         introduce: "在线正则表达式匹配测试",
-        github: ""
+        github: "",
+        filename: "regex"
     },
     {
         index: 2,
-        name: "test",
-        introduce: "this is test app",
-        github: ""
+        name: "颜色选择器",
+        introduce: "选择你喜欢的配色吧",
+        github: "",
+        filename: "colorSelector"
     }
 ];
 

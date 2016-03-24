@@ -7,11 +7,11 @@ var fs = require('fs');
 
 var CONFIG = require('../public/conf/config');
 var GLOBAL = require('../models/global');
+var apps = GLOBAL.getAppsInfo();
 
 //根目录
 
 router.get('/', function(req, res, next) {
-    var apps = GLOBAL.getAppsInfo();
 
     apps.map(function(item){
         item.src = req.baseUrl + "/appShow/" + item.index;
@@ -23,11 +23,10 @@ router.get('/', function(req, res, next) {
 //应用展示
 
 router.get('/appShow/:index', function(req, res, next) {
-    // console.log(req.params.index);
-    // console.log(req.baseUrl);
-    // console.log(req.index);
+    var appIndex = req.params.index;
+
     res.render('./application/appShow', {
-        appContent: req.params.index
+        appPos: apps[appIndex].filename
     });
 });
 
