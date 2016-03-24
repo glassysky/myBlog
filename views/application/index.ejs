@@ -17,7 +17,10 @@
                     <tr>
                         <td><%= apps[i].name %></td>
                         <td><%= apps[i].introduce %></td>
-                        <td><a href=<%= apps[i].src %> class="hh-btn enter-btn" data-index=<%= apps[i].index %> >进入</a></td>
+                        <td>
+                            <a href="<%= apps[i].src %>" class="hh-btn enter-btn" data-index="<%= apps[i].index %>" >预览</a>
+                            <a href="<%= apps[i].github %>" class="hh-btn github-btn">Github</a>
+                        </td>
                     </tr>
                 <% } %>
             </tbody>

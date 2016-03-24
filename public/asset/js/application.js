@@ -462,11 +462,13 @@
 	var apps = [{
 	    index: 1,
 	    name: "正则匹配",
-	    introduce: "在线正则表达式匹配测试"
+	    introduce: "在线正则表达式匹配测试",
+	    github: ""
 	}, {
 	    index: 2,
 	    name: "test",
-	    introduce: "this is test app"
+	    introduce: "this is test app",
+	    github: ""
 	}];
 	
 	function Methods() {}
