@@ -23,10 +23,12 @@ router.get('/', function(req, res, next) {
 //应用展示
 
 router.get('/appShow/:index', function(req, res, next) {
-    var appIndex = req.params.index;
+    var appIndex = parseInt(req.params.index) - 1;
+    console.log(appIndex);
 
     res.render('./application/appShow', {
-        appPos: apps[appIndex].filename
+        appPos: apps[appIndex].filename,
+        baseUrl: req.baseUrl
     });
 });
 

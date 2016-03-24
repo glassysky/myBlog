@@ -3,8 +3,8 @@
     <% include ../public/nav %>
     <div class="hh-container">
         <div id="location-bar">
-            <span class="parent-location"><a href="">应用列表</a></span>
-            <span>  /  </span>
+            <span class="parent-location"><a href="<%= baseUrl %>">应用列表</a></span>
+            <span>/</span>
             <span class="children-location"><%= appPos %></span>
         </div>
         <iframe class="hh-iframe" src="/appsItem/<%= appPos %>/index.html" frameborder="1" ></iframe>

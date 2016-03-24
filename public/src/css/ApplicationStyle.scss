@@ -5,6 +5,8 @@ $table-head-border-bottom-color: #ddd;
 $table-body-border-bottom-color: #eee;
 
 $location-bar-bottom-border-color: #eee;
+$location-bar-link-color: #aaa;
+$location-bar-link-hover-color: #000;
 
 .hh-application-wrap {
   margin-top: 48px;
@@ -51,10 +53,10 @@ $location-bar-bottom-border-color: #eee;
       font-size: 2em;
       a {
         text-decoration: none;
-        color: #000;
+        color: $location-bar-link-color;
       }
       a:hover {
-
+        color: $location-bar-link-hover-color;
       }
     }
     span.parent-location {
