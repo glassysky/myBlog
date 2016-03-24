@@ -469,7 +469,7 @@
 	    index: 2,
 	    name: "颜色选择器",
 	    introduce: "选择你喜欢的配色吧",
-	    github: "",
+	    github: "https://github.com/glassysky/colorSelector",
 	    filename: "colorSelector"
 	}];
 	
