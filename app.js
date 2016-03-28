@@ -13,6 +13,10 @@ var indexRouter = require('./routes/index');
 var articleRouter = require('./routes/article');
 var applicationRouter = require('./routes/application');
 
+var webpack = require('webpack');
+var webpackConfig = require('./webpack.config');
+var compiler = webpack(webpackConfig);
+
 var app = express();
 
 // view engine setup
@@ -21,6 +25,11 @@ app.set('view engine', 'ejs');
 
 // static assets setting
 app.use(express.static('public'));
+
+app.use(require("webpack-dev-middleware")(compiler, {
+  noInfo: true, publicPath: webpackConfig.output.publicPath
+}));
+app.use(require("webpack-hot-middleware")(compiler));
 
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

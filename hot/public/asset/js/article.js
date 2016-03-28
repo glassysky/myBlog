@@ -249,7 +249,7 @@
 /******/ 			hotSetStatus("prepare");
 /******/ 			hotCallback = callback;
 /******/ 			hotUpdate = {};
-/******/ 			var chunkId = 1;
+/******/ 			var chunkId = 2;
 /******/ 			{ // eslint-disable-line no-lone-blocks
 /******/ 				/*globals chunkId */
 /******/ 				hotEnsureUpdateChunk(chunkId);
@@ -572,7 +572,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(24);
+	__webpack_require__(23);
 	module.exports = __webpack_require__(5);
 
 
@@ -2170,8 +2170,7 @@
 
 /***/ },
 /* 17 */,
-/* 18 */,
-/* 19 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(2)();
@@ -2179,113 +2178,44 @@
 
 
 	// module
-	exports.push([module.id, "body {\n  min-width: 800px; }\n\nli {\n  list-style: none; }\n\na.hh-btn {\n  display: inline-block;\n  width: 70px;\n  height: 40px;\n  line-height: 40px;\n  font-size: 1em;\n  font-weight: 700;\n  color: #666;\n  background-color: #eee;\n  text-decoration: none;\n  text-align: center;\n  border: 1px solid #aaa;\n  -webkit-border-radius: 3px;\n  -moz-border-radius: 3px;\n  border-radius: 3px; }\n\na.hh-btn:hover {\n  background-color: #ddd; }\n\ndiv.hh-container {\n  margin-top: 48px;\n  padding: 20px 30px; }\n\nnav.hh-nav {\n  position: fixed;\n  top: 0;\n  width: 100%;\n  height: 48px;\n  background-color: #333; }\n  nav.hh-nav ul {\n    height: 48px;\n    margin: 0;\n    padding: 0 40px; }\n    nav.hh-nav ul li {\n      float: left; }\n      nav.hh-nav ul li a {\n        display: inline-block;\n        height: 48px;\n        padding: 0 20px;\n        line-height: 48px;\n        color: #ddd;\n        text-decoration: none; }\n      nav.hh-nav ul li a:hover {\n        color: #fff;\n        background-color: #000; }\n    nav.hh-nav ul .nav-logo {\n      padding: 4px 0; }\n      nav.hh-nav ul .nav-logo a {\n        margin-right: 40px;\n        height: 40px; }\n        nav.hh-nav ul .nav-logo a img {\n          height: 100%; }\n      nav.hh-nav ul .nav-logo a:hover {\n        background-color: #333; }\n\ndiv.hh-welcome {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  padding: 10px 0;\n  background: url(/asset/img/firstpage.jpeg) no-repeat;\n  -webkit-background-size: cover;\n  background-size: cover; }\n  div.hh-welcome .describe-part {\n    position: absolute;\n    top: 50%;\n    right: 50px;\n    height: 300px;\n    margin-top: -150px;\n    text-align: right; }\n    div.hh-welcome .describe-part h1 {\n      font-size: 5em; }\n    div.hh-welcome .describe-part h2 {\n      font-size: 1.5em; }\n    div.hh-welcome .describe-part h3 {\n      font-size: 1em; }\n  div.hh-welcome .bottom-btn {\n    position: absolute;\n    bottom: 30px;\n    width: 100%; }\n    div.hh-welcome .bottom-btn button {\n      display: block;\n      width: 80px;\n      height: 80px;\n      margin: 0 auto;\n      text-align: center;\n      border: none;\n      -webkit-border-radius: 50%;\n      -moz-border-radius: 50%;\n      border-radius: 50%;\n      background-color: #bbb;\n      outline: none; }\n      div.hh-welcome .bottom-btn button i {\n        padding-top: 20px;\n        font-size: 2em;\n        color: #333; }\n    div.hh-welcome .bottom-btn button:hover {\n      background-color: #fff;\n      border: 2px solid #ddd;\n      -webkit-box-shadow: 0px 2px 2px #777;\n      -moz-box-shadow: 0px 2px 2px #777;\n      box-shadow: 0px 2px 2px #777; }\n      div.hh-welcome .bottom-btn button:hover i {\n        color: #000; }\n", ""]);
+	exports.push([module.id, "body {\n  min-width: 800px; }\n\nli {\n  list-style: none; }\n\na.hh-btn {\n  display: inline-block;\n  width: 70px;\n  height: 40px;\n  line-height: 40px;\n  font-size: 1em;\n  font-weight: 700;\n  color: #666;\n  background-color: #eee;\n  text-decoration: none;\n  text-align: center;\n  border: 1px solid #aaa;\n  -webkit-border-radius: 3px;\n  -moz-border-radius: 3px;\n  border-radius: 3px; }\n\na.hh-btn:hover {\n  background-color: #ddd; }\n\ndiv.hh-container {\n  margin-top: 48px;\n  padding: 20px 30px; }\n\nnav.hh-nav {\n  position: fixed;\n  top: 0;\n  width: 100%;\n  height: 48px;\n  background-color: #333; }\n  nav.hh-nav ul {\n    height: 48px;\n    margin: 0;\n    padding: 0 40px; }\n    nav.hh-nav ul li {\n      float: left; }\n      nav.hh-nav ul li a {\n        display: inline-block;\n        height: 48px;\n        padding: 0 20px;\n        line-height: 48px;\n        color: #ddd;\n        text-decoration: none; }\n      nav.hh-nav ul li a:hover {\n        color: #fff;\n        background-color: #000; }\n    nav.hh-nav ul .nav-logo {\n      padding: 4px 0; }\n      nav.hh-nav ul .nav-logo a {\n        margin-right: 40px;\n        height: 40px; }\n        nav.hh-nav ul .nav-logo a img {\n          height: 100%; }\n      nav.hh-nav ul .nav-logo a:hover {\n        background-color: #333; }\n\n.hh-article-wrap {\n  margin-top: 48px;\n  color: blue;\n  font-size: 2em; }\n", ""]);
 
 	// exports
 
 
 /***/ },
+/* 19 */,
 /* 20 */,
 /* 21 */,
 /* 22 */,
-/* 23 */,
-/* 24 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	// styles
-	__webpack_require__(28);
-
-	// fullpage config
-	__webpack_require__(25);
-
-/***/ },
-/* 25 */
-/***/ function(module, exports) {
-
-	'use strict';
-
 	/**
-	 * Created by cuitianhao on 16/3/19.
+	 * Created by cuitianhao on 16/3/28.
 	 */
-	$(document).ready(function () {
-	    //official settings
-	    $("#fullpage").fullpage({
-	        //Navigation
-	        menu: '#menu',
-	        lockAnchors: false,
-	        anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage'],
-	        navigation: false,
-	        navigationPosition: 'right',
-	        navigationTooltips: ['firstSlide', 'secondSlide'],
-	        showActiveTooltip: false,
-	        slidesNavigation: true,
-	        slidesNavPosition: 'bottom',
 
-	        //Scrolling
-	        css3: true,
-	        scrollingSpeed: 700,
-	        autoScrolling: true,
-	        fitToSection: true,
-	        fitToSectionDelay: 1000,
-	        scrollBar: false,
-	        easing: 'easeInOutCubic',
-	        easingcss3: 'ease',
-	        loopBottom: false,
-	        loopTop: false,
-	        loopHorizontal: true,
-	        continuousVertical: false,
-	        normalScrollElements: '#element1, .element2',
-	        scrollOverflow: false,
-	        touchSensitivity: 15,
-	        normalScrollElementTouchThreshold: 5,
+	// styles
+	__webpack_require__(27);
 
-	        //Accessibility
-	        keyboardScrolling: true,
-	        animateAnchor: true,
-	        recordHistory: true,
+	//controller
+	// var controller = require('../../../../controller/application.js');
 
-	        //Design
-	        controlArrows: true,
-	        verticalCentered: true,
-	        resize: false,
-	        sectionsColor: ['#fff', '#ccc', '#999', '#666', '#333', '#000'],
-	        paddingTop: '3em',
-	        paddingBottom: '0px',
-	        fixedElements: '#header, .footer',
-	        responsiveWidth: 0,
-	        responsiveHeight: 0,
-
-	        //Custom selectors
-	        sectionSelector: '.section',
-	        slideSelector: '.slide',
-
-	        //events
-	        onLeave: function onLeave(index, nextIndex, direction) {},
-	        afterLoad: function afterLoad(anchorLink, index) {},
-	        afterRender: function afterRender() {},
-	        afterResize: function afterResize() {},
-	        afterSlideLoad: function afterSlideLoad(anchorLink, index, slideAnchor, slideIndex) {},
-	        onSlideLeave: function onSlideLeave(anchorLink, index, slideIndex, direction, nextSlideIndex) {}
-	    });
-
-	    //personal settings
-	    $(".page-down").on("click", function () {
-	        $.fn.fullpage.moveSectionDown();
-	    });
-	});
+	// controller.changeApps();
 
 /***/ },
+/* 24 */,
+/* 25 */,
 /* 26 */,
-/* 27 */,
-/* 28 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(19);
+	var content = __webpack_require__(18);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(3)(content, {});
@@ -2294,8 +2224,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(19, function() {
-				var newContent = __webpack_require__(19);
+			module.hot.accept(18, function() {
+				var newContent = __webpack_require__(18);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
