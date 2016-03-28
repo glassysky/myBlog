@@ -26,8 +26,13 @@ app.set('view engine', 'ejs');
 // static assets setting
 app.use(express.static('public'));
 
+//HMR settings
 app.use(require("webpack-dev-middleware")(compiler, {
-  noInfo: true, publicPath: webpackConfig.output.publicPath
+  noInfo: true,
+  publicPath: webpackConfig.output.publicPath,
+  output: {
+    path: path.resolve(__dirname, "build"),
+  }
 }));
 app.use(require("webpack-hot-middleware")(compiler));
 
