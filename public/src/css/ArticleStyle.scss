@@ -7,6 +7,9 @@ $nav-height: 48px;
   margin: $nav-height+30px 20px 0 20px;
   padding: 50px 20px;
   border: 1px solid #eee;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 
   h1 {
     width: 100%;
@@ -18,5 +21,6 @@ $nav-height: 48px;
   .content-wrap {
     padding: 10px;
     text-indent: 2em;
+    //color: #000;
   }
 }

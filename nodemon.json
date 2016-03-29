@@ -6,6 +6,7 @@
     "pde": "processing --sketch={{pwd}} --run"
   },
   "watch": [
-    "public/src/js/entry/*.js"
+    "public/src/js/entry/*.js",
+    "app.js"
   ]
 }
