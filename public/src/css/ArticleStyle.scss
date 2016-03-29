@@ -1,8 +1,22 @@
 @import "Common";
 @import "Nav";
 
+$nav-height: 48px;
+
 .hh-article-wrap {
-  margin-top: 48px;
-  font-size:2em;
-  //color: red;
+  margin: $nav-height+30px 20px 0 20px;
+  padding: 50px 20px;
+  border: 1px solid #eee;
+
+  h1 {
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+    font-size: 2.5em;
+  }
+
+  .content-wrap {
+    padding: 10px;
+    text-indent: 2em;
+  }
 }

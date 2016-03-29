@@ -16,6 +16,8 @@ var applicationRouter = require('./routes/application');
 var webpack = require('webpack');
 var webpackConfig = require('./webpack.config');
 var compiler = webpack(webpackConfig);
+var webpackDevMiddleware = require('webpack-dev-middleware');
+var webpackHotMiddleware = require('webpack-hot-middleware');
 
 var app = express();
 
@@ -34,15 +36,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//HMR settings
-app.use(require("webpack-dev-middleware")(compiler, {
-  noInfo: true,
-  publicPath: webpackConfig.output.publicPath,
-  stats: {
-    colors: true
-  }
+// //HMR settings
+app.use(webpackDevMiddleware(compiler, {
+    noInfo: true,
+    publicPath: webpackConfig.output.publicPath,
+    stats: {
+        colors: true
+    }
 }));
-app.use(require("webpack-hot-middleware")(compiler));
+app.use(webpackHotMiddleware(compiler));
 
 //route settings
 app.all('*', function(req, res, next){
@@ -52,6 +54,7 @@ app.all('*', function(req, res, next){
 app.use('/', indexRouter);
 app.use('/article', articleRouter);
 app.use('/application', applicationRouter);
+// app.use('/photography', applicationRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

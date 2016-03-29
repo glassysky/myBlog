@@ -1,0 +1,11 @@
+{
+  "verbose": true,
+  "ignore": ["*.scss", "*.css"],
+  "execMap": {
+    "rb": "ruby",
+    "pde": "processing --sketch={{pwd}} --run"
+  },
+  "watch": [
+    "public/src/js/entry/*.js"
+  ]
+}

@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
 
-var publicPath = 'http://localhost:3000/';
+var publicPath = 'http://localhost:3000/asset/js/';
 var hotMiddlewareScript = 'webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr';
 
 module.exports = {
@@ -12,9 +12,10 @@ module.exports = {
 	},
 	output: {
 		filename: '[name].js',
-		path: path.join(__dirname, "public", "asset", "js"),
+		path: path.resolve(__dirname, "public", "asset", "js"),
 		publicPath: publicPath
 	},
+	devtool: '#source-map',
 	module: {
 		loaders:[
 			{ 
@@ -35,10 +36,6 @@ module.exports = {
 			}
 		]
 	},
-	resolve: {
-		extensions: ['', '.js', '.json', '.scss', '.jsx']
-	},
-	devtool: '#source-map',
 	plugins: [
 		// Webpack 1.0
 		new webpack.optimize.OccurenceOrderPlugin(),
@@ -46,5 +43,8 @@ module.exports = {
 		// new webpack.optimize.OccurrenceOrderPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NoErrorsPlugin()
-	]
+	],
+	resolve: {
+		extensions: ['', '.js', '.json', '.scss', '.jsx']
+	}
 }
