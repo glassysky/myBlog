@@ -11,8 +11,8 @@ module.exports = {
 		article: ['./public/src/js/entry/article.js', hotMiddlewareScript]
 	},
 	output: {
-		filename: './public/asset/js/[name].js',
-		path: __dirname,
+		filename: '[name].js',
+		path: path.join(__dirname, "public", "asset", "js"),
 		publicPath: publicPath
 	},
 	module: {

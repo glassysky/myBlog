@@ -26,16 +26,6 @@ app.set('view engine', 'ejs');
 // static assets setting
 app.use(express.static('public'));
 
-//HMR settings
-app.use(require("webpack-dev-middleware")(compiler, {
-  noInfo: true,
-  publicPath: webpackConfig.output.publicPath,
-  output: {
-    path: path.resolve(__dirname, "build"),
-  }
-}));
-app.use(require("webpack-hot-middleware")(compiler));
-
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -43,6 +33,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+//HMR settings
+app.use(require("webpack-dev-middleware")(compiler, {
+  noInfo: true,
+  publicPath: webpackConfig.output.publicPath,
+  stats: {
+    colors: true
+  }
+}));
+app.use(require("webpack-hot-middleware")(compiler));
 
 //route settings
 app.all('*', function(req, res, next){
