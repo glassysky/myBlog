@@ -9,3 +9,6 @@ require('../../css/ArticleStyle');
 // var controller = require('../../../../controller/application.js');
 
 // controller.changeApps();
+
+//db
+require('../../../../models/testDB');
