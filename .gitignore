@@ -2,6 +2,9 @@
 .idea
 node_modules
 *.log
+
+nodemon.json
+
 public/asset/js/*.hot-update.js
 public/asset/js/*.hot-update.json
 public/asset/js/*.hot-update.js.map
