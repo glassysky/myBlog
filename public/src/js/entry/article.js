@@ -10,5 +10,4 @@ require('../../css/ArticleStyle');
 
 // controller.changeApps();
 
-//db
 require('../../../../models/testDB');
