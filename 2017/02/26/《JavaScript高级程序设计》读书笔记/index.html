@@ -103,7 +103,15 @@ parseInt &amp;amp; parseFloatparseInt(012, 10) 第二个参数表示转">
 
 isNaN() 方法数字类型转换Number() 适用于任何数据类型的转换parseInt()和parseFloat() 专门用于把字符串转换为数值
 parseInt &amp;amp; parseFloatparseInt(012, 10) 第二个参数表示转">
-<meta property="og:updated_time" content="2017-03-01T14:32:40.000Z">
+<meta property="og:image" content="http://quirksmode.org/mobile/pix/viewport/desktop_screen.jpg">
+<meta property="og:image" content="http://quirksmode.org/mobile/pix/viewport/desktop_inner.jpg">
+<meta property="og:image" content="http://quirksmode.org/mobile/pix/viewport/desktop_inner_zoomed.jpg">
+<meta property="og:image" content="http://quirksmode.org/mobile/pix/viewport/desktop_page_zoomed.jpg">
+<meta property="og:image" content="http://quirksmode.org/mobile/pix/viewport/desktop_client.jpg">
+<meta property="og:image" content="http://quirksmode.org/mobile/pix/viewport/desktop_offset.jpg">
+<meta property="og:image" content="http://quirksmode.org/mobile/pix/viewport/desktop_pageXY.jpg">
+<meta property="og:image" content="http://quirksmode.org/mobile/pix/viewport/desktop_clientXY.jpg">
+<meta property="og:updated_time" content="2017-03-03T07:22:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《JavaScript高级程序设计》读书笔记">
 <meta name="twitter:description" content="第三章 基本概念数据类型：
@@ -112,6 +120,7 @@ parseInt &amp;amp; parseFloatparseInt(012, 10) 第二个参数表示转">
 
 isNaN() 方法数字类型转换Number() 适用于任何数据类型的转换parseInt()和parseFloat() 专门用于把字符串转换为数值
 parseInt &amp;amp; parseFloatparseInt(012, 10) 第二个参数表示转">
+<meta name="twitter:image" content="http://quirksmode.org/mobile/pix/viewport/desktop_screen.jpg">
 
 
 
@@ -458,6 +467,112 @@ parseInt &amp;amp; parseFloatparseInt(012, 10) 第二个参数表示转">
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> singleton = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> privateVariable = <span class="number">10</span>;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">privateFunction</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">publicProperty</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">publicMethod</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      privateVariable++;</div><div class="line">      <span class="keyword">return</span> privateFunction();</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;();</div></pre></td></tr></table></figure>
 <h3 id="增强的模块模式"><a href="#增强的模块模式" class="headerlink" title="增强的模块模式"></a>增强的模块模式</h3><p>适合单例必须是某种类型的实例，同时还必须添加某些属性和方法对其加以增强的情况</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> singleton = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> privateVariable = <span class="number">10</span>;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">privateFunction</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">var</span> object = <span class="keyword">new</span> CustomType();</div><div class="line"></div><div class="line">  object.publicProperty = <span class="literal">true</span>;</div><div class="line">  object.publicMethod = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    privateVariable++;</div><div class="line">    <span class="keyword">return</span> privateFunction();</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> object;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="第八章-BOM"><a href="#第八章-BOM" class="headerlink" title="第八章 BOM"></a>第八章 BOM</h2><p>部分内容选自<a href="http://quirksmode.org/mobile/viewports.html" target="_blank" rel="external">A tale of two viewports</a></p>
+<h3 id="Screen-Size"><a href="#Screen-Size" class="headerlink" title="Screen Size"></a>Screen Size</h3><p><img src="http://quirksmode.org/mobile/pix/viewport/desktop_screen.jpg" alt="screen size 范围图片(需要科学上网)"></p>
+<p><code>screen.width</code>和<code>screen.height</code>分别获得设备宽高（设备像素）</p>
+<h3 id="Window-Size"><a href="#Window-Size" class="headerlink" title="Window Size"></a>Window Size</h3><p><img src="http://quirksmode.org/mobile/pix/viewport/desktop_inner.jpg" alt="window size 范围图片"></p>
+<p><code>window.innerWidth</code>和<code>window.innerHeight</code>获得浏览器可视区域的css像素测量</p>
+<p><img src="http://quirksmode.org/mobile/pix/viewport/desktop_inner_zoomed.jpg" alt="window size 范围图片(Opera中)"></p>
+<p>但在Opera浏览器中<br><code>window.innerWidth</code>和<code>window.innerHeight</code>获得浏览器可视区域的设备像素测量</p>
+<p>这意味着当我们放大或者缩小（用zomm的方式而不是拉伸）页面内容的时候<br>在其他浏览器中<code>innerWidth</code>和<code>innerHeight</code>是变化的，因为固定可视区域容纳的像素点变化了；<br>而在Opera浏览器中，由于上面两个属性代表设备的像素值，因此固定可视区域所容纳的设备像素点是不变的；</p>
+<p>（两者都包含滚动条）</p>
+<h3 id="Scrolling-offset"><a href="#Scrolling-offset" class="headerlink" title="Scrolling offset"></a>Scrolling offset</h3><p><img src="http://quirksmode.org/mobile/pix/viewport/desktop_page_zoomed.jpg" alt="scrolling offset 范围图片"></p>
+<p><code>window.pageXOffset</code>和<code>window.pageYOffset</code>包含了文档水平和垂直滚动的偏移量<br>（CSS像素）</p>
+<h3 id="Viewport"><a href="#Viewport" class="headerlink" title="Viewport"></a>Viewport</h3><p><img src="http://quirksmode.org/mobile/pix/viewport/desktop_client.jpg" alt="viewport 范围"></p>
+<p><code>document.documentElement.clientWidth</code>和<code>document.documentElement.clientHeight</code>表示视口宽高<br>（不包括滚动条）</p>
+<h3 id="element"><a href="#element" class="headerlink" title=" element"></a><html> element</html></h3><p><img src="http://quirksmode.org/mobile/pix/viewport/desktop_offset.jpg" alt="&lt;html&gt; 元素范围"></p>
+<p><code>document.documentElement.offsetWidth</code>和<code>document.documentElement.offsetHeight</code>表示html元素尺寸</p>
+<h3 id="Event-coordinates"><a href="#Event-coordinates" class="headerlink" title="Event coordinates"></a>Event coordinates</h3><p><img src="http://quirksmode.org/mobile/pix/viewport/desktop_pageXY.jpg" alt="pageX/Y 示意图"></p>
+<p><img src="http://quirksmode.org/mobile/pix/viewport/desktop_clientXY.jpg" alt="clientX/Y 示意图"></p>
+<h3 id="间歇调用和超时调用"><a href="#间歇调用和超时调用" class="headerlink" title="间歇调用和超时调用"></a>间歇调用和超时调用</h3><p>JavaScript是一个单线程序的解释器，因此一定时间内只能执行一段代码。为了控制要执行的代码，就有一个JavaScript任务队列。这些任务会按照将它们添加到队列的顺序执行。<code>setTimeout()</code>的第二个参数告诉JavaScript再过多长时间把当前任务添加到队列中</p>
+<p>如果队列是空的，那么添加的代码会立即执行；如果队列不是空的，那么它就要等前面的代码执行完了以后再执行</p>
+<p>调用<code>setTimeout()</code>后，该方法会返回一个数值ID，表示超时调用。这个超时调用ID是计划执行代码的唯一标识符，可以通过它来取消超时调用</p>
+<p>一般认为，使用超时调用来模拟间歇调用是一种最佳模式</p>
+<h3 id="location对象"><a href="#location对象" class="headerlink" title="location对象"></a>location对象</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">属性名</th>
+<th style="text-align:left">例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">hash</td>
+<td style="text-align:left">“#contents”</td>
+</tr>
+<tr>
+<td style="text-align:left">host</td>
+<td style="text-align:left">“www.wrox.com:80”</td>
+</tr>
+<tr>
+<td style="text-align:left">hostname</td>
+<td style="text-align:left">“www.wrox.com”</td>
+</tr>
+<tr>
+<td style="text-align:left">href</td>
+<td style="text-align:left">“http:/www.wrox.com”</td>
+</tr>
+<tr>
+<td style="text-align:left">pathname</td>
+<td style="text-align:left">“/WileyCDA/“</td>
+</tr>
+<tr>
+<td style="text-align:left">port</td>
+<td style="text-align:left">“8080”</td>
+</tr>
+<tr>
+<td style="text-align:left">protocol</td>
+<td style="text-align:left">“http:”</td>
+</tr>
+<tr>
+<td style="text-align:left">search</td>
+<td style="text-align:left">“?q=javascript”</td>
+</tr>
+</tbody>
+</table>
+<p><code>decodeURIComponent()</code>用来解码URL中的query值</p>
+<h3 id="位置操作"><a href="#位置操作" class="headerlink" title="位置操作"></a>位置操作</h3><p>可以通过 <code>location.href = &quot;http://www.baidu.com&quot;</code> 改变当前加载的页面</p>
+<p>通过修改<code>location</code>的其他属性也可以改变页面，并且会在历史记录中生成一条新记录</p>
+<p>如果要避免生成记录，则可以用<code>location.replace()</code>方法</p>
+<p><code>location.reload()</code>     // 重新加载（可能从缓存中加载）<br><code>location.reload(true)</code> // 重新加载（从服务器重新加载）</p>
+<h3 id="history对象"><a href="#history对象" class="headerlink" title="history对象"></a>history对象</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">history.go(<span class="number">-1</span>);</div><div class="line">history.go(<span class="number">1</span>);</div><div class="line">history.go(<span class="number">2</span>);</div><div class="line"></div><div class="line">history.go(<span class="string">"baidu.com"</span>) <span class="comment">// 跳转到最近的 baidu.com 页面</span></div><div class="line"></div><div class="line">history.back();</div><div class="line">history.forward();</div><div class="line"></div><div class="line"><span class="keyword">if</span> (history.length == <span class="number">0</span>) &#123;</div><div class="line">  <span class="comment">// 这是用户打开窗口后的第一个页面</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="第九章-客户端检测"><a href="#第九章-客户端检测" class="headerlink" title="第九章 客户端检测"></a>第九章 客户端检测</h2><ul>
+<li>能力检测</li>
+<li>怪癖检测</li>
+<li>用户代理检测</li>
+</ul>
+<h2 id="第十章-DOM"><a href="#第十章-DOM" class="headerlink" title="第十章 DOM"></a>第十章 DOM</h2><p>因为<code>NodeList</code>是动态的，所以每一次操作都需要重新查询一遍，十分消耗性能，因此要尽量减少DOM操作</p>
+<h2 id="第十二章-DOM2-和-DOM3"><a href="#第十二章-DOM2-和-DOM3" class="headerlink" title="第十二章 DOM2 和 DOM3"></a>第十二章 DOM2 和 DOM3</h2><h3 id="元素大小"><a href="#元素大小" class="headerlink" title="元素大小"></a>元素大小</h3><ol>
+<li>偏移量<ul>
+<li>offsetHeight</li>
+<li>offsetWidth</li>
+<li>offsetTop</li>
+<li>offsetLeft</li>
+<li>offsetParent</li>
+</ul>
+</li>
+<li>客户区大小<ul>
+<li>clientWidth</li>
+<li>clientHeight</li>
+</ul>
+</li>
+<li>滚动大小<ul>
+<li>scrollHeight</li>
+<li>scrollWidth</li>
+<li>scrollLeft</li>
+<li>scrollTop</li>
+</ul>
+</li>
+<li>确定元素大小<ul>
+<li>getBoundingClientRect()</li>
+</ul>
+</li>
+</ol>
+<h2 id="第十三章-事件"><a href="#第十三章-事件" class="headerlink" title="第十三章 事件"></a>第十三章 事件</h2><h3 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h3><p>从页面接收事件的顺序</p>
+<ul>
+<li>事件冒泡*</li>
+<li>事件捕获</li>
+</ul>
 
       
     </div>
@@ -600,7 +715,7 @@ parseInt &amp;amp; parseFloatparseInt(012, 10) 第二个参数表示转">
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -639,7 +754,7 @@ parseInt &amp;amp; parseFloatparseInt(012, 10) 第二个参数表示转">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第三章-基本概念"><span class="nav-number">1.</span> <span class="nav-text">第三章 基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型："><span class="nav-number">1.1.</span> <span class="nav-text">数据类型：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#isNaN-方法"><span class="nav-number">1.2.</span> <span class="nav-text">isNaN() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字类型转换"><span class="nav-number">1.3.</span> <span class="nav-text">数字类型转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parseInt-amp-parseFloat"><span class="nav-number">1.4.</span> <span class="nav-text">parseInt & parseFloat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作符"><span class="nav-number">1.5.</span> <span class="nav-text">++操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较字符串"><span class="nav-number">1.6.</span> <span class="nav-text">比较字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for的作用域"><span class="nav-number">1.7.</span> <span class="nav-text">for的作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#没有重载"><span class="nav-number">1.8.</span> <span class="nav-text">没有重载</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章-变量、作用域和内存问题"><span class="nav-number">2.</span> <span class="nav-text">第四章 变量、作用域和内存问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#传递参数"><span class="nav-number">2.1.</span> <span class="nav-text">传递参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#没有块级作用域"><span class="nav-number">2.2.</span> <span class="nav-text">没有块级作用域</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五章-引用类型"><span class="nav-number">3.</span> <span class="nav-text">第五章 引用类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常见引用类型"><span class="nav-number">3.1.</span> <span class="nav-text">常见引用类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检测数组"><span class="nav-number">3.2.</span> <span class="nav-text">检测数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的迭代方法-ES5"><span class="nav-number">3.3.</span> <span class="nav-text">数组的迭代方法 ES5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的归并方法-ES5"><span class="nav-number">3.4.</span> <span class="nav-text">数组的归并方法 ES5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数声明与函数表达式"><span class="nav-number">3.5.</span> <span class="nav-text">函数声明与函数表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#arguments-callee"><span class="nav-number">3.6.</span> <span class="nav-text">arguments.callee</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数的属性"><span class="nav-number">3.7.</span> <span class="nav-text">函数的属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#apply-方法和-call-方法"><span class="nav-number">3.8.</span> <span class="nav-text">apply() 方法和 call() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bind-方法"><span class="nav-number">3.9.</span> <span class="nav-text">bind() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toPrecision-方法"><span class="nav-number">3.10.</span> <span class="nav-text">toPrecision() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#charAt-与-charCodeAt-方法"><span class="nav-number">3.11.</span> <span class="nav-text">charAt() 与 charCodeAt() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#slice-、substr-、substring-方法"><span class="nav-number">3.12.</span> <span class="nav-text">slice()、substr()、substring() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#replace-方法"><span class="nav-number">3.13.</span> <span class="nav-text">replace() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#split-方法"><span class="nav-number">3.14.</span> <span class="nav-text">split() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单体内置对象"><span class="nav-number">3.15.</span> <span class="nav-text">单体内置对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Math"><span class="nav-number">3.16.</span> <span class="nav-text">Math</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六章-面向对象的程序设计"><span class="nav-number">4.</span> <span class="nav-text">第六章 面向对象的程序设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第七章-函数表达式"><span class="nav-number">5.</span> <span class="nav-text">第七章 函数表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包"><span class="nav-number">5.1.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包与变量"><span class="nav-number">5.2.</span> <span class="nav-text">闭包与变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this对象"><span class="nav-number">5.3.</span> <span class="nav-text">this对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存泄漏"><span class="nav-number">5.4.</span> <span class="nav-text">内存泄漏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模仿块级作用域"><span class="nav-number">5.5.</span> <span class="nav-text">模仿块级作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#私有变量"><span class="nav-number">5.6.</span> <span class="nav-text">私有变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块模式"><span class="nav-number">5.7.</span> <span class="nav-text">模块模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增强的模块模式"><span class="nav-number">5.8.</span> <span class="nav-text">增强的模块模式</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第三章-基本概念"><span class="nav-number">1.</span> <span class="nav-text">第三章 基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型："><span class="nav-number">1.1.</span> <span class="nav-text">数据类型：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#isNaN-方法"><span class="nav-number">1.2.</span> <span class="nav-text">isNaN() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字类型转换"><span class="nav-number">1.3.</span> <span class="nav-text">数字类型转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parseInt-amp-parseFloat"><span class="nav-number">1.4.</span> <span class="nav-text">parseInt & parseFloat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作符"><span class="nav-number">1.5.</span> <span class="nav-text">++操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较字符串"><span class="nav-number">1.6.</span> <span class="nav-text">比较字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for的作用域"><span class="nav-number">1.7.</span> <span class="nav-text">for的作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#没有重载"><span class="nav-number">1.8.</span> <span class="nav-text">没有重载</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章-变量、作用域和内存问题"><span class="nav-number">2.</span> <span class="nav-text">第四章 变量、作用域和内存问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#传递参数"><span class="nav-number">2.1.</span> <span class="nav-text">传递参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#没有块级作用域"><span class="nav-number">2.2.</span> <span class="nav-text">没有块级作用域</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五章-引用类型"><span class="nav-number">3.</span> <span class="nav-text">第五章 引用类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常见引用类型"><span class="nav-number">3.1.</span> <span class="nav-text">常见引用类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检测数组"><span class="nav-number">3.2.</span> <span class="nav-text">检测数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的迭代方法-ES5"><span class="nav-number">3.3.</span> <span class="nav-text">数组的迭代方法 ES5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的归并方法-ES5"><span class="nav-number">3.4.</span> <span class="nav-text">数组的归并方法 ES5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数声明与函数表达式"><span class="nav-number">3.5.</span> <span class="nav-text">函数声明与函数表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#arguments-callee"><span class="nav-number">3.6.</span> <span class="nav-text">arguments.callee</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数的属性"><span class="nav-number">3.7.</span> <span class="nav-text">函数的属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#apply-方法和-call-方法"><span class="nav-number">3.8.</span> <span class="nav-text">apply() 方法和 call() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bind-方法"><span class="nav-number">3.9.</span> <span class="nav-text">bind() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toPrecision-方法"><span class="nav-number">3.10.</span> <span class="nav-text">toPrecision() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#charAt-与-charCodeAt-方法"><span class="nav-number">3.11.</span> <span class="nav-text">charAt() 与 charCodeAt() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#slice-、substr-、substring-方法"><span class="nav-number">3.12.</span> <span class="nav-text">slice()、substr()、substring() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#replace-方法"><span class="nav-number">3.13.</span> <span class="nav-text">replace() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#split-方法"><span class="nav-number">3.14.</span> <span class="nav-text">split() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单体内置对象"><span class="nav-number">3.15.</span> <span class="nav-text">单体内置对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Math"><span class="nav-number">3.16.</span> <span class="nav-text">Math</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六章-面向对象的程序设计"><span class="nav-number">4.</span> <span class="nav-text">第六章 面向对象的程序设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第七章-函数表达式"><span class="nav-number">5.</span> <span class="nav-text">第七章 函数表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包"><span class="nav-number">5.1.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包与变量"><span class="nav-number">5.2.</span> <span class="nav-text">闭包与变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this对象"><span class="nav-number">5.3.</span> <span class="nav-text">this对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存泄漏"><span class="nav-number">5.4.</span> <span class="nav-text">内存泄漏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模仿块级作用域"><span class="nav-number">5.5.</span> <span class="nav-text">模仿块级作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#私有变量"><span class="nav-number">5.6.</span> <span class="nav-text">私有变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块模式"><span class="nav-number">5.7.</span> <span class="nav-text">模块模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增强的模块模式"><span class="nav-number">5.8.</span> <span class="nav-text">增强的模块模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第八章-BOM"><span class="nav-number">6.</span> <span class="nav-text">第八章 BOM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Screen-Size"><span class="nav-number">6.1.</span> <span class="nav-text">Screen Size</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Window-Size"><span class="nav-number">6.2.</span> <span class="nav-text">Window Size</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scrolling-offset"><span class="nav-number">6.3.</span> <span class="nav-text">Scrolling offset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Viewport"><span class="nav-number">6.4.</span> <span class="nav-text">Viewport</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#element"><span class="nav-number">6.5.</span> <span class="nav-text"> element</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Event-coordinates"><span class="nav-number">6.6.</span> <span class="nav-text">Event coordinates</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#间歇调用和超时调用"><span class="nav-number">6.7.</span> <span class="nav-text">间歇调用和超时调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#location对象"><span class="nav-number">6.8.</span> <span class="nav-text">location对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#位置操作"><span class="nav-number">6.9.</span> <span class="nav-text">位置操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#history对象"><span class="nav-number">6.10.</span> <span class="nav-text">history对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第九章-客户端检测"><span class="nav-number">7.</span> <span class="nav-text">第九章 客户端检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十章-DOM"><span class="nav-number">8.</span> <span class="nav-text">第十章 DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十二章-DOM2-和-DOM3"><span class="nav-number">9.</span> <span class="nav-text">第十二章 DOM2 和 DOM3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#元素大小"><span class="nav-number">9.1.</span> <span class="nav-text">元素大小</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十三章-事件"><span class="nav-number">10.</span> <span class="nav-text">第十三章 事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件流"><span class="nav-number">10.1.</span> <span class="nav-text">事件流</span></a></li></ol></li></ol></div>
             
 
           </div>

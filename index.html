@@ -260,6 +260,147 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://glassysky.github.io/2017/03/03/高级计时器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tianhao Cui">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端学习之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/03/高级计时器/" itemprop="url">
+                  高级计时器
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-03T15:22:01+08:00">
+                2017-03-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/03/高级计时器/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/03/高级计时器/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>JavaScript的定时器不是线程，JavaScript是运行于单线程的环境中的，而定时器仅仅只是计划代码在未来的某个时间执行。</p>
+<p>实际上，浏览器负责进行排序，指派某段代码在某个时间点运行的优先级。</p>
+<h2 id="JavaScript进程线"><a href="#JavaScript进程线" class="headerlink" title="JavaScript进程线"></a>JavaScript进程线</h2><p>可以想象JavaScript在一条时间轴上运行。</p>
+<p>页面载入时，首先执行任何包含在<code>&lt;script&gt;</code>元素内部的代码。在这之后，JavaScript进程将等待更多代码执行。当进程空闲的时候，下一个代码会被触发并立刻执行。</p>
+<p>例如，当点击某个按钮时，onclick事件就会立即执行，<strong>只要JavaScript进程处于空闲状态</strong></p>
+<p><img src="https://github.com/glassysky/blog-demo/blob/master/public/timers-demo/src/image/time-line.jpg?raw=true" alt="JavaScript进程线"></p>
+<p>除了主JavaScript执行进程外，还有一个需要在进程下一次空闲时执行的<code>代码队列</code>。随着页面在其生命周期中的推移，代码会按照执行顺序添加入队列。</p>
+<p>这就意味着，任何代码都会先经过队列，然后再在后面可能的时刻被添加到进程中执行。即没有任何代码是真正意义上的立即执行。</p>
+<h2 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h2><p>定时器对队列的工作方式是，当特定时间过去后将代码插入。</p>
+<p><strong>给队列添加代码不意味着代码立即执行</strong>，这只表示在150ms后代码会被添加到队列中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"my-btn"</span>);</div><div class="line">btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"message"</span>).style.visibility = <span class="string">'visible'</span>;</div><div class="line">  &#125;, <span class="number">250</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>点击按钮后，首先将onclick事件处理程序加入队列。待该程序执行后，才设置定时器。再有250ms后，制定代码才被添加到队列中等待执行。</p>
+<p><img src="https://github.com/glassysky/blog-demo/blob/master/public/timers-demo/src/image/timer2.jpg?raw=true" alt="定时器代码执行时间"></p>
+<p>虽然在255ms时定时器代码被添加至队列，但此时JavaScript进程并非空间，因此至少要等到onclick事件执行完毕后，定时器程序才会执行</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://glassysky.github.io/2017/02/28/继承/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -757,6 +898,112 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> singleton = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> privateVariable = <span class="number">10</span>;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">privateFunction</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">publicProperty</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">publicMethod</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      privateVariable++;</div><div class="line">      <span class="keyword">return</span> privateFunction();</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;();</div></pre></td></tr></table></figure>
 <h3 id="增强的模块模式"><a href="#增强的模块模式" class="headerlink" title="增强的模块模式"></a>增强的模块模式</h3><p>适合单例必须是某种类型的实例，同时还必须添加某些属性和方法对其加以增强的情况</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> singleton = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> privateVariable = <span class="number">10</span>;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">privateFunction</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">var</span> object = <span class="keyword">new</span> CustomType();</div><div class="line"></div><div class="line">  object.publicProperty = <span class="literal">true</span>;</div><div class="line">  object.publicMethod = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    privateVariable++;</div><div class="line">    <span class="keyword">return</span> privateFunction();</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> object;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="第八章-BOM"><a href="#第八章-BOM" class="headerlink" title="第八章 BOM"></a>第八章 BOM</h2><p>部分内容选自<a href="http://quirksmode.org/mobile/viewports.html" target="_blank" rel="external">A tale of two viewports</a></p>
+<h3 id="Screen-Size"><a href="#Screen-Size" class="headerlink" title="Screen Size"></a>Screen Size</h3><p><img src="http://quirksmode.org/mobile/pix/viewport/desktop_screen.jpg" alt="screen size 范围图片(需要科学上网)"></p>
+<p><code>screen.width</code>和<code>screen.height</code>分别获得设备宽高（设备像素）</p>
+<h3 id="Window-Size"><a href="#Window-Size" class="headerlink" title="Window Size"></a>Window Size</h3><p><img src="http://quirksmode.org/mobile/pix/viewport/desktop_inner.jpg" alt="window size 范围图片"></p>
+<p><code>window.innerWidth</code>和<code>window.innerHeight</code>获得浏览器可视区域的css像素测量</p>
+<p><img src="http://quirksmode.org/mobile/pix/viewport/desktop_inner_zoomed.jpg" alt="window size 范围图片(Opera中)"></p>
+<p>但在Opera浏览器中<br><code>window.innerWidth</code>和<code>window.innerHeight</code>获得浏览器可视区域的设备像素测量</p>
+<p>这意味着当我们放大或者缩小（用zomm的方式而不是拉伸）页面内容的时候<br>在其他浏览器中<code>innerWidth</code>和<code>innerHeight</code>是变化的，因为固定可视区域容纳的像素点变化了；<br>而在Opera浏览器中，由于上面两个属性代表设备的像素值，因此固定可视区域所容纳的设备像素点是不变的；</p>
+<p>（两者都包含滚动条）</p>
+<h3 id="Scrolling-offset"><a href="#Scrolling-offset" class="headerlink" title="Scrolling offset"></a>Scrolling offset</h3><p><img src="http://quirksmode.org/mobile/pix/viewport/desktop_page_zoomed.jpg" alt="scrolling offset 范围图片"></p>
+<p><code>window.pageXOffset</code>和<code>window.pageYOffset</code>包含了文档水平和垂直滚动的偏移量<br>（CSS像素）</p>
+<h3 id="Viewport"><a href="#Viewport" class="headerlink" title="Viewport"></a>Viewport</h3><p><img src="http://quirksmode.org/mobile/pix/viewport/desktop_client.jpg" alt="viewport 范围"></p>
+<p><code>document.documentElement.clientWidth</code>和<code>document.documentElement.clientHeight</code>表示视口宽高<br>（不包括滚动条）</p>
+<h3 id="element"><a href="#element" class="headerlink" title=" element"></a><html> element</html></h3><p><img src="http://quirksmode.org/mobile/pix/viewport/desktop_offset.jpg" alt="&lt;html&gt; 元素范围"></p>
+<p><code>document.documentElement.offsetWidth</code>和<code>document.documentElement.offsetHeight</code>表示html元素尺寸</p>
+<h3 id="Event-coordinates"><a href="#Event-coordinates" class="headerlink" title="Event coordinates"></a>Event coordinates</h3><p><img src="http://quirksmode.org/mobile/pix/viewport/desktop_pageXY.jpg" alt="pageX/Y 示意图"></p>
+<p><img src="http://quirksmode.org/mobile/pix/viewport/desktop_clientXY.jpg" alt="clientX/Y 示意图"></p>
+<h3 id="间歇调用和超时调用"><a href="#间歇调用和超时调用" class="headerlink" title="间歇调用和超时调用"></a>间歇调用和超时调用</h3><p>JavaScript是一个单线程序的解释器，因此一定时间内只能执行一段代码。为了控制要执行的代码，就有一个JavaScript任务队列。这些任务会按照将它们添加到队列的顺序执行。<code>setTimeout()</code>的第二个参数告诉JavaScript再过多长时间把当前任务添加到队列中</p>
+<p>如果队列是空的，那么添加的代码会立即执行；如果队列不是空的，那么它就要等前面的代码执行完了以后再执行</p>
+<p>调用<code>setTimeout()</code>后，该方法会返回一个数值ID，表示超时调用。这个超时调用ID是计划执行代码的唯一标识符，可以通过它来取消超时调用</p>
+<p>一般认为，使用超时调用来模拟间歇调用是一种最佳模式</p>
+<h3 id="location对象"><a href="#location对象" class="headerlink" title="location对象"></a>location对象</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">属性名</th>
+<th style="text-align:left">例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">hash</td>
+<td style="text-align:left">“#contents”</td>
+</tr>
+<tr>
+<td style="text-align:left">host</td>
+<td style="text-align:left">“www.wrox.com:80”</td>
+</tr>
+<tr>
+<td style="text-align:left">hostname</td>
+<td style="text-align:left">“www.wrox.com”</td>
+</tr>
+<tr>
+<td style="text-align:left">href</td>
+<td style="text-align:left">“http:/www.wrox.com”</td>
+</tr>
+<tr>
+<td style="text-align:left">pathname</td>
+<td style="text-align:left">“/WileyCDA/“</td>
+</tr>
+<tr>
+<td style="text-align:left">port</td>
+<td style="text-align:left">“8080”</td>
+</tr>
+<tr>
+<td style="text-align:left">protocol</td>
+<td style="text-align:left">“http:”</td>
+</tr>
+<tr>
+<td style="text-align:left">search</td>
+<td style="text-align:left">“?q=javascript”</td>
+</tr>
+</tbody>
+</table>
+<p><code>decodeURIComponent()</code>用来解码URL中的query值</p>
+<h3 id="位置操作"><a href="#位置操作" class="headerlink" title="位置操作"></a>位置操作</h3><p>可以通过 <code>location.href = &quot;http://www.baidu.com&quot;</code> 改变当前加载的页面</p>
+<p>通过修改<code>location</code>的其他属性也可以改变页面，并且会在历史记录中生成一条新记录</p>
+<p>如果要避免生成记录，则可以用<code>location.replace()</code>方法</p>
+<p><code>location.reload()</code>     // 重新加载（可能从缓存中加载）<br><code>location.reload(true)</code> // 重新加载（从服务器重新加载）</p>
+<h3 id="history对象"><a href="#history对象" class="headerlink" title="history对象"></a>history对象</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">history.go(<span class="number">-1</span>);</div><div class="line">history.go(<span class="number">1</span>);</div><div class="line">history.go(<span class="number">2</span>);</div><div class="line"></div><div class="line">history.go(<span class="string">"baidu.com"</span>) <span class="comment">// 跳转到最近的 baidu.com 页面</span></div><div class="line"></div><div class="line">history.back();</div><div class="line">history.forward();</div><div class="line"></div><div class="line"><span class="keyword">if</span> (history.length == <span class="number">0</span>) &#123;</div><div class="line">  <span class="comment">// 这是用户打开窗口后的第一个页面</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="第九章-客户端检测"><a href="#第九章-客户端检测" class="headerlink" title="第九章 客户端检测"></a>第九章 客户端检测</h2><ul>
+<li>能力检测</li>
+<li>怪癖检测</li>
+<li>用户代理检测</li>
+</ul>
+<h2 id="第十章-DOM"><a href="#第十章-DOM" class="headerlink" title="第十章 DOM"></a>第十章 DOM</h2><p>因为<code>NodeList</code>是动态的，所以每一次操作都需要重新查询一遍，十分消耗性能，因此要尽量减少DOM操作</p>
+<h2 id="第十二章-DOM2-和-DOM3"><a href="#第十二章-DOM2-和-DOM3" class="headerlink" title="第十二章 DOM2 和 DOM3"></a>第十二章 DOM2 和 DOM3</h2><h3 id="元素大小"><a href="#元素大小" class="headerlink" title="元素大小"></a>元素大小</h3><ol>
+<li>偏移量<ul>
+<li>offsetHeight</li>
+<li>offsetWidth</li>
+<li>offsetTop</li>
+<li>offsetLeft</li>
+<li>offsetParent</li>
+</ul>
+</li>
+<li>客户区大小<ul>
+<li>clientWidth</li>
+<li>clientHeight</li>
+</ul>
+</li>
+<li>滚动大小<ul>
+<li>scrollHeight</li>
+<li>scrollWidth</li>
+<li>scrollLeft</li>
+<li>scrollTop</li>
+</ul>
+</li>
+<li>确定元素大小<ul>
+<li>getBoundingClientRect()</li>
+</ul>
+</li>
+</ol>
+<h2 id="第十三章-事件"><a href="#第十三章-事件" class="headerlink" title="第十三章 事件"></a>第十三章 事件</h2><h3 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h3><p>从页面接收事件的顺序</p>
+<ul>
+<li>事件冒泡*</li>
+<li>事件捕获</li>
+</ul>
 
           
         
@@ -935,145 +1182,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://glassysky.github.io/2017/02/24/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tianhao Cui">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端学习之路">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/24/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-24T22:53:53+08:00">
-                2017-02-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/02/24/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/02/24/hello-world/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
           
           </div>
@@ -1116,7 +1231,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
