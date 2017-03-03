@@ -367,7 +367,7 @@
 <li>某些间隔会被跳过</li>
 <li>多个定时器的代码执行之间的间隔可能会比预期小</li>
 </ul>
-<p><img src="" alt="重复定时器代码执行过程"></p>
+<p><img src="https://github.com/glassysky/blog-demo/blob/master/public/timers-demo/src/image/timer3.jpg?raw=true" alt="重复定时器代码执行过程"></p>
 <p>第一个定时器在205ms处添加到队列，但是要直到过了300ms这一点才能执行，在执行这个定时器代码时，在405ms处又添加了一个定时器代码。在605ms处，第一个定时器代码还在运行，同时队列中已经有了一个定时器代码的实例，所以在这个时间点上的定时器代码不会被添加到队列中。结果5ms添加的定时器代码执行结束后，405ms时添加的定时器代码就立刻执行。</p>
 <h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>为了避免<code>setInterval</code>的这两个缺点，可以用链式<code>setTimeout</code>调用</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// 其他代码</span></div><div class="line">  setTimeout(<span class="built_in">arguments</span>.callee, interval);</div><div class="line">&#125;, interval);</div></pre></td></tr></table></figure>
