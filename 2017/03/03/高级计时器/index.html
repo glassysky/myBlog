@@ -101,7 +101,7 @@ JavaScript进程线可以想象JavaScript在一条时间轴上运行。
 页面载入时，首先执行任何包含在&amp;lt;script&amp;gt;元素内部的代码。在这之后，JavaScript进程将等待更多代">
 <meta property="og:image" content="https://github.com/glassysky/blog-demo/blob/master/public/timers-demo/src/image/time-line.jpg?raw=true">
 <meta property="og:image" content="https://github.com/glassysky/blog-demo/blob/master/public/timers-demo/src/image/timer2.jpg?raw=true">
-<meta property="og:updated_time" content="2017-03-03T11:58:48.000Z">
+<meta property="og:updated_time" content="2017-03-03T13:23:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高级计时器">
 <meta name="twitter:description" content="概念JavaScript的定时器不是线程，JavaScript是运行于单线程的环境中的，而定时器仅仅只是计划代码在未来的某个时间执行。
@@ -367,6 +367,19 @@ JavaScript进程线可以想象JavaScript在一条时间轴上运行。
 <p>点击按钮后，首先将onclick事件处理程序加入队列。待该程序执行后，才设置定时器。再有250ms后，制定代码才被添加到队列中等待执行。</p>
 <p><img src="https://github.com/glassysky/blog-demo/blob/master/public/timers-demo/src/image/timer2.jpg?raw=true" alt="定时器代码执行时间"></p>
 <p>虽然在255ms时定时器代码被添加至队列，但此时JavaScript进程并非空间，因此至少要等到onclick事件执行完毕后，定时器程序才会执行</p>
+<h2 id="重复的定时器"><a href="#重复的定时器" class="headerlink" title="重复的定时器"></a>重复的定时器</h2><p>当使用<code>setInterval()</code>时，仅当没有该定时器的任何其他代码实例时，才将定时器代码添加到队列中。这确保了定时器代码加入到队列中的最小时间间隔为指定间隔。</p>
+<p>但仍存在两个问题</p>
+<ul>
+<li>某些间隔会被跳过</li>
+<li>多个定时器的代码执行之间的间隔可能会比预期小</li>
+</ul>
+<p><img src="" alt="重复定时器代码执行过程"></p>
+<p>第一个定时器在205ms处添加到队列，但是要直到过了300ms这一点才能执行，在执行这个定时器代码时，在405ms处又添加了一个定时器代码。在605ms处，第一个定时器代码还在运行，同时队列中已经有了一个定时器代码的实例，所以在这个时间点上的定时器代码不会被添加到队列中。结果5ms添加的定时器代码执行结束后，405ms时添加的定时器代码就立刻执行。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>为了避免<code>setInterval</code>的这两个缺点，可以用链式<code>setTimeout</code>调用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// 其他代码</span></div><div class="line">  setTimeout(<span class="built_in">arguments</span>.callee, interval);</div><div class="line">&#125;, interval);</div></pre></td></tr></table></figure>
+<p>这样在前一个定时器代码执行完成之前，都不会再向队列插入新的定时器代码</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>需要使用JavaScript的定时器按一定时间间隔执行一段程序时，最好使用setTimeout来模拟setInterval</p>
+<p>转载请注明出处</p>
 
       
     </div>
@@ -544,7 +557,7 @@ JavaScript进程线可以想象JavaScript在一条时间轴上运行。
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript进程线"><span class="nav-number">2.</span> <span class="nav-text">JavaScript进程线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定时器"><span class="nav-number">3.</span> <span class="nav-text">定时器</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript进程线"><span class="nav-number">2.</span> <span class="nav-text">JavaScript进程线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定时器"><span class="nav-number">3.</span> <span class="nav-text">定时器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重复的定时器"><span class="nav-number">4.</span> <span class="nav-text">重复的定时器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案"><span class="nav-number">5.</span> <span class="nav-text">解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
