@@ -95,11 +95,13 @@
 <meta property="og:site_name" content="前端学习之路">
 <meta property="og:description" content="今天发现了一个新的API用来获取页面中的节点元素querySelector和querySelectorAll,他们的作用和getElementByXXX系列是一样的。下面看一下这个新方法的性能如何。
 程序执行时间测试方法先来科普一下如何看某段程序的运行时间。其实方法很简单：12345var start = +new Date();someLongProcess();var stop = +new">
-<meta property="og:updated_time" content="2017-03-08T02:46:25.000Z">
+<meta property="og:image" content="https://github.com/glassysky/blog-demo/blob/master/public/querySelector-vs-getElementsByClassName/src/image/time-result.png?raw=true">
+<meta property="og:updated_time" content="2017-03-08T04:55:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="querySelector和getElementBy方法的比较">
 <meta name="twitter:description" content="今天发现了一个新的API用来获取页面中的节点元素querySelector和querySelectorAll,他们的作用和getElementByXXX系列是一样的。下面看一下这个新方法的性能如何。
 程序执行时间测试方法先来科普一下如何看某段程序的运行时间。其实方法很简单：12345var start = +new Date();someLongProcess();var stop = +new">
+<meta name="twitter:image" content="https://github.com/glassysky/blog-demo/blob/master/public/querySelector-vs-getElementsByClassName/src/image/time-result.png?raw=true">
 
 
 
@@ -355,13 +357,13 @@
 <p>可以看到我们在执行要比较的两个函数之前和之后分别调用了<code>new Date()</code>来获取当前时刻，他们的差值就是两个函数获取节点所需的信息；后面我们又对获取到的节点进行了赋值操作。</p>
 <p>最后输出时间间隔</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> record = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</div><div class="line">record.innerHTML = <span class="string">'&lt;p&gt;document.getElementById("root").getElementsByTagName("span"): '</span> + (ta2 - ta1) + <span class="string">'ms&lt;/p&gt;\</span></div><div class="line">                    &lt;p&gt;document.getElementById("root").getElementsByTagName("span") 并改变一个节点的值: ' + (ta3 - ta1) + <span class="string">'ms&lt;/p&gt;\</span></div><div class="line">                    &lt;p&gt;document.querySelectorAll("#root span"): ' + (tb2 - tb1) + <span class="string">'ms&lt;/p&gt;\</span></div><div class="line">                    &lt;p&gt;document.querySelectorAll("#root span") 并改变一个节点的值: ' + (tb3 - tb1) + <span class="string">'ms&lt;/p&gt;'</span>;</div><div class="line">root.appendChild(record);</div></pre></td></tr></table></figure>
-<p><a href="">源代码</a></p>
+<p><a href="https://github.com/glassysky/blog-demo/blob/master/public/querySelector-vs-getElementsByClassName/src/index.js" target="_blank" rel="external">源代码</a></p>
 <p>每次结果都有些差异，我截取了其中一个结果</p>
-<p><img src="" alt="图片"></p>
+<p><img src="https://github.com/glassysky/blog-demo/blob/master/public/querySelector-vs-getElementsByClassName/src/image/time-result.png?raw=true" alt="图片"></p>
 <p>我们可以看到，使用<code>getElementsByTagName</code>方法，在获取节点的过程中，性能是相当好的，获取5W个节点的集合，时间基本不会超过1ms，相对来说<code>querySelectorAll</code>方法的性能就稍差一些；这么说来<code>querySelectorAll</code>的出现就没有意义了吗？答案是否定的。我们可以观察到，如果对获取到的节点集合进行简单的操作，<code>getElementsByTagName</code>消耗的时间会很长，而<code>querySelectorAll</code>几乎不消耗时间，这是为什么呢？</p>
 <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>当我们在使用<code>getElementsByClassName</code>方法的时候，我们得到的节点集合是<code>实时</code>的，也就是说，每次对集合进行操作之前，都会重新遍历一遍节点以获取DOM树中<code>最新</code>的状态，可以理解为获得了节点集合的<code>引用</code>；而<code>querySelectorAll</code>方法正相反，其获得的是DOM树中当前时刻节点集合的<code>快照</code>,是静态的值。</p>
 <h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>于是我们可以得出结论，如果只要单纯的获取DOM树中节点的集合，而不需要改变节点元素的时候，<code>getElementsByClassName</code>方法的速度要快很多；如果要对集合中的节点元素进行批量操作的时候，可以选择使用<code>querySelectorAll</code>方法来提高性能</p>
-<p>转载请注明出处</p>
+<p>转载请注明出处 <a href="http://cthblog.cn/2017/03/07/querySelector-vs-dom-method/" target="_blank" rel="external">http://cthblog.cn/2017/03/07/querySelector-vs-dom-method/</a></p>
 
       
     </div>
@@ -422,6 +424,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/08/defference-between-thread-and-process/" rel="prev" title="进程与线程的区别">
+                进程与线程的区别 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -500,7 +506,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
