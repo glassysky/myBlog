@@ -260,6 +260,148 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://glassysky.github.io/2017/03/08/overcoming-intuition-in-progranmming/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tianhao Cui">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端学习之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/08/overcoming-intuition-in-progranmming/" itemprop="url">
+                  克服编程中的直观
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-08T22:58:38+08:00">
+                2017-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/08/overcoming-intuition-in-progranmming/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/08/overcoming-intuition-in-progranmming/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在一系列的实验中，研究者们开始发现在「困难」（或「不流利」）和「认知」之间的关系。他们为两组人员提供了相同的测试，一组以易读的(直观的)格式，而另一组以困难的(不流利)格式。在所有他们实施的实验中，格式不流利的组大体上得分更高。这背后的理论就是人类会默认依赖自动的、不费力的、简单的系统去推理。但是如果事情是背道而驰的，或者很难去理解的，我们就会切换到一种更深层的、仔细的、有分析性的模式去思考。</p>
+<p>我一直在想这是如何影响编程的。编程是一个智力上的挑战任务，但幸运的是，我们发明了工具去使它变得可管理了。我发现在一定程度上，一个直观的的、简单属性的语言、框架、或者类库可能会开始产生一些负面效果。从个人经历和指导新人的过程中，我发现当我们使用一些允许我们去顺着思维的方向推理的工具时，任何我们遇到困难的时候，我们都会感觉到自己做错了。尽管我们已经有了解决困难的必需技能，我们通常会开始质疑、重查我们的工作。我们会提出问题，去寻找相关框架的最佳实践，而不是用我们自己的方法去解决问题。有关这点的最经典的问题就是Stack overflow上的问题：『如何用jQuery去做X』，或者回答『用jQuery的某个插件去做X』，X可能是从基础算法到websockets的任何事情。</p>
+<h2 id="框架的未知领域"><a href="#框架的未知领域" class="headerlink" title="框架的未知领域"></a>框架的未知领域</h2><p>当我们使用一个框架的时候，特定的一类问题将会很好解决。如果我们待在框架创造出来的空间里，程序设计会变得很直观。我们可以这称作框架的直观空间。另一方面，我们把框架涉及不到的空间成为框架的未知领域(nagative space)。未知领域并不一定是框架的缺点，它只是不在框架所考虑要解决的范围之内。然而，它已经将程序员置于直觉空间中很久了。如果程序员发现自己在未知领域，就会感觉到无从下手。</p>
+<p>当初学程序员发现他们自己在未知领域的时候，他们经常会向类库的作者求助，并让他们再次回到直观空间里。这就是一些流行框架会产生一个插件和扩展的生态系统来扩展他的直观空间的原因。如果这使得程序员更加有生产力，那么这看起来并不是本质上的错误。然而，它可能会无意间产生消极的影响：</p>
+<ol>
+<li>增加了程序员对生态系统的类库作者的依赖性</li>
+<li>受到技术冲击的时候将架构决策完全归结于类库</li>
+<li>传播了错误的思想：程序应该永远是直观的</li>
+</ol>
+<h2 id="开发者和类库作者相互依赖"><a href="#开发者和类库作者相互依赖" class="headerlink" title="开发者和类库作者相互依赖"></a>开发者和类库作者相互依赖</h2><p>我应该首先说明，这是一个技术上错误的分歧。所有程序员在任何程序设计的讨论中都扮演着两种角色。你可能会开发产品的业务逻辑然后转而去构建一个通用的抽象库来帮助你在你的代码库里进行复用。然而，我注意到在开源项目里，人们的行为倾向于使分歧看起来真实</p>
+<p>我发现在开源项目里能够成功的最简单的方式就是去将框架的未知领域变为直观空间。换句话说，就是写插件和扩展。当框架变得更加流行，大量的开发者(通常是初学者)将会开始抱怨在这个框架里实现X有多么困难(正如我们看到的，X可能完全不相关)。现在，在这样一个商业化的世界里，开源是极具竞争性的。一旦一个开源项目结局了许多人的直观上的问题，许多人就会转变立场。这成为了错误理念的传播器：一个程序员应该花所有的时间在直观空间编程</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>我认为改正这个问题的根本要从教育中落实。当某人开始学习编程的初期，我们的文化就趋向于强调对工具的依赖。我收到了许多有志气的程序员的提问，关于什么是最好的学习工具或语言。这基本上总是一个不成熟的问题。我过去常常给出这样的回答：”取决于你要构建什么”或者”选择一个对初学者友好的社区”或者”投资一个成长中的语言”。我认为所有这些都是好的答案，但是这在程序员的早期学习过程中并不重要。当你学习编程的本质的时候，都是一样的。此外，这些答案使得依赖工具的文化成为可能。</p>
+<p>代码复用，类库、分享和开源对于软件工程师来说都非常重要，但是我们应该谨慎，不能让人们相信”编程就应该像把东西粘起来一样简单”的思想。事实上，这几天当我感觉到事情有点太简单的时候，我都会对此非常怀疑。如果编程这样简单的话，它早就已经被自动化了。</p>
+<p><a href="https://amasad.me/intuition" target="_blank" rel="external">原文地址</a></p>
+<p>转载请注明出处</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://glassysky.github.io/2017/03/08/stack-vs-heap/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -807,165 +949,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://glassysky.github.io/2017/03/03/高级计时器/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tianhao Cui">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端学习之路">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/03/高级计时器/" itemprop="url">
-                  高级计时器
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-03T15:22:01+08:00">
-                2017-03-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/03/高级计时器/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/03/高级计时器/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>JavaScript的定时器不是线程，JavaScript是运行于单线程的环境中的，而定时器仅仅只是计划代码在未来的某个时间执行。</p>
-<p>实际上，浏览器负责进行排序，指派某段代码在某个时间点运行的优先级。</p>
-<h2 id="JavaScript进程线"><a href="#JavaScript进程线" class="headerlink" title="JavaScript进程线"></a>JavaScript进程线</h2><p>可以想象JavaScript在一条时间轴上运行。</p>
-<p>页面载入时，首先执行任何包含在<code>&lt;script&gt;</code>元素内部的代码。在这之后，JavaScript进程将等待更多代码执行。当进程空闲的时候，下一个代码会被触发并立刻执行。</p>
-<p>例如，当点击某个按钮时，onclick事件就会立即执行，<strong>只要JavaScript进程处于空闲状态</strong></p>
-<p><img src="https://github.com/glassysky/blog-demo/blob/master/public/timers-demo/src/image/time-line.jpg?raw=true" alt="JavaScript进程线"></p>
-<p>除了主JavaScript执行进程外，还有一个需要在进程下一次空闲时执行的<code>代码队列</code>。随着页面在其生命周期中的推移，代码会按照执行顺序添加入队列。</p>
-<p>这就意味着，任何代码都会先经过队列，然后再在后面可能的时刻被添加到进程中执行。即没有任何代码是真正意义上的立即执行。</p>
-<h2 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h2><p>定时器对队列的工作方式是，当特定时间过去后将代码插入。</p>
-<p><strong>给队列添加代码不意味着代码立即执行</strong>，这只表示在150ms后代码会被添加到队列中。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"my-btn"</span>);</div><div class="line">btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"message"</span>).style.visibility = <span class="string">'visible'</span>;</div><div class="line">  &#125;, <span class="number">250</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>点击按钮后，首先将onclick事件处理程序加入队列。待该程序执行后，才设置定时器。再有250ms后，制定代码才被添加到队列中等待执行。</p>
-<p><img src="https://github.com/glassysky/blog-demo/blob/master/public/timers-demo/src/image/timer2.jpg?raw=true" alt="定时器代码执行时间"></p>
-<p>虽然在255ms时定时器代码被添加至队列，但此时JavaScript进程并非空间，因此至少要等到onclick事件执行完毕后，定时器程序才会执行</p>
-<h2 id="重复的定时器"><a href="#重复的定时器" class="headerlink" title="重复的定时器"></a>重复的定时器</h2><p>当使用<code>setInterval()</code>时，仅当没有该定时器的任何其他代码实例时，才将定时器代码添加到队列中。这确保了定时器代码加入到队列中的最小时间间隔为指定间隔。</p>
-<p>但仍存在两个问题</p>
-<ul>
-<li>某些间隔会被跳过</li>
-<li>多个定时器的代码执行之间的间隔可能会比预期小</li>
-</ul>
-<p><img src="https://github.com/glassysky/blog-demo/blob/master/public/timers-demo/src/image/timer3.jpg?raw=true" alt="重复定时器代码执行过程"></p>
-<p>第一个定时器在205ms处添加到队列，但是要直到过了300ms这一点才能执行，在执行这个定时器代码时，在405ms处又添加了一个定时器代码。在605ms处，第一个定时器代码还在运行，同时队列中已经有了一个定时器代码的实例，所以在这个时间点上的定时器代码不会被添加到队列中。结果5ms添加的定时器代码执行结束后，405ms时添加的定时器代码就立刻执行。</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>为了避免<code>setInterval</code>的这两个缺点，可以用链式<code>setTimeout</code>调用</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// 其他代码</span></div><div class="line">  setTimeout(<span class="built_in">arguments</span>.callee, interval);</div><div class="line">&#125;, interval);</div></pre></td></tr></table></figure>
-<p>这样在前一个定时器代码执行完成之前，都不会再向队列插入新的定时器代码</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>需要使用JavaScript的定时器按一定时间间隔执行一段程序时，最好使用setTimeout来模拟setInterval</p>
-<p>转载请注明出处 <a href="http://cthblog.cn/2017/03/03/%E9%AB%98%E7%BA%A7%E8%AE%A1%E6%97%B6%E5%99%A8/" target="_blank" rel="external">http://cthblog.cn/2017/03/03/%E9%AB%98%E7%BA%A7%E8%AE%A1%E6%97%B6%E5%99%A8/</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1010,7 +998,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
