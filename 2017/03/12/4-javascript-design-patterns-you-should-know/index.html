@@ -87,15 +87,27 @@
 
 
 
-<meta name="description" content="私、気になります！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="前端学习之路">
-<meta property="og:url" content="http://glassysky.github.io/index.html">
+<meta name="description" content="每位开发者都努力写出可维护的、易读的、可复用的代码。随着应用变得越来越大，代码的结构也越来越重要。设计模式验证了解决这个挑战的重点——在特定环境中，对同类事物提供相同的组织结构。
+JavaScript web开发者们在开发应用的时候经常会不知不觉的与设计模式打交道。
+尽管在某些环境中使用了不同的设计模式列表，JavaScript的开发者们通常比其他开发者更常用到一些设计模式。
+在这篇文章里，我想通">
+<meta property="og:type" content="article">
+<meta property="og:title" content="你应该知道的4种JavaScript设计模式">
+<meta property="og:url" content="http://glassysky.github.io/2017/03/12/4-javascript-design-patterns-you-should-know/index.html">
 <meta property="og:site_name" content="前端学习之路">
-<meta property="og:description" content="私、気になります！">
+<meta property="og:description" content="每位开发者都努力写出可维护的、易读的、可复用的代码。随着应用变得越来越大，代码的结构也越来越重要。设计模式验证了解决这个挑战的重点——在特定环境中，对同类事物提供相同的组织结构。
+JavaScript web开发者们在开发应用的时候经常会不知不觉的与设计模式打交道。
+尽管在某些环境中使用了不同的设计模式列表，JavaScript的开发者们通常比其他开发者更常用到一些设计模式。
+在这篇文章里，我想通">
+<meta property="og:image" content="http://om38qdwes.bkt.clouddn.com/observer-pattern-UML.png">
+<meta property="og:updated_time" content="2017-03-12T14:01:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端学习之路">
-<meta name="twitter:description" content="私、気になります！">
+<meta name="twitter:title" content="你应该知道的4种JavaScript设计模式">
+<meta name="twitter:description" content="每位开发者都努力写出可维护的、易读的、可复用的代码。随着应用变得越来越大，代码的结构也越来越重要。设计模式验证了解决这个挑战的重点——在特定环境中，对同类事物提供相同的组织结构。
+JavaScript web开发者们在开发应用的时候经常会不知不觉的与设计模式打交道。
+尽管在某些环境中使用了不同的设计模式列表，JavaScript的开发者们通常比其他开发者更常用到一些设计模式。
+在这篇文章里，我想通">
+<meta name="twitter:image" content="http://om38qdwes.bkt.clouddn.com/observer-pattern-UML.png">
 
 
 
@@ -123,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://glassysky.github.io/"/>
+  <link rel="canonical" href="http://glassysky.github.io/2017/03/12/4-javascript-design-patterns-you-should-know/"/>
 
 
 
 
 
-  <title> 前端学习之路 </title>
+  <title> 你应该知道的4种JavaScript设计模式 | 前端学习之路 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -164,9 +176,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -249,9 +259,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -281,10 +291,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2017/03/12/4-javascript-design-patterns-you-should-know/" itemprop="url">
-                  你应该知道的4种JavaScript设计模式
-                </a>
+                你应该知道的4种JavaScript设计模式
               
             
           </h1>
@@ -345,9 +352,7 @@
       
 
       
-        
-          
-            <p>每位开发者都努力写出可维护的、易读的、可复用的代码。随着应用变得越来越大，代码的结构也越来越重要。设计模式验证了解决这个挑战的重点——在特定环境中，对同类事物提供相同的组织结构。</p>
+        <p>每位开发者都努力写出可维护的、易读的、可复用的代码。随着应用变得越来越大，代码的结构也越来越重要。设计模式验证了解决这个挑战的重点——在特定环境中，对同类事物提供相同的组织结构。</p>
 <p>JavaScript web开发者们在开发应用的时候经常会不知不觉的与设计模式打交道。</p>
 <p>尽管在某些环境中使用了不同的设计模式列表，JavaScript的开发者们通常比其他开发者更常用到一些设计模式。</p>
 <p>在这篇文章里，我想通过讨论这些常见的设计模式来提升你的编程能力，并且深入到JavaScript的结构当中去。</p>
@@ -409,289 +414,41 @@
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>设计模式通常在更大的应用中被使用，然而要去理解哪一个比另一个更有优势，需要从实践中得到。</p>
 <p>在构建任何应用之前，你应该全盘思考每一个行为以及他们如何与另一个进行交互。在回顾<code>Module</code>，<code>Protoytpe</code>，<code>Observer</code>和<code>Singleton</code>设计模式之后，你应该能够认识这些模式并且广泛应用他们。</p>
 
-          
-        
       
     </div>
 
     <div>
       
+        
+
+      
     </div>
 
     <div>
       
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://glassysky.github.io/2017/03/08/overcoming-intuition-in-progranmming/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tianhao Cui">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端学习之路">
-    </span>
-
-    
-      <header class="post-header">
-
         
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/08/overcoming-intuition-in-progranmming/" itemprop="url">
-                  克服编程中的直观
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-08T22:58:38+08:00">
-                2017-03-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/08/overcoming-intuition-in-progranmming/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/08/overcoming-intuition-in-progranmming/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="Tianhao Cui WeChat Pay"/>
+          <p>微信打赏</p>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
       
       
-
-      
-        
-          
-            <p>在一系列的实验中，研究者们开始发现在「困难」（或「不流利」）和「认知」之间的关系。他们为两组人员提供了相同的测试，一组以易读的(直观的)格式，而另一组以困难的(不流利)格式。在所有他们实施的实验中，格式不流利的组大体上得分更高。这背后的理论就是人类会默认依赖自动的、不费力的、简单的系统去推理。但是如果事情是背道而驰的，或者很难去理解的，我们就会切换到一种更深层的、仔细的、有分析性的模式去思考。</p>
-<p>我一直在想这是如何影响编程的。编程是一个智力上的挑战任务，但幸运的是，我们发明了工具去使它变得可管理了。我发现在一定程度上，一个直观的的、简单属性的语言、框架、或者类库可能会开始产生一些负面效果。从个人经历和指导新人的过程中，我发现当我们使用一些允许我们去顺着思维的方向推理的工具时，任何我们遇到困难的时候，我们都会感觉到自己做错了。尽管我们已经有了解决困难的必需技能，我们通常会开始质疑、重查我们的工作。我们会提出问题，去寻找相关框架的最佳实践，而不是用我们自己的方法去解决问题。有关这点的最经典的问题就是Stack overflow上的问题：『如何用jQuery去做X』，或者回答『用jQuery的某个插件去做X』，X可能是从基础算法到websockets的任何事情。</p>
-<h2 id="框架的未知领域"><a href="#框架的未知领域" class="headerlink" title="框架的未知领域"></a>框架的未知领域</h2><p>当我们使用一个框架的时候，特定的一类问题将会很好解决。如果我们待在框架创造出来的空间里，程序设计会变得很直观。我们可以这称作框架的直观空间。另一方面，我们把框架涉及不到的空间成为框架的未知领域(nagative space)。未知领域并不一定是框架的缺点，它只是不在框架所考虑要解决的范围之内。然而，它已经将程序员置于直觉空间中很久了。如果程序员发现自己在未知领域，就会感觉到无从下手。</p>
-<p>当初学程序员发现他们自己在未知领域的时候，他们经常会向类库的作者求助，并让他们再次回到直观空间里。这就是一些流行框架会产生一个插件和扩展的生态系统来扩展他的直观空间的原因。如果这使得程序员更加有生产力，那么这看起来并不是本质上的错误。然而，它可能会无意间产生消极的影响：</p>
-<ol>
-<li>增加了程序员对生态系统的类库作者的依赖性</li>
-<li>受到技术冲击的时候将架构决策完全归结于类库</li>
-<li>传播了错误的思想：程序应该永远是直观的</li>
-</ol>
-<h2 id="开发者和类库作者相互依赖"><a href="#开发者和类库作者相互依赖" class="headerlink" title="开发者和类库作者相互依赖"></a>开发者和类库作者相互依赖</h2><p>我应该首先说明，这是一个技术上错误的分歧。所有程序员在任何程序设计的讨论中都扮演着两种角色。你可能会开发产品的业务逻辑然后转而去构建一个通用的抽象库来帮助你在你的代码库里进行复用。然而，我注意到在开源项目里，人们的行为倾向于使分歧看起来真实</p>
-<p>我发现在开源项目里能够成功的最简单的方式就是去将框架的未知领域变为直观空间。换句话说，就是写插件和扩展。当框架变得更加流行，大量的开发者(通常是初学者)将会开始抱怨在这个框架里实现X有多么困难(正如我们看到的，X可能完全不相关)。现在，在这样一个商业化的世界里，开源是极具竞争性的。一旦一个开源项目结局了许多人的直观上的问题，许多人就会转变立场。这成为了错误理念的传播器：一个程序员应该花所有的时间在直观空间编程</p>
-<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>我认为改正这个问题的根本要从教育中落实。当某人开始学习编程的初期，我们的文化就趋向于强调对工具的依赖。我收到了许多有志气的程序员的提问，关于什么是最好的学习工具或语言。这基本上总是一个不成熟的问题。我过去常常给出这样的回答：”取决于你要构建什么”或者”选择一个对初学者友好的社区”或者”投资一个成长中的语言”。我认为所有这些都是好的答案，但是这在程序员的早期学习过程中并不重要。当你学习编程的本质的时候，都是一样的。此外，这些答案使得依赖工具的文化成为可能。</p>
-<p>代码复用，类库、分享和开源对于软件工程师来说都非常重要，但是我们应该谨慎，不能让人们相信”编程就应该像把东西粘起来一样简单”的思想。事实上，这几天当我感觉到事情有点太简单的时候，我都会对此非常怀疑。如果编程这样简单的话，它早就已经被自动化了。</p>
-<p><a href="https://amasad.me/intuition" target="_blank" rel="external">原文地址</a></p>
-<p>转载请注明出处</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://glassysky.github.io/2017/03/08/stack-vs-heap/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tianhao Cui">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端学习之路">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/08/stack-vs-heap/" itemprop="url">
-                  堆和栈的区别
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-08T20:41:32+08:00">
-                2017-03-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/08/stack-vs-heap/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/08/stack-vs-heap/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.png" alt="Tianhao Cui Alipay"/>
+          <p>支付宝打赏</p>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="栈-stack"><a href="#栈-stack" class="headerlink" title="栈(stack)"></a>栈(stack)</h2><p>栈是为执行线程而在内存中临时留出的空间。当一个程序被调用，栈顶的块被保留下来，作为局部变量和一些临时的数据。当那个程序返回后，这个块被释放了，并且能够在下次一个程序被调用的时候被使用。栈总是以后进先出(LIFO)的顺序保存数据，最近被保留的块总是最先被释放的。这使得记录栈很容易；释放一个块仅仅只是调整了一个指针。</p>
-<h2 id="堆-heapd"><a href="#堆-heapd" class="headerlink" title="堆(heapd)"></a>堆(heapd)</h2><p>堆是为了动态分配而在内存中留出的。不像栈，在堆中没有固定的模式去分配和重新分配块；你能够在任何时刻分配一个块和释放一个块。这使得在给定时间内去追踪堆的哪部分是被分配了的和是被释放了的变得十分复杂；有许多可用的自定义的堆分配器，他们可以根据不同的使用模式来对堆的表现形式进行调整。</p>
-<p>每个线程都有一个栈，但在一个应用中一般只有一个堆。</p>
-<p><a href="http://stackoverflow.com/a/80113/6076760" target="_blank" rel="external">原文地址</a></p>
-
-          
-        
       
     </div>
+  </div>
 
-    <div>
-      
-    </div>
 
-    <div>
       
     </div>
 
@@ -700,315 +457,38 @@
       
 
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://glassysky.github.io/2017/03/08/defference-between-thread-and-process/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tianhao Cui">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端学习之路">
-    </span>
-
-    
-      <header class="post-header">
-
         
-        
-          <h1 class="post-title" itemprop="name headline">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/03/08/overcoming-intuition-in-progranmming/" rel="next" title="克服编程中的直观">
+                <i class="fa fa-chevron-left"></i> 克服编程中的直观
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2017/03/08/defference-between-thread-and-process/" itemprop="url">
-                  进程与线程的区别
-                </a>
-              
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-08T14:02:57+08:00">
-                2017-03-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/08/defference-between-thread-and-process/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/08/defference-between-thread-and-process/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p><a href="http://www.programmerinterview.com/index.php/operating-systems/thread-vs-process/" target="_blank" rel="external">原文地址</a></p>
-<h2 id="进程-VS-线程"><a href="#进程-VS-线程" class="headerlink" title="进程 VS 线程"></a>进程 VS 线程</h2><p>进程是一个应用的<code>执行实例</code>。这意味着什么？举个例子，当你双击微软的Word图标的时候，你启动了一个运行Word的进程。线程是进程内部的执行路径。同时，一个进程能容纳多个线程。当你启动Word的时候，操作系统创建了一个进程并且开始执行进程的主线程。</p>
-<p>值得一提的是，进程能坐的<code>任何</code>事情，线程都能做。但是当一个进程包含了多个线程，每个线程可以被当做一个<code>轻量</code>的进程。因此，进程和线程在本质上的区别，是他们被用来完成的工作。线程被用来完成小任务，然而进程被用来完成更<code>繁重</code>的任务——基本上用来执行应用。</p>
-<p>进程和线程的另一个区别是：在同一个进程中的线程共享同样的地址空间，而不同的进程却不会这样。这允许线程去读/写相同的数据结构和变量，也使得线程之间的通信变得容易了。进程之间的通信——也被称作IPC——是很困难而且资源密集的。</p>
-<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><p>多个线程是被允许的。有一个常见的例子用来说明多线程的优势：你能够让一个Word进程通过背景线程去渲染文档，但同时另一个运行中的线程能够接受用户输入，因此你才能够编辑一个新的文档。</p>
-<p>如果我们面对一个只有单线程的应用，那么应用程序将只能一次做一件事——因此同时渲染和响应用户输入在单线程应用中是不可能实现的。</p>
-<p>每个进程都有他自己的地址空间，但是同一个进程中的多个线程共享着这个地址空间。线程也能够在该进程内共享任何资源。这意味着在线程之中共享数据非常容易，但也使得线程之间很容易相互依赖，而导致不好的事情发生。</p>
-<p>多线程程序必须谨慎的编写代码去防止这种事情发生。更新被多个线程所共享的数据结构的代码段被称为<code>critical sections</code>(临界区)。当临界区运行在一个线程上的时候，其他线程就不被允许进入这个临界区，这一点是非常重要的。这被叫做<code>同步</code>，我们不会在这一点上再做深入的讨论。但重点是多线程需要谨慎的编程。</p>
-<p>同样的，线程之间上下文环境切换所需要的代价通常也比进程之间的要小。最后，线程之间通信的花销(通信时所需的代价)相对于进程来说也小得多。</p>
-<p>这里有几点关于进程和线程之间区别的总结：</p>
-<ol>
-<li>线程比进程更容易创建，因为他们不需要独立的地址空间</li>
-<li>多线程需要谨慎编程，因为线程共享的数据结构一次只应该被一个线程改变。不像线程，进程不共享相同的地址空间</li>
-<li>线程被认为是<code>轻量</code>的，因为相对于进程来说，线程所需的资源要少很多</li>
-<li>进程相互独立。而线程之间共享了同样的地址空间，因此是相互依存的，所以一定要注意不要让不同的线程之间相互干扰。这和上面的第二点总结表达的是相同的观点</li>
-<li>进程可由多个线程组成</li>
-</ol>
-<p>转载请注明出处</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://glassysky.github.io/2017/03/07/querySelector-vs-dom-method/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tianhao Cui">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端学习之路">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/07/querySelector-vs-dom-method/" itemprop="url">
-                  querySelector和getElementBy方法的比较
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-07T17:16:09+08:00">
-                2017-03-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/07/querySelector-vs-dom-method/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/07/querySelector-vs-dom-method/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>今天发现了一个新的API用来获取页面中的节点元素<code>querySelector</code>和<code>querySelectorAll</code>,他们的作用和<code>getElementByXXX</code>系列是一样的。下面看一下这个新方法的性能如何。</p>
-<h2 id="程序执行时间测试方法"><a href="#程序执行时间测试方法" class="headerlink" title="程序执行时间测试方法"></a>程序执行时间测试方法</h2><p>先来科普一下如何看某段程序的运行时间。其实方法很简单：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> start = +<span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">someLongProcess();</div><div class="line"><span class="keyword">var</span> stop = +<span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(stop - start); <span class="comment">// 函数执行时间</span></div></pre></td></tr></table></figure></p>
-<p>像上面这样我们就可以获取到函数的运行时间</p>
-<h2 id="构造测试环境"><a href="#构造测试环境" class="headerlink" title="构造测试环境"></a>构造测试环境</h2><p>为了使测试效果更明显，我们先构造一个巨大的DOM树:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--index.html--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"root"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./index.js"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// index.js</span></div><div class="line"><span class="keyword">var</span> root = <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>);</div><div class="line"><span class="keyword">var</span> html = <span class="string">''</span>;</div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">50000</span>; i++) &#123;</div><div class="line">  html += <span class="string">'&lt;span class="test-span-tag"&gt;&lt;a class="inner-class-name"&gt;&lt;/a&gt;&lt;/span&gt;'</span>;</div><div class="line">&#125;</div><div class="line">root.innerHTML = html;</div></pre></td></tr></table></figure>
-<p>这样我们就得到了一个内部有5W个<code>span</code>元素的DOM树结构</p>
-<p>下面我们将比较<code>querySelectorAll()</code>方法和<code>getElementsByTagName()</code>方法的性能</p>
-<h2 id="性能测试"><a href="#性能测试" class="headerlink" title="性能测试"></a>性能测试</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// getElementsByTagName 方法</span></div><div class="line"><span class="keyword">var</span> ta1 = +<span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line"><span class="keyword">var</span> domWay = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'span'</span>);</div><div class="line"><span class="keyword">var</span> ta2 = +<span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">domWay[<span class="number">0</span>].innerHTML = <span class="string">'0'</span>;</div><div class="line"><span class="keyword">var</span> ta3 = +<span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line"></div><div class="line"><span class="comment">// querySelectorAll 方法</span></div><div class="line"><span class="keyword">var</span> tb1 = +<span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line"><span class="keyword">var</span> apiWay = <span class="built_in">document</span>.querySelectorAll(<span class="string">'span'</span>);</div><div class="line"><span class="keyword">var</span> tb2 = +<span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">apiWay[<span class="number">0</span>].innerHTML = <span class="string">'1'</span>;</div><div class="line"><span class="keyword">var</span> tb3 = +<span class="keyword">new</span> <span class="built_in">Date</span>();</div></pre></td></tr></table></figure>
-<p>可以看到我们在执行要比较的两个函数之前和之后分别调用了<code>new Date()</code>来获取当前时刻，他们的差值就是两个函数获取节点所需的信息；后面我们又对获取到的节点进行了赋值操作。</p>
-<p>最后输出时间间隔</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> record = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</div><div class="line">record.innerHTML = <span class="string">'&lt;p&gt;document.getElementById("root").getElementsByTagName("span"): '</span> + (ta2 - ta1) + <span class="string">'ms&lt;/p&gt;\</span></div><div class="line">                    &lt;p&gt;document.getElementById("root").getElementsByTagName("span") 并改变一个节点的值: ' + (ta3 - ta1) + <span class="string">'ms&lt;/p&gt;\</span></div><div class="line">                    &lt;p&gt;document.querySelectorAll("#root span"): ' + (tb2 - tb1) + <span class="string">'ms&lt;/p&gt;\</span></div><div class="line">                    &lt;p&gt;document.querySelectorAll("#root span") 并改变一个节点的值: ' + (tb3 - tb1) + <span class="string">'ms&lt;/p&gt;'</span>;</div><div class="line">root.appendChild(record);</div></pre></td></tr></table></figure>
-<p><a href="https://github.com/glassysky/blog-demo/blob/master/public/querySelector-vs-getElementsByClassName/src/index.js" target="_blank" rel="external">源代码</a></p>
-<p>每次结果都有些差异，我截取了其中一个结果</p>
-<p><img src="https://github.com/glassysky/blog-demo/blob/master/public/querySelector-vs-getElementsByClassName/src/image/time-result.png?raw=true" alt="图片"></p>
-<p>我们可以看到，使用<code>getElementsByTagName</code>方法，在获取节点的过程中，性能是相当好的，获取5W个节点的集合，时间基本不会超过1ms，相对来说<code>querySelectorAll</code>方法的性能就稍差一些；这么说来<code>querySelectorAll</code>的出现就没有意义了吗？答案是否定的。我们可以观察到，如果对获取到的节点集合进行简单的操作，<code>getElementsByTagName</code>消耗的时间会很长，而<code>querySelectorAll</code>几乎不消耗时间，这是为什么呢？</p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>当我们在使用<code>getElementsByClassName</code>方法的时候，我们得到的节点集合是<code>实时</code>的，也就是说，每次对集合进行操作之前，都会重新遍历一遍节点以获取DOM树中<code>最新</code>的状态，可以理解为获得了节点集合的<code>引用</code>；而<code>querySelectorAll</code>方法正相反，其获得的是DOM树中当前时刻节点集合的<code>快照</code>,是静态的值。</p>
-<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>于是我们可以得出结论，如果只要单纯的获取DOM树中节点的集合，而不需要改变节点元素的时候，<code>getElementsByClassName</code>方法的速度要快很多；如果要对集合中的节点元素进行批量操作的时候，可以选择使用<code>querySelectorAll</code>方法来提高性能</p>
-<p>转载请注明出处 <a href="http://cthblog.cn/2017/03/07/querySelector-vs-dom-method/" target="_blank" rel="external">http://cthblog.cn/2017/03/07/querySelector-vs-dom-method/</a></p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
+  </div>
 
           
           </div>
@@ -1016,6 +496,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -1035,8 +526,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -1080,6 +580,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#模块设计模式-Module-Design-Pattern"><span class="nav-number">1.</span> <span class="nav-text">模块设计模式(Module Design Pattern)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#揭示模块模式-Revealing-Module-Pattern"><span class="nav-number">1.1.</span> <span class="nav-text">揭示模块模式(Revealing Module Pattern)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型设计模式-Prototype-Design-Pattern"><span class="nav-number">2.</span> <span class="nav-text">原型设计模式(Prototype Design Pattern)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#揭示原型模式-Revealing-prototype-pattern"><span class="nav-number">2.1.</span> <span class="nav-text">揭示原型模式(Revealing prototype pattern)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#观察者设计模式"><span class="nav-number">3.</span> <span class="nav-text">观察者设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#发布-订阅"><span class="nav-number">3.1.</span> <span class="nav-text">发布/订阅</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单例模式-Singleton"><span class="nav-number">4.</span> <span class="nav-text">单例模式(Singleton)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1192,6 +708,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
@@ -1208,9 +728,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'felearn';
-      var disqus_identifier = 'index.html';
+      var disqus_identifier = '2017/03/12/4-javascript-design-patterns-you-should-know/';
 
-      var disqus_title = "";
+      var disqus_title = "你应该知道的4种JavaScript设计模式";
 
 
       function run_disqus_script(disqus_script) {
@@ -1223,6 +743,13 @@
 
       run_disqus_script('count.js');
 
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
       
 
     </script>
