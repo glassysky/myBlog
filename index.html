@@ -260,6 +260,163 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://glassysky.github.io/2017/03/14/cross-domain-methods/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tianhao Cui">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端学习之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/14/cross-domain-methods/" itemprop="url">
+                  跨域请求方法总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-14T23:32:04+08:00">
+                2017-03-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/14/cross-domain-methods/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/14/cross-domain-methods/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>通过XHR实现Ajax的一个主要限制，来自于跨域安全策略。这种安全策略可以防止某些恶意行为，但合理的实现跨域请求对某些应用来说也是非常必要的。</p>
+<p>我们首先构建出一个跨域的环境方便测试:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">├── client</div><div class="line">│   ├── app.js</div><div class="line">│   ├── package.json</div><div class="line">│   └── public</div><div class="line">│       └── src</div><div class="line">│           ├── index.html</div><div class="line">│           └── index.js</div><div class="line">└── server</div><div class="line">    ├── app.js</div><div class="line">    ├── package.json</div><div class="line">    └── public</div><div class="line">        └── src</div></pre></td></tr></table></figure>
+<ul>
+<li>通过<code>express</code>分别在3000和4000端口启动两个服务</li>
+<li>默认server为3000端口、client在4000端口</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// /server/app.js</span></div><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</div><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</div><div class="line"><span class="keyword">var</span> app = express()</div><div class="line"></div><div class="line">app.use(<span class="string">'/static'</span>, express.static(path.join(__dirname, <span class="string">'public'</span>)))</div><div class="line"></div><div class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">  res.send(<span class="string">'hello world'</span>);</div><div class="line">&#125;)</div><div class="line"></div><div class="line">app.listen(<span class="number">3000</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'server app listening on port 3000!'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// /client/app.js</span></div><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</div><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</div><div class="line"><span class="keyword">var</span> app = express()</div><div class="line"></div><div class="line">app.use(<span class="string">'/static'</span>, express.static(path.join(__dirname, <span class="string">'public'</span>)))</div><div class="line"></div><div class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">  res.send(<span class="string">'client'</span>)</div><div class="line">&#125;)</div><div class="line"></div><div class="line">app.listen(<span class="number">4000</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'client app listening on port 4000!'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--/client/public/src/index.html--&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./index.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>环境搭建成功后，在4000端口上的js通过Ajax向3000端口的服务发送请求，就会触发跨域安全策略。</p>
+<p>下面就介绍几种CORS(Cross-Origin Resource Sharing)的方法:</p>
+<h2 id="原生支持"><a href="#原生支持" class="headerlink" title="原生支持"></a>原生支持</h2><p>Firefox 3.5+、Safari 4+、Chrome等主流浏览器都通过XMLHttpRequest对象实现了CORS的原生支持。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// /client/public/src/index.js</span></div><div class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line"></div><div class="line">xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (xhr.readyState === <span class="number">4</span>) &#123;</div><div class="line">    <span class="keyword">if</span> (xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span> || xhr === <span class="number">304</span>) &#123;</div><div class="line">      <span class="built_in">console</span>.log(xhr.responseText)</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'fail'</span>);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>同时需要对接口进行设置。通过设置<code>Access-Control-Allow-Origin</code>头可以决定来自哪些域的请求可以被实现。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// /server/app.js</span></div><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</div><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</div><div class="line"><span class="keyword">var</span> app = express()</div><div class="line"></div><div class="line">app.use(<span class="string">'/static'</span>, express.static(path.join(__dirname, <span class="string">'public'</span>)))</div><div class="line"></div><div class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">  + res.header(<span class="string">'Access-Control-Allow-Origin'</span>, <span class="string">'http://localhost:4000'</span>);</div><div class="line">  res.send(<span class="string">'hello world'</span>);</div><div class="line">&#125;)</div><div class="line"></div><div class="line">app.listen(<span class="number">3000</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'server app listening on port 3000!'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>设置成功后重启服务，我们可以看到这时的跨域请求已经发送成功，在client的index.html页面中已经可以看到请求得到的内容</p>
+<h2 id="图像Ping"><a href="#图像Ping" class="headerlink" title="图像Ping"></a>图像Ping</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// /client/public/src/index.js</span></div><div class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image();</div><div class="line">img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'done'</span>);</div><div class="line">&#125;</div><div class="line">img.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'fail'</span>);</div><div class="line">&#125;</div><div class="line">img.src = <span class="string">'http://localhost:3000'</span>;</div></pre></td></tr></table></figure>
+<p>通过创建一个<code>img</code>标签，并且设置对应的<code>src</code>，可以向目标url发送请求，但是这种方法无法收到返回的数据，只能发送<code>GET</code>请求。由于无法得到返回的数据，我们稍微改一下接口的代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// server/app.js</span></div><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</div><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</div><div class="line"><span class="keyword">var</span> app = express()</div><div class="line"></div><div class="line">app.use(<span class="string">'/static'</span>, express.static(path.join(__dirname, <span class="string">'public'</span>)))</div><div class="line"></div><div class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">  - res.send(<span class="string">'hello world'</span>);</div><div class="line">  + <span class="built_in">console</span>.log(<span class="string">'receive get request'</span>);</div><div class="line">&#125;)</div><div class="line"></div><div class="line">app.listen(<span class="number">3000</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'server app listening on port 3000!'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>这样我们通过命令行的输出就能够判断<code>http://localhost:3000</code>是否收到了请求。</p>
+<p>刷新index.html页面后，我们可以看到控制台输出了<code>fail</code>，即图片加载失败，但是命令行会输出<code>receive get request</code>，即已经收到了通过图像Ping发送的<code>GET</code>请求。</p>
+<h2 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h2><p>顾名思义 JSONP = JSON + Padding</p>
+<p>不理解没关系，看下面的例子就知道了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// /client/public/src/index.js</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleResponse</span> (<span class="params">response</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(response.test);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</div><div class="line">script.src = <span class="string">'http://localhost:3000/?callback=handleResponse'</span>;</div><div class="line"><span class="built_in">document</span>.body.insertBefore(script, <span class="built_in">document</span>.body.firstChild);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// /server/app.js</span></div><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</div><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</div><div class="line"><span class="keyword">var</span> app = express()</div><div class="line"></div><div class="line">app.use(<span class="string">'/static'</span>, express.static(path.join(__dirname, <span class="string">'public'</span>)))</div><div class="line"></div><div class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">  - res.send(<span class="string">'hello world'</span>);</div><div class="line">  + res.send(req.query.callback + <span class="string">'('</span> + <span class="string">'&#123;test: 1&#125;'</span> + <span class="string">')'</span>);</div><div class="line">&#125;)</div><div class="line"></div><div class="line">app.listen(<span class="number">3000</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'server app listening on port 3000!'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>不难看出，服务端接口此时返回一个字符串，这个字符串的格式为<code>callback({test: 1})</code>,即用一个函数包含了一个JSON，这就是JSONP名字的由来。客户端收到这个字符串后，会对其进行调用。注意这里的<code>callback</code>就是作为请求的参数传给接口的值，因此这个参数要和自己定义的回调函数同名。</p>
+<p>刷新页面重新请求时，控制台打印出<code>1</code>。这是因为返回的<code>handleResponse({test: 1})</code>字符串执行后，相当于把JSON格式的数据作为参数，这样在函数内部就能获取到了。</p>
+<p>如果实在不理解的话，可以直接访问这个<a href="http://freegeoip.net/json/?callback=handleResponse" target="_blank" rel="external">链接</a>，它会返回一个JSONP字符串。</p>
+<p><strong>转载请注明出处</strong></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://glassysky.github.io/2017/03/13/understanding-HTML5-mobile-application-development/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -859,151 +1016,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://glassysky.github.io/2017/03/08/defference-between-thread-and-process/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tianhao Cui">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端学习之路">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/08/defference-between-thread-and-process/" itemprop="url">
-                  进程与线程的区别
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-08T14:02:57+08:00">
-                2017-03-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/08/defference-between-thread-and-process/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/08/defference-between-thread-and-process/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://www.programmerinterview.com/index.php/operating-systems/thread-vs-process/" target="_blank" rel="external">原文地址</a></p>
-<h2 id="进程-VS-线程"><a href="#进程-VS-线程" class="headerlink" title="进程 VS 线程"></a>进程 VS 线程</h2><p>进程是一个应用的<code>执行实例</code>。这意味着什么？举个例子，当你双击微软的Word图标的时候，你启动了一个运行Word的进程。线程是进程内部的执行路径。同时，一个进程能容纳多个线程。当你启动Word的时候，操作系统创建了一个进程并且开始执行进程的主线程。</p>
-<p>值得一提的是，进程能坐的<code>任何</code>事情，线程都能做。但是当一个进程包含了多个线程，每个线程可以被当做一个<code>轻量</code>的进程。因此，进程和线程在本质上的区别，是他们被用来完成的工作。线程被用来完成小任务，然而进程被用来完成更<code>繁重</code>的任务——基本上用来执行应用。</p>
-<p>进程和线程的另一个区别是：在同一个进程中的线程共享同样的地址空间，而不同的进程却不会这样。这允许线程去读/写相同的数据结构和变量，也使得线程之间的通信变得容易了。进程之间的通信——也被称作IPC——是很困难而且资源密集的。</p>
-<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><p>多个线程是被允许的。有一个常见的例子用来说明多线程的优势：你能够让一个Word进程通过背景线程去渲染文档，但同时另一个运行中的线程能够接受用户输入，因此你才能够编辑一个新的文档。</p>
-<p>如果我们面对一个只有单线程的应用，那么应用程序将只能一次做一件事——因此同时渲染和响应用户输入在单线程应用中是不可能实现的。</p>
-<p>每个进程都有他自己的地址空间，但是同一个进程中的多个线程共享着这个地址空间。线程也能够在该进程内共享任何资源。这意味着在线程之中共享数据非常容易，但也使得线程之间很容易相互依赖，而导致不好的事情发生。</p>
-<p>多线程程序必须谨慎的编写代码去防止这种事情发生。更新被多个线程所共享的数据结构的代码段被称为<code>critical sections</code>(临界区)。当临界区运行在一个线程上的时候，其他线程就不被允许进入这个临界区，这一点是非常重要的。这被叫做<code>同步</code>，我们不会在这一点上再做深入的讨论。但重点是多线程需要谨慎的编程。</p>
-<p>同样的，线程之间上下文环境切换所需要的代价通常也比进程之间的要小。最后，线程之间通信的花销(通信时所需的代价)相对于进程来说也小得多。</p>
-<p>这里有几点关于进程和线程之间区别的总结：</p>
-<ol>
-<li>线程比进程更容易创建，因为他们不需要独立的地址空间</li>
-<li>多线程需要谨慎编程，因为线程共享的数据结构一次只应该被一个线程改变。不像线程，进程不共享相同的地址空间</li>
-<li>线程被认为是<code>轻量</code>的，因为相对于进程来说，线程所需的资源要少很多</li>
-<li>进程相互独立。而线程之间共享了同样的地址空间，因此是相互依存的，所以一定要注意不要让不同的线程之间相互干扰。这和上面的第二点总结表达的是相同的观点</li>
-<li>进程可由多个线程组成</li>
-</ol>
-<p>转载请注明出处</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1053,7 +1065,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
