@@ -176,7 +176,7 @@ JavaScript web开发者们在开发应用的时候经常会不知不觉的与设
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -320,6 +320,17 @@ JavaScript web开发者们在开发应用的时候经常会不知不觉的与设
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/12/4-javascript-design-patterns-you-should-know/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/03/12/4-javascript-design-patterns-you-should-know/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -454,6 +465,12 @@ JavaScript web开发者们在开发应用的时候经常会不知不觉的与设
       
     </div>
 
+    <div>
+      
+        
+
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -496,13 +513,20 @@ JavaScript web开发者们在开发应用的时候经常会不知不觉的与设
     </div>
   </div>
 
-          
+
           </div>
           
 
 
           
   <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
     
   </div>
 
@@ -546,7 +570,7 @@ JavaScript web开发者们在开发应用的时候经常会不知不觉的与设
           
         </div>
         <nav class="site-state motion-element">
-        
+
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
@@ -644,7 +668,7 @@ JavaScript web开发者们在开发应用的时候经常会不知不觉的与设
         
       </div>
     
-    
+
   </div>
 
   
@@ -664,6 +688,8 @@ JavaScript web开发者们在开发应用的时候经常会不知不觉的与设
 
 
   
+
+
 
 
 
@@ -722,6 +748,25 @@ JavaScript web开发者们在开发应用的时候经常会不知不觉的与设
   
 
 
+  
+
+    
+      <script id="dsq-count-scr" src="https://felearn.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://glassysky.github.io/2017/03/12/4-javascript-design-patterns-you-should-know/';
+          this.page.identifier = '2017/03/12/4-javascript-design-patterns-you-should-know/';
+          this.page.title = '你应该知道的4种JavaScript设计模式';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://felearn.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
 
   
 
@@ -750,10 +795,14 @@ JavaScript web开发者们在开发应用的时候经常会不知不觉的与设
 
 
 
-  
-  
+
+
 
   
+
+
+
+
 
   
 
@@ -867,7 +916,6 @@ JavaScript web开发者们在开发应用的时候经常会不知不觉的与设
   
 
   
-
 
   
 
