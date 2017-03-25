@@ -89,35 +89,42 @@
 
 <meta name="description" content="绪论当web请求到达缓存时，如果本地有”已缓存”的副本，就可以从本地设备而不是原始服务器中提取这个文档
 使用缓存的好处
-减少了冗余的数据传输：如果不使用缓存，每次请求时，相同的数据都会被重复传输；如果你使用的服务器是按流量计费的，不使用缓存绝对会成为你的噩梦
+减少了冗余的数据传输
 缓解了网络瓶颈的问题
 降低了对原始服务器的要求
 降低了距离时延
 
-命中的和未命中的可用的已有副本为某些到达缓存的请求提供服务，这被称为缓存命">
+应用缓存时可能会出现的几种情况命中的和未命中的可用的已有副本为某些到达缓存的请求提供服务，这被称为缓存命中。
+其他一些到达缓存的请求可能会由于没有副本可用，而被转发给原始服务器，这被称为缓存未">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTTP 缓存机制">
 <meta property="og:url" content="http://glassysky.github.io/2017/03/25/http-cache/index.html">
 <meta property="og:site_name" content="前端学习之路">
 <meta property="og:description" content="绪论当web请求到达缓存时，如果本地有”已缓存”的副本，就可以从本地设备而不是原始服务器中提取这个文档
 使用缓存的好处
-减少了冗余的数据传输：如果不使用缓存，每次请求时，相同的数据都会被重复传输；如果你使用的服务器是按流量计费的，不使用缓存绝对会成为你的噩梦
+减少了冗余的数据传输
 缓解了网络瓶颈的问题
 降低了对原始服务器的要求
 降低了距离时延
 
-命中的和未命中的可用的已有副本为某些到达缓存的请求提供服务，这被称为缓存命">
-<meta property="og:updated_time" content="2017-03-25T02:55:00.000Z">
+应用缓存时可能会出现的几种情况命中的和未命中的可用的已有副本为某些到达缓存的请求提供服务，这被称为缓存命中。
+其他一些到达缓存的请求可能会由于没有副本可用，而被转发给原始服务器，这被称为缓存未">
+<meta property="og:image" content="http://om38qdwes.bkt.clouddn.com/%E5%91%BD%E4%B8%AD%E4%B8%8E%E6%9C%AA%E5%91%BD%E4%B8%AD.png">
+<meta property="og:image" content="http://om38qdwes.bkt.clouddn.com/%E5%86%8D%E9%AA%8C%E8%AF%81%E5%91%BD%E4%B8%AD%E4%B8%8E%E6%9C%AA%E5%91%BD%E4%B8%AD.png">
+<meta property="og:image" content="http://om38qdwes.bkt.clouddn.com/cache-control.png">
+<meta property="og:updated_time" content="2017-03-25T16:20:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP 缓存机制">
 <meta name="twitter:description" content="绪论当web请求到达缓存时，如果本地有”已缓存”的副本，就可以从本地设备而不是原始服务器中提取这个文档
 使用缓存的好处
-减少了冗余的数据传输：如果不使用缓存，每次请求时，相同的数据都会被重复传输；如果你使用的服务器是按流量计费的，不使用缓存绝对会成为你的噩梦
+减少了冗余的数据传输
 缓解了网络瓶颈的问题
 降低了对原始服务器的要求
 降低了距离时延
 
-命中的和未命中的可用的已有副本为某些到达缓存的请求提供服务，这被称为缓存命">
+应用缓存时可能会出现的几种情况命中的和未命中的可用的已有副本为某些到达缓存的请求提供服务，这被称为缓存命中。
+其他一些到达缓存的请求可能会由于没有副本可用，而被转发给原始服务器，这被称为缓存未">
+<meta name="twitter:image" content="http://om38qdwes.bkt.clouddn.com/%E5%91%BD%E4%B8%AD%E4%B8%8E%E6%9C%AA%E5%91%BD%E4%B8%AD.png">
 
 
 
@@ -381,13 +388,52 @@
       
         <h2 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h2><p>当web请求到达缓存时，如果本地有”已缓存”的副本，就可以从本地设备而不是原始服务器中提取这个文档</p>
 <h3 id="使用缓存的好处"><a href="#使用缓存的好处" class="headerlink" title="使用缓存的好处"></a>使用缓存的好处</h3><ul>
-<li>减少了冗余的数据传输：如果不使用缓存，每次请求时，相同的数据都会被重复传输；如果你使用的服务器是按流量计费的，不使用缓存绝对会成为你的噩梦</li>
+<li>减少了冗余的数据传输</li>
 <li>缓解了网络瓶颈的问题</li>
 <li>降低了对原始服务器的要求</li>
 <li>降低了距离时延</li>
 </ul>
-<h2 id="命中的和未命中的"><a href="#命中的和未命中的" class="headerlink" title="命中的和未命中的"></a>命中的和未命中的</h2><p>可用的已有副本为某些到达缓存的请求提供服务，这被称为<strong>缓存命中</strong>。其他一些到达缓存的请求可能会由于没有副本可用，而被转发给原始服务器，这被称为<strong>缓存未命中</strong>。</p>
-
+<h2 id="应用缓存时可能会出现的几种情况"><a href="#应用缓存时可能会出现的几种情况" class="headerlink" title="应用缓存时可能会出现的几种情况"></a>应用缓存时可能会出现的几种情况</h2><h3 id="命中的和未命中的"><a href="#命中的和未命中的" class="headerlink" title="命中的和未命中的"></a>命中的和未命中的</h3><p>可用的已有副本为某些到达缓存的请求提供服务，这被称为<strong>缓存命中</strong>。</p>
+<p>其他一些到达缓存的请求可能会由于没有副本可用，而被转发给原始服务器，这被称为<strong>缓存未命中</strong>。如下图：</p>
+<p><img src="http://om38qdwes.bkt.clouddn.com/%E5%91%BD%E4%B8%AD%E4%B8%8E%E6%9C%AA%E5%91%BD%E4%B8%AD.png" alt="缓存命中与未命中"></p>
+<h3 id="缓存再验证命中与缓存再验证未命中"><a href="#缓存再验证命中与缓存再验证未命中" class="headerlink" title="缓存再验证命中与缓存再验证未命中"></a>缓存再验证命中与缓存再验证未命中</h3><p>下面问题就来了，如果服务器上的文档发生变动了怎么办？？？</p>
+<p>通过『新鲜度检测』（也就是HTTP再验证）可以对服务器上的文档进行检测，查看当前缓存的文档是不是服务器上的最新版本。</p>
+<p><img src="http://om38qdwes.bkt.clouddn.com/%E5%86%8D%E9%AA%8C%E8%AF%81%E5%91%BD%E4%B8%AD%E4%B8%8E%E6%9C%AA%E5%91%BD%E4%B8%AD.png" alt="缓存再验证命中与未命中"></p>
+<p>通过在请求首部添加”If-Modified-Since”字段，可以进行再验证。再验证的结果有三种可能：</p>
+<ul>
+<li>再验证命中：即缓存中的副本与服务器中的文档依然相同，服务器返回<strong>304 Not Modified</strong>，表示服务器对象未被更改</li>
+<li>再验证未命中：即服务器上的文档发生了变动，服务器返回完整的<strong>200 OK</strong>响应，表示服务器对象已与缓存对象不同，重新从服务器获取对象</li>
+<li>对象被删除：服务器返回一个<strong>404 Not Found</strong>响应，表示服务器上该对象已被删除</li>
+</ul>
+<p>下面对缓存机制进行详细说明</p>
+<h2 id="缓存机制"><a href="#缓存机制" class="headerlink" title="缓存机制"></a>缓存机制</h2><h3 id="过程一"><a href="#过程一" class="headerlink" title="过程一"></a>过程一</h3><p>客户端发送一个GET请求到缓存，并判断缓存中是否存在所请求文件的副本。</p>
+<hr>
+<p>=== 有，则进入 -&gt; <a href="#过程五">过程五</a> ===</p>
+<p>=== 没有，则进入 -&gt; <a href="#过程二">过程二</a> ===</p>
+<h3 id="过程二"><a href="#过程二" class="headerlink" title="过程二"></a>过程二</h3><p>当前缓存中没有所请求文件的副本，则将请求转发到服务器。</p>
+<hr>
+<p>=== 进入 -&gt; <a href="#过程三">过程三</a> ===</p>
+<h3 id="过程三"><a href="#过程三" class="headerlink" title="过程三"></a>过程三</h3><p>服务器收到请求，将完整的请求内容包含在响应里。</p>
+<p>通过特殊的HTTP<strong>Cache-Control</strong>首部和<strong>Expires</strong>首部，HTTP让服务器向每个文档附加了一个”过期时间”，并将文档存入缓存当中。在文档过期之前，缓存可以任意频率使用这些副本，而无需与服务器联系(除非请求中有限制)。</p>
+<p><img src="http://om38qdwes.bkt.clouddn.com/cache-control.png" alt="cache-control"></p>
+<hr>
+<p>=== 进入 -&gt; <a href="#过程四">过程四</a> ===</p>
+<h3 id="过程四"><a href="#过程四" class="headerlink" title="过程四"></a>过程四</h3><p>缓存最后将文档提供给客户端</p>
+<h3 id="过程五"><a href="#过程五" class="headerlink" title="过程五"></a>过程五</h3><p>检测缓存中对应文件的过期时间，判断文档是否”新鲜”</p>
+<hr>
+<p>=== 新鲜，则进入 -&gt; <a href="#过程六">过程六</a> ===</p>
+<p>=== 不新鲜，则进入 -&gt; <a href="#过程七">过程七</a> ===</p>
+<h3 id="过程六"><a href="#过程六" class="headerlink" title="过程六"></a>过程六</h3><p>直接将缓存中的文件提供给客户端</p>
+<h3 id="过程七"><a href="#过程七" class="headerlink" title="过程七"></a>过程七</h3><p>用条件方法进行再验证：缓存向原始服务器发送一个”条件GET”</p>
+<p>HTTP定义了5个条件请求首部。</p>
+<ul>
+<li>If-Modified-Since</li>
+<li>If-Unmodified-Since</li>
+<li>If-Match</li>
+<li>If-None-Match</li>
+<li>If-Range</li>
+</ul>
+<h3 id="过程八"><a href="#过程八" class="headerlink" title="过程八"></a>过程八</h3><h3 id="过程九"><a href="#过程九" class="headerlink" title="过程九"></a>过程九</h3><h3 id="过程十"><a href="#过程十" class="headerlink" title="过程十"></a>过程十</h3><h3 id="过程十一"><a href="#过程十一" class="headerlink" title="过程十一"></a>过程十一</h3>
       
     </div>
 
@@ -590,7 +636,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#绪论"><span class="nav-number">1.</span> <span class="nav-text">绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用缓存的好处"><span class="nav-number">1.1.</span> <span class="nav-text">使用缓存的好处</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命中的和未命中的"><span class="nav-number">2.</span> <span class="nav-text">命中的和未命中的</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#绪论"><span class="nav-number">1.</span> <span class="nav-text">绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用缓存的好处"><span class="nav-number">1.1.</span> <span class="nav-text">使用缓存的好处</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用缓存时可能会出现的几种情况"><span class="nav-number">2.</span> <span class="nav-text">应用缓存时可能会出现的几种情况</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#命中的和未命中的"><span class="nav-number">2.1.</span> <span class="nav-text">命中的和未命中的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存再验证命中与缓存再验证未命中"><span class="nav-number">2.2.</span> <span class="nav-text">缓存再验证命中与缓存再验证未命中</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存机制"><span class="nav-number">3.</span> <span class="nav-text">缓存机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#过程一"><span class="nav-number">3.1.</span> <span class="nav-text">过程一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程二"><span class="nav-number">3.2.</span> <span class="nav-text">过程二</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程三"><span class="nav-number">3.3.</span> <span class="nav-text">过程三</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程四"><span class="nav-number">3.4.</span> <span class="nav-text">过程四</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程五"><span class="nav-number">3.5.</span> <span class="nav-text">过程五</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程六"><span class="nav-number">3.6.</span> <span class="nav-text">过程六</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程七"><span class="nav-number">3.7.</span> <span class="nav-text">过程七</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程八"><span class="nav-number">3.8.</span> <span class="nav-text">过程八</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程九"><span class="nav-number">3.9.</span> <span class="nav-text">过程九</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程十"><span class="nav-number">3.10.</span> <span class="nav-text">过程十</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程十一"><span class="nav-number">3.11.</span> <span class="nav-text">过程十一</span></a></li></ol></li></ol></div>
             
 
           </div>
