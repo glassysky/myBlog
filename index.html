@@ -380,23 +380,22 @@
 </ul>
 <p>下面对缓存机制进行详细说明</p>
 <h2 id="缓存机制"><a href="#缓存机制" class="headerlink" title="缓存机制"></a>缓存机制</h2><h3 id="过程一"><a href="#过程一" class="headerlink" title="过程一"></a>过程一</h3><p>客户端发送一个GET请求到缓存，并判断缓存中是否存在所请求文件的副本。</p>
-<hr>
 <p>=== 有，则进入 -&gt; <a href="#过程五">过程五</a> ===</p>
 <p>=== 没有，则进入 -&gt; <a href="#过程二">过程二</a> ===</p>
 <h3 id="过程二"><a href="#过程二" class="headerlink" title="过程二"></a>过程二</h3><p>当前缓存中没有所请求文件的副本，则将请求转发到服务器。</p>
-<hr>
 <p>=== 进入 -&gt; <a href="#过程三">过程三</a> ===</p>
 <h3 id="过程三"><a href="#过程三" class="headerlink" title="过程三"></a>过程三</h3><p>服务器收到请求，将完整的请求内容包含在响应里。</p>
 <p>通过特殊的HTTP<strong>Cache-Control</strong>首部和<strong>Expires</strong>首部，HTTP让服务器向每个文档附加了一个”过期时间”，并将文档存入缓存当中。在文档过期之前，缓存可以任意频率使用这些副本，而无需与服务器联系(除非请求中有限制)。</p>
+<p>同时，响应头还包括<strong>Last-Modified</strong>首部和<strong>Etag</strong>首部。这两个首部表示此时请求的文件最新一次修改是什么时候（Last-Modified:&lt; date &gt;）和当前的标签是什么（Etag:&lt; tag &gt;）。</p>
 <p><img src="http://om38qdwes.bkt.clouddn.com/cache-control.png" alt="cache-control"></p>
-<hr>
 <p>=== 进入 -&gt; <a href="#过程四">过程四</a> ===</p>
-<h3 id="过程四"><a href="#过程四" class="headerlink" title="过程四"></a>过程四</h3><p>缓存最后将文档提供给客户端</p>
+<h3 id="过程四"><a href="#过程四" class="headerlink" title="过程四"></a>过程四</h3><p>缓存最后将收到的文档提供给客户端</p>
+<p>=== OVER ===</p>
 <h3 id="过程五"><a href="#过程五" class="headerlink" title="过程五"></a>过程五</h3><p>检测缓存中对应文件的过期时间，判断文档是否”新鲜”</p>
-<hr>
 <p>=== 新鲜，则进入 -&gt; <a href="#过程六">过程六</a> ===</p>
 <p>=== 不新鲜，则进入 -&gt; <a href="#过程七">过程七</a> ===</p>
 <h3 id="过程六"><a href="#过程六" class="headerlink" title="过程六"></a>过程六</h3><p>直接将缓存中的文件提供给客户端</p>
+<p>=== OVER ===</p>
 <h3 id="过程七"><a href="#过程七" class="headerlink" title="过程七"></a>过程七</h3><p>用条件方法进行再验证：缓存向原始服务器发送一个”条件GET”</p>
 <p>HTTP定义了5个条件请求首部。</p>
 <ul>
@@ -406,7 +405,28 @@
 <li>If-None-Match</li>
 <li>If-Range</li>
 </ul>
-<h3 id="过程八"><a href="#过程八" class="headerlink" title="过程八"></a>过程八</h3><h3 id="过程九"><a href="#过程九" class="headerlink" title="过程九"></a>过程九</h3><h3 id="过程十"><a href="#过程十" class="headerlink" title="过程十"></a>过程十</h3><h3 id="过程十一"><a href="#过程十一" class="headerlink" title="过程十一"></a>过程十一</h3>
+<p>其中最有用的是<strong>If-Modified-Since</strong>和<strong>If-None-Match</strong></p>
+<p>还记得上文提到的服务器响应中的<strong>Last-Modified</strong>首部和<strong>Etag</strong>首部吗？在发送”条件请求的时候”，请求首部中<strong>If-Modified-Since</strong>的值即为上次在响应中收到的<strong>Last-Modified</strong>的值，而<strong>If-None-Match</strong>的值即为上次收到的响应中<strong>Etag</strong>的值。</p>
+<p>举个例子来说明:</p>
+<p>假设”今天”是 2017年3月20日，在这一天，服务器上A文件最后的更新日期为 2017年3月18日 00:00。客户端在”今天”向服务器请求A文件，服务端返回内容的同时，在响应头添加了<strong>Last-Modified: 2017年3月18日 00:00</strong>（注：真正的日期格式应该是这种:<strong>Tue, 10 Jan 2017 16:05:44 GMT</strong>，这里为了方便进行了简写），客户端收到响应之后表示已经知道这个文件在服务端的最后更改日期是哪天了。下次客户端再发送条件请求的时候，就将<strong>If-Modified—Since</strong>设置为之前收到的<strong>Last-Modified</strong>首部的值。通过这种方式就能够检测距离上次请求到现在这一刻位置，所请求对象是否发生改变。</p>
+<p><strong>Etag</strong>和<strong>If-None-Match</strong>的使用方法也类似上述过程。</p>
+<p>=== 进入 -&gt; <a href="#过程八">过程八</a> ===</p>
+<h3 id="过程八"><a href="#过程八" class="headerlink" title="过程八"></a>过程八</h3><p>服务器将接收到的请求头中的<strong>If-Modified-Since</strong>和<strong>If-None-Match</strong>首部的值取出，并与服务器上对应请求的文档信息进行对比</p>
+<p>=== 条件为真，则表示文件已发生变动，进入 -&gt; <a href="#过程十一">过程十一</a> ===</p>
+<p>=== 条件为假，则表示文件没有变化，进入 -&gt; <a href="#过程九">过程九</a> ===</p>
+<h3 id="过程九"><a href="#过程九" class="headerlink" title="过程九"></a>过程九</h3><p>服务端返回 <strong>304 Not Modified</strong>，并且在响应头中加入新的<strong>Cache-Control</strong>和/或<strong>Expires</strong>首部，用来更新缓存上的”新鲜度信息”。</p>
+<p>=== 进入 -&gt; <a href="#过程十">过程十</a> ===</p>
+<h3 id="过程十"><a href="#过程十" class="headerlink" title="过程十"></a>过程十</h3><p>将缓存中的文件提供给客户端</p>
+<p>=== OVER ===</p>
+<h3 id="过程十一"><a href="#过程十一" class="headerlink" title="过程十一"></a>过程十一</h3><p>向服务端请求更新后的文件</p>
+<p>=== 进入 -&gt; <a href="#过程三">过程三</a> ===</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a>Cache-Control</h3><p>该首部可以设置的值：</p>
+<p>max-age=XXXX（设置相对秒数，即还有XXXX秒文件变为”不新鲜”）<br>s-maxage=XXXX（仅适用于共有缓存）<br>no-store（禁止缓存对响应进行复制）<br>no-cache（响应可以存在缓存中，但是每次都要进行再验证）</p>
+<h3 id="Expires-和-Cache-Control"><a href="#Expires-和-Cache-Control" class="headerlink" title="Expires 和 Cache-Control"></a>Expires 和 Cache-Control</h3><p>Expirese使用<strong>绝对日期</strong>，但由于许多服务器时钟都不同步，因此不建议使用</p>
+<p>而<strong>Cache-Control</strong>则使用相对时间</p>
+<h3 id="If-Modified-Since-和-If-None-Match"><a href="#If-Modified-Since-和-If-None-Match" class="headerlink" title="If-Modified-Since 和 If-None-Match"></a>If-Modified-Since 和 If-None-Match</h3><p>当请求中同时存在<strong>If-Modified-Since</strong> 和 <strong>If-None-Match</strong>两种首部，则只有当两者条件都为真的时候，服务器才返回<strong>304 Not Modified</strong></p>
+<p>如叙述有错误请指正，转载请注明，谢谢！</p>
+
           
         
       
