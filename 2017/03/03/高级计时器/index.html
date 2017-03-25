@@ -102,7 +102,7 @@ JavaScript进程线可以想象JavaScript在一条时间轴上运行。
 <meta property="og:image" content="https://github.com/glassysky/blog-demo/blob/master/public/timers-demo/src/image/time-line.jpg?raw=true">
 <meta property="og:image" content="https://github.com/glassysky/blog-demo/blob/master/public/timers-demo/src/image/timer2.jpg?raw=true">
 <meta property="og:image" content="https://github.com/glassysky/blog-demo/blob/master/public/timers-demo/src/image/timer3.jpg?raw=true">
-<meta property="og:updated_time" content="2017-03-08T02:46:24.000Z">
+<meta property="og:updated_time" content="2017-03-25T00:42:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高级计时器">
 <meta name="twitter:description" content="概念JavaScript的定时器不是线程，JavaScript是运行于单线程的环境中的，而定时器仅仅只是计划代码在未来的某个时间执行。
@@ -392,12 +392,12 @@ JavaScript进程线可以想象JavaScript在一条时间轴上运行。
 <li>多个定时器的代码执行之间的间隔可能会比预期小</li>
 </ul>
 <p><img src="https://github.com/glassysky/blog-demo/blob/master/public/timers-demo/src/image/timer3.jpg?raw=true" alt="重复定时器代码执行过程"></p>
-<p>第一个定时器在205ms处添加到队列，但是要直到过了300ms这一点才能执行，在执行这个定时器代码时，在405ms处又添加了一个定时器代码。在605ms处，第一个定时器代码还在运行，同时队列中已经有了一个定时器代码的实例，所以在这个时间点上的定时器代码不会被添加到队列中。结果5ms添加的定时器代码执行结束后，405ms时添加的定时器代码就立刻执行。</p>
+<p>第一个定时器在205ms处添加到队列，但是要直到过了300ms这一点才能执行，在执行这个定时器代码时，在405ms处又添加了一个定时器代码。在605ms处，第一个定时器代码还在运行，同时队列中已经有了一个定时器代码的实例，所以在这个时间点上的定时器代码不会被添加到队列中。结果5ms添加的定时器代码执行结束后，405ms时添加的定时器代码就立刻执行。(<strong>这里有些绕，可以自己画一画，帮助理解</strong>)</p>
 <h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>为了避免<code>setInterval</code>的这两个缺点，可以用链式<code>setTimeout</code>调用</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// 其他代码</span></div><div class="line">  setTimeout(<span class="built_in">arguments</span>.callee, interval);</div><div class="line">&#125;, interval);</div></pre></td></tr></table></figure>
 <p>这样在前一个定时器代码执行完成之前，都不会再向队列插入新的定时器代码</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>需要使用JavaScript的定时器按一定时间间隔执行一段程序时，最好使用setTimeout来模拟setInterval</p>
-<p>转载请注明出处 <a href="http://cthblog.cn/2017/03/03/%E9%AB%98%E7%BA%A7%E8%AE%A1%E6%97%B6%E5%99%A8/" target="_blank" rel="external">http://cthblog.cn/2017/03/03/%E9%AB%98%E7%BA%A7%E8%AE%A1%E6%97%B6%E5%99%A8/</a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>需要使用JavaScript的定时器严格按一定时间间隔执行一段程序时，最好使用setTimeout来模拟setInterval</p>
+<p>转载请注明出处</p>
 
       
     </div>
