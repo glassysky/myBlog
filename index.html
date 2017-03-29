@@ -260,6 +260,197 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://glassysky.github.io/2017/03/29/css-transition/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tianhao Cui">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端学习之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/29/css-transition/" itemprop="url">
+                  CSS 动画之——transition
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-29T12:29:44+08:00">
+                2017-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/29/css-transition/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/03/29/css-transition/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/03/29/css-transition/" class="leancloud_visitors" data-flag-title="CSS 动画之——transition">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="CSS-transitions"><a href="#CSS-transitions" class="headerlink" title="CSS transitions"></a>CSS transitions</h1><p>在改变CSS属性的时候，transitions提供给了开发者一共方式去控制动画的速度。</p>
+<p>通常来讲，属性改变所产生的影响是<strong>立刻生效</strong>的，举个例子：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.img</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.img</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">300px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>触发hover的时候，你将看到图片在瞬间被放大，这种突兀的变化会带来很差的用户体验。</p>
+<p>而使用CSS transitions就可以展现出变化过程中的<strong>过渡段</strong>。也就是说，transitions会将整个变化的过程展现出来，而不是简单的始态-&gt;末态。</p>
+<p>CSS transitions可以让开发者自己决定动画行为。包括动画属性、什么时间开始动画、动画持续时间以及动画的类型。</p>
+<h2 id="哪些CSS属性能够使用动画？"><a href="#哪些CSS属性能够使用动画？" class="headerlink" title="哪些CSS属性能够使用动画？"></a>哪些CSS属性能够使用动画？</h2><p>以下属性都可以使用动画</p>
+<p><img src="http://om38qdwes.bkt.clouddn.com/transition.png" alt="transition"></p>
+<p>上图中的可用属性集合可能会随着时间推移发生变化，开发者应该时刻关注最新的可用属性。</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties" target="_blank" rel="external">这里</a>可以看到最新的标准。</p>
+<h2 id="使用多个动画属性"><a href="#使用多个动画属性" class="headerlink" title="使用多个动画属性"></a>使用多个动画属性</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">    <span class="attribute">border-style</span>: solid;</div><div class="line">    <span class="attribute">border-width</span>: <span class="number">1px</span>;</div><div class="line">    <span class="attribute">display</span>: block;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#0000FF</span>;</div><div class="line">    <span class="attribute">-webkit-transition</span>: width <span class="number">2s</span>, height <span class="number">2s</span>, background-color <span class="number">2s</span>, -webkit-transform <span class="number">2s</span>;</div><div class="line">    <span class="attribute">transition</span>: width <span class="number">2s</span>, height <span class="number">2s</span>, background-color <span class="number">2s</span>, transform <span class="number">2s</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.box</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#FFCCCC</span>;</div><div class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">    <span class="attribute">-webkit-transform</span>: <span class="built_in">rotate</span>(180deg);</div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(180deg);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="用于定义transitions的CSS属性"><a href="#用于定义transitions的CSS属性" class="headerlink" title="用于定义transitions的CSS属性"></a>用于定义transitions的CSS属性</h2><p>可以看到上一个例子中，<strong>transition</strong>属性的值有一大堆，如果动画再复杂一些，这个值就会更长；为了保证程序的可读性，建议使用CSS属性对其进行定义。</p>
+<h3 id="transition-property"><a href="#transition-property" class="headerlink" title="transition-property"></a>transition-property</h3><p>指定需要应用transition的属性名称，只有被列出的这些属性在动画过程中是连续变化的，未列出的属性保持原来的行为。</p>
+<p>上面的例子可以写成如下形式：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">.box &#123;</div><div class="line">  ...</div><div class="line">  -webkit-transition-property: width, height, background-color, -webkit-transform;</div><div class="line">  transition-property: width, height, background-color, transform;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="transition-duration"><a href="#transition-duration" class="headerlink" title="transition-duration"></a>transition-duration</h3><p><strong>transiton-property</strong>只指出了需要应用动画的属性，接下来我们要使用<strong>transition-duration</strong>指定动画的过渡时间。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">.box &#123;</div><div class="line">  ...</div><div class="line">  -webkit-transition-property: width, height, background-color, -webkit-transform;</div><div class="line">  transition-property: width, height, background-color, transform;</div><div class="line">  &lt;!--new--&gt;</div><div class="line">  -webkit-transition-duration: 2s;</div><div class="line">  tansition-duration: 2s;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的程序表示所有属性的变换都经过2s时间，如果我们想要让不同的属性的变换持续时间不同呢？</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">transition-property</span>: width, height, background-color, transform;</div><div class="line">  <span class="attribute">tansition-duration</span>: <span class="number">2s</span>, <span class="number">1s</span>, <span class="number">3s</span>, <span class="number">5s</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样我们就定义了不同属性的不同持续时间。</p>
+<p>如果属性名和持续时间的数量的对应相等的，则属性名和持续时间是一一对应的关系，即上面的程序有如下的变换时间:</p>
+<ul>
+<li>width: 2s</li>
+<li>height: 1s</li>
+<li>background-color: 3s</li>
+<li>transform: 5s</li>
+</ul>
+<p>如果属性名和持续时间定义的个数不同，则按照如下规则</p>
+<p>如果属性名个数 &gt; 持续时间个数<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.box &#123;</div><div class="line">  transition-property: width, height, background-color, transform;</div><div class="line">  tansition-duration: 2s, 1s;</div><div class="line">  &lt;!--等同于--&gt;</div><div class="line">  transition-property: width, height, background-color, transform;</div><div class="line">  tansition-duration: 2s, 1s, 2s, 1s;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果属性名个数 &lt; 持续时间个数<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.box &#123;</div><div class="line">  transition-property: width, height, background-color, transform;</div><div class="line">  tansition-duration: 2s, 1s, 3s, 5s, 6s;</div><div class="line">  &lt;!--等同于--&gt;</div><div class="line">  transition-property: width, height, background-color, transform;</div><div class="line">  tansition-duration: 2s, 1s, 3s, 5s;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>总结一下就是时间个数少的进行重复，多的截取。</p>
+<h3 id="transition-timing-function"><a href="#transition-timing-function" class="headerlink" title="transition-timing-function"></a>transition-timing-function</h3><p>用贝塞尔曲线作为动画的过渡函数。它决定了变换的过程是怎样的，是<strong>快-慢-快</strong>或是<strong>慢-快-慢</strong>又或者是<strong>线性变换</strong>等等，通过设置不同的贝塞尔曲线，我们可以得到不同的过渡动画。它只改变转换的过程，但不影响变换最终的结果。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.box &#123;</div><div class="line">  transition-timing-function: ease;</div><div class="line">  transition-timing-function: linear;</div><div class="line">  transition-timing-function: step-end;</div><div class="line">  transition-timing-function: steps(4, end);</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>具体函数的说明见<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/single-transition-timing-function" target="_blank" rel="external">这篇文章</a></p>
+<h3 id="transition-delay"><a href="#transition-delay" class="headerlink" title="transition-delay"></a>transition-delay</h3><p>定义了从属性改变到变换开始之间的间隔时间。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">transition-delay</span>: <span class="number">0.5s</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="缩略写法"><a href="#缩略写法" class="headerlink" title="缩略写法"></a>缩略写法</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">transition</span>: &lt;property&gt; &lt;duration&gt; &lt;timing-function&gt; &lt;delay&gt;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="监听transitions的启动和完成"><a href="#监听transitions的启动和完成" class="headerlink" title="监听transitions的启动和完成"></a>监听transitions的启动和完成</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">el.addEventListener(<span class="string">"transitionstart"</span>, func1, <span class="literal">true</span>);</div><div class="line">el.addEventListener(<span class="string">"transitionrun"</span>, func2, <span class="literal">true</span>);</div><div class="line">el.addEventListener(<span class="string">"transitionend"</span>, func3, <span class="literal">true</span>);</div></pre></td></tr></table></figure>
+<p><strong>TransitionEvent</strong>对象除了常规<strong>Event</strong>对象所包含的属性之外，还包括了两个属性：</p>
+<ul>
+<li>propertyName</li>
+<li>elapsedTime</li>
+</ul>
+<h3 id="propertyName"><a href="#propertyName" class="headerlink" title="propertyName"></a>propertyName</h3><p>表示触发当前事件的属性名</p>
+<h3 id="elapsedTime"><a href="#elapsedTime" class="headerlink" title="elapsedTime"></a>elapsedTime</h3><p>一个用来表示转换触发了多长时间的浮点数</p>
+<p>这是一个<a href="http://jsfiddle.net/9h261pzo/291/" target="_blank" rel="external">简单的例子</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions" target="_blank" rel="external">参考文章</a></p>
+<p>转载请注明出处</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://glassysky.github.io/2017/03/25/http-cache/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1032,210 +1223,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://glassysky.github.io/2017/03/12/4-javascript-design-patterns-you-should-know/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tianhao Cui">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端学习之路">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/12/4-javascript-design-patterns-you-should-know/" itemprop="url">
-                  你应该知道的4种JavaScript设计模式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-12T15:39:51+08:00">
-                2017-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/12/4-javascript-design-patterns-you-should-know/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/03/12/4-javascript-design-patterns-you-should-know/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/03/12/4-javascript-design-patterns-you-should-know/" class="leancloud_visitors" data-flag-title="你应该知道的4种JavaScript设计模式">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>每位开发者都努力写出可维护的、易读的、可复用的代码。随着应用变得越来越大，代码的结构也越来越重要。设计模式验证了解决这个挑战的重点——在特定环境中，对同类事物提供相同的组织结构。</p>
-<p>JavaScript web开发者们在开发应用的时候经常会不知不觉的与设计模式打交道。</p>
-<p>尽管在某些环境中使用了不同的设计模式列表，JavaScript的开发者们通常比其他开发者更常用到一些设计模式。</p>
-<p>在这篇文章里，我想通过讨论这些常见的设计模式来提升你的编程能力，并且深入到JavaScript的结构当中去。</p>
-<p>要讨论的设计模式包括如下几种：</p>
-<ul>
-<li>模块模式(Module)</li>
-<li>原型模式(Prototype)</li>
-<li>观察者模式(Observer)</li>
-<li>单例模式(Singleton)</li>
-</ul>
-<p>每种模式都由几个属性构成，然而，我将会着重强调如下几个关键点：</p>
-<ol>
-<li>Context: 应该在什么环境下使用模式</li>
-<li>Problem: 我们要通过模式去解决什么问题</li>
-<li>Solution: 如果用模式去解决我们提出的问题</li>
-<li>Implementation: 如何实现</li>
-</ol>
-<h2 id="模块设计模式-Module-Design-Pattern"><a href="#模块设计模式-Module-Design-Pattern" class="headerlink" title="模块设计模式(Module Design Pattern)"></a>模块设计模式(Module Design Pattern)</h2><p>JavaScript 模块是最被经常使用的设计模式，它可以使特定部分的代码与其他部分相独立。其提供的松散耦合支撑了良好的代码结构。</p>
-<p>对于那些熟悉面向对象语言的开发者额，模块就是JavaScript中的”类”。类的好处之一就是”封装”(encapsulation)——避免自身的状态和行为被其他”类”所获取。模块模式允许公有和私有(加上更少知道的受保护的和特权)访问级别。 </p>
-<p>模块应该是立即执行函数(IIFE)从而允许对私有作用域(即被闭包保护的变量和方法)的访问。看起来是这样的:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">// declare private variables and/or functions</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      <span class="comment">// declare public variables and/or functions</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
-<p>这里，在返回我们想要返回的对象之前，实例化了私有变量和方法。闭包之外的代码不能获取这些私有变量，因为他们不在同一个作用域中。来看一个更具体的实现方法。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> HTMLChanger = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> contents = <span class="string">'contents'</span></div><div class="line"></div><div class="line">  <span class="keyword">var</span> changeHTML = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> element = <span class="built_in">document</span>.getElementById(<span class="string">'attribute-to-change'</span>);</div><div class="line">    element.innerHTML = contents;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">callChangeHTML</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      changeHTML();</div><div class="line">      <span class="built_in">console</span>.log(contents);</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">&#125;)();</div><div class="line"></div><div class="line">HTMLChanger.callChangeHTML();       <span class="comment">// Outputs: 'contents'</span></div><div class="line"><span class="built_in">console</span>.log(HTMLChanger.contents);  <span class="comment">// undefined</span></div></pre></td></tr></table></figure>
-<p>注意到<code>callChangeHTML</code>绑定到了返回的对象向上，并且能够在<code>HTMLChanger</code>命名空间内被引用。然而，在模块之外，内容就不能被引用了。</p>
-<h3 id="揭示模块模式-Revealing-Module-Pattern"><a href="#揭示模块模式-Revealing-Module-Pattern" class="headerlink" title="揭示模块模式(Revealing Module Pattern)"></a>揭示模块模式(Revealing Module Pattern)</h3><p><code>揭示模块模式</code>是模块模式的一个变种。其目的是在保有封装的前提下，在返回的对象字面量中暴露特定的变量和方法。像下面这样去直接实现:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Exposer = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> privateVariable = <span class="number">10</span>;</div><div class="line"></div><div class="line">  <span class="keyword">var</span> privateMethod = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'Inside a private method!'</span>);</div><div class="line">    privateVariable++;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">var</span> methodToExpose = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'This is a method I want to expose!'</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">var</span> otherMethodIWantToExpose = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    privateMethod();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">      <span class="attr">first</span>: methodToExpose,</div><div class="line">      <span class="attr">second</span>: otherMethodIWantToExpose</div><div class="line">  &#125;;</div><div class="line">&#125;)();</div><div class="line"></div><div class="line">Exposer.first();        <span class="comment">// Output: This is a method I want to expose!</span></div><div class="line">Exposer.second();       <span class="comment">// Output: Inside a private method!</span></div><div class="line">Exposer.methodToExpose; <span class="comment">// undefined</span></div></pre></td></tr></table></figure>
-<p>尽管这看起来更加清晰了，但是仍有一个显著的缺点，就是不能够引用私有的方法。这可能会给单元测试带来挑战。同样的，公共行为也是不可覆盖的。</p>
-<h2 id="原型设计模式-Prototype-Design-Pattern"><a href="#原型设计模式-Prototype-Design-Pattern" class="headerlink" title="原型设计模式(Prototype Design Pattern)"></a>原型设计模式(Prototype Design Pattern)</h2><p>任何JavaScript开发者都看到了关键字<code>prototype</code>，他们被原型继承所困扰，或者在代码中实现原型。原型设计模式依赖于JavaScript原型继承。原型模型主要被用来在性能密集的条件下创建对象。</p>
-<p>通过传递原始对象的克隆(浅克隆)来创建对象。原型模式的一个使用案例是执行一个广泛的数据库操作去创建一个对象，被用作应用的其他部分。如果另一个进程需要使用这个对象，它可以直接去克隆之前的对象而不需要再执行一遍整个数据库操作。</p>
-<p>为了克隆一个对象，构造器必须去实例化第一个对象。然后通过使用关键字<code>prototype</code>，变量和方法被绑定到对象的结构中。让我们看一个基本的例子:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> TeslaModelS = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.numWheels    = <span class="number">4</span>;</div><div class="line">  <span class="keyword">this</span>.manufacturer = <span class="string">'Tesla'</span>;</div><div class="line">  <span class="keyword">this</span>.make         = <span class="string">'Model S'</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">TeslaModelS.prototype.go = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// Rotate wheels</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">TeslaModelS.prototype.stop = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// Apply brake pads</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>构造函数允许创建一个<code>TeslaModelS</code>对象。在创建一个<code>TeslaModelS</code>对象的时候，它会在构造器中保持初始状态。另外，维护<code>go</code>和<code>stop</code>方法是很容易的，因为我们是在<code>prototype</code>中声明的他们。一个同样用来在原型上扩展函数的方法如下:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> TeslaModelS = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.numWheels    = <span class="number">4</span>;</div><div class="line">  <span class="keyword">this</span>.manufacturer = <span class="string">'Tesla'</span>;</div><div class="line">  <span class="keyword">this</span>.make         = <span class="string">'Model S'</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">TeslaModelS.prototype = &#123;</div><div class="line">  <span class="attr">go</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// Rotate wheels</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">stop</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// Apply brake pads</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="揭示原型模式-Revealing-prototype-pattern"><a href="#揭示原型模式-Revealing-prototype-pattern" class="headerlink" title="揭示原型模式(Revealing prototype pattern)"></a>揭示原型模式(Revealing prototype pattern)</h3><p>与模块模式相似，原型模式也有揭示的变体。揭示原型模式在它返回一个对象字面量的时候，提空了公有和私有成员的封装。</p>
-<p>在我们返回一个对象的时候，我们将会在原型对象前加一个<code>function</code>。通过扩展我们的上一个例子，我们能够选择我们在当前原型中希望暴露的内容，以保持其访问级别。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> TeslaModelS = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.numWheels    = <span class="number">4</span>;</div><div class="line">  <span class="keyword">this</span>.manufacturer = <span class="string">'Tesla'</span>;</div><div class="line">  <span class="keyword">this</span>.make         = <span class="string">'Model S'</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">TeslaModelS.prototype = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">var</span> go = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// Rotate wheels</span></div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  <span class="keyword">var</span> stop = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// Apply brake pads</span></div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">pressBrakePedal</span>: stop,</div><div class="line">    <span class="attr">pressGasPedal</span>: go</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;();</div></pre></td></tr></table></figure>
-<p>留意stop和go函数将在返回的对象中被屏蔽，由于在返回的对象作用域之外。因为JavaScript原生就支持对象的继承，因此不需要再重写底层细节了。</p>
-<h2 id="观察者设计模式"><a href="#观察者设计模式" class="headerlink" title="观察者设计模式"></a>观察者设计模式</h2><p>有很多次当我们的应用的一部分改变的时候，另一部分需要被更新。在AngularJS里面，如果<code>$scope</code>对象更新了，一个事件就能被触发，同时去提醒另一个部分。观察者模式就是对这种情况的合并——如果一个对象被更新，它会对依赖他的对象进行广播，告知它有变化发生了。</p>
-<p>另一个很好的例子就是MVC架构；当数据模型更新时，视图发生改变。其中一个好处就是从数据模型中将视图解耦出来，从而减少了依赖。</p>
-<p><img src="http://om38qdwes.bkt.clouddn.com/observer-pattern-UML.png" alt="Observer Design Pattern"></p>
-<p>正如UML图表所示，<code>subject</code>，<code>observer</code>和<code>concrete</code>对象都是必要的对象。<code>subject</code>包含了到<code>concrete observer</code>的引用，从而能够通知任何改变。<code>observer</code>对象是一个抽象的类，它允许实际的观察者实现通知方法。</p>
-<p>让我们看一个AngularJS的例子，其通过事件管理实现了观察者模式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Controller 1</span></div><div class="line">$scope.$on(<span class="string">'nameChanged'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event, args</span>) </span>&#123;</div><div class="line">    $scope.name = args.name;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line"><span class="comment">// Controller 2</span></div><div class="line">$scope.userNameChanged = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">    $scope.$emit(<span class="string">'nameChanged'</span>, &#123;<span class="attr">name</span>: name&#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>在观察者模式中，区分独立的对象或者<code>subject</code>是很重要的。</p>
-<p>值得一提的是，尽管观察者模式有很多优势，但是其中一个缺点就是当观察者的数量上升时，性能会有显著的下降。其中最恼人的观察者就是<code>watchers</code>。在AngularJS里，我们能够监视变量，函数和对象。<code>$$digest</code>循环运行并且在作用域对象更新时通知每一个监视器新的值。</p>
-<p>我们能够在JavaScript中创建我们自己的<code>Subject</code>和<code>Observer</code>。让我们看一下这是如何实现的:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Subject = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.observers = [];</div><div class="line">&#125;;</div><div class="line"></div><div class="line"></div><div class="line">Subject.prototype.subscribeObserver = <span class="function"><span class="keyword">function</span>(<span class="params">observer</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.observers.push(observer);</div><div class="line">&#125;;</div><div class="line">Subject.prototype.unsubscribeObserver = <span class="function"><span class="keyword">function</span>(<span class="params">observer</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> index = <span class="keyword">this</span>.observers.indexOf(observer);</div><div class="line">  <span class="keyword">if</span>(index &gt; <span class="number">-1</span>) &#123;</div><div class="line">    <span class="keyword">this</span>.observers.splice(index, <span class="number">1</span>);</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line">Subject.prototype.notifyObserver = <span class="function"><span class="keyword">function</span>(<span class="params">observer</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> index = <span class="keyword">this</span>.observers.indexOf(observer);</div><div class="line">  <span class="keyword">if</span>(index &gt; <span class="number">-1</span>) &#123;</div><div class="line">    <span class="keyword">this</span>.observers[index].notify(index);</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line">Subject.prototype.notifyAllObservers = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.observers.length; i++)&#123;</div><div class="line">    <span class="keyword">this</span>.observers[i].notify(i);</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> Observer = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">notify</span>: <span class="function"><span class="keyword">function</span>(<span class="params">index</span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">"Observer "</span> + index + <span class="string">" is notified!"</span>);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> subject = <span class="keyword">new</span> Subject();</div><div class="line"></div><div class="line"><span class="keyword">var</span> observer0 = <span class="keyword">new</span> Observer();</div><div class="line"><span class="keyword">var</span> observer1 = <span class="keyword">new</span> Observer();</div><div class="line"><span class="keyword">var</span> observer2 = <span class="keyword">new</span> Observer();</div><div class="line"><span class="keyword">var</span> observer3 = <span class="keyword">new</span> Observer();</div><div class="line"></div><div class="line">subject.subscribeObserver(observer0);</div><div class="line">subject.subscribeObserver(observer1);</div><div class="line">subject.subscribeObserver(observer2);</div><div class="line">subject.subscribeObserver(observer3);</div><div class="line"></div><div class="line">subject.notifyObserver(observer2); <span class="comment">// Observer 2 is notified!</span></div><div class="line"></div><div class="line">subject.notifyAllObservers();</div><div class="line"><span class="comment">// Observer 0 is notified!</span></div><div class="line"><span class="comment">// Observer 1 is notified!</span></div><div class="line"><span class="comment">// Observer 2 is notified!</span></div><div class="line"><span class="comment">// Observer 3 is notified!</span></div></pre></td></tr></table></figure>
-<h3 id="发布-订阅"><a href="#发布-订阅" class="headerlink" title="发布/订阅"></a>发布/订阅</h3><p>然而，发布/订阅模式使用了一种主题/事件的渠道，这个渠道架设在希望接收到通知的对象(订阅者)和触发事件的对象(发布者)之间。这个事件系统允许代码定义特定的应用事件，并且能够传递包含着订阅者所需的值的定制化参数。其中的想法就是避免订阅者和发布者之间的依赖。</p>
-<p>这与观察者模式有所区别，因为任何一个订阅者都实现了一个适当的事件处理机制去注册和接收来自发布者的主题通知广播。</p>
-<p>许多开发者选择将发布/订阅模式与观察者模式相结合，尽管两者存在差异。订阅器在发布/订阅模式中通过消息媒介被通知，但是观察者通过实现一个与subject类似的处理程序而获得通知。</p>
-<p>在AngularJS里，一个订阅者<code>订阅</code>一个事件需要使用<code>$on(&#39;event&#39;, callback)</code>，发布者<code>发布</code>一个事件需要使用<code>$emit(&#39;event&#39;,args)</code>或者<code>$broadcast(&#39;event&#39;, args)</code>。</p>
-<h2 id="单例模式-Singleton"><a href="#单例模式-Singleton" class="headerlink" title="单例模式(Singleton)"></a>单例模式(Singleton)</h2><p>单例模式只允许单次实例化，但是同一个对象可以有许多实例。单例模式阻止了客户端创建多个实例，在第一个对象被创建之后，他将会返回它自己的实例。</p>
-<p>对于大多数之前还没有使用过单例模式的人来说，找到单例模式的用例是不容易的。一个例子是使用一个办公室的打印机。如果有十个人在办公室里，并且他们都要用一台打印机，十台电脑共享了打印机(实例)。通过共享一个打印机，他们分享了相同的资源。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> printer = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">var</span> printerInstance;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">create</span> (<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">print</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="comment">// underlying printer mechanics</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">turnOn</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="comment">// warm up</span></div><div class="line">      <span class="comment">// check for paper</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      <span class="comment">// public + private states and behaviors</span></div><div class="line">      print: print,</div><div class="line">      <span class="attr">turnOn</span>: turnOn</div><div class="line">    &#125;;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">getInstance</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">if</span>(!printerInstance) &#123;</div><div class="line">        printerInstance = create();</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">return</span> printerInstance;</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">Singleton</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(!printerInstance) &#123;</div><div class="line">      printerInstance = intialize();</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
-<p><code>create</code>方法是私有的，因为我们不想让客户端去访问他，然而，<code>getInstance</code>方法是公开的。每一个办公室的员工都能通过与<code>getInstance</code>方法进行交互从而生成一个打印机的实例。向下面这样:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> officePrinter = printer.getInstance();</div></pre></td></tr></table></figure>
-<p>在AngularJS里面，单例是很普遍的，最值得注意的是services，factories和providers。因为他们都保留了状态并且提供了资源的获取，创建两个实例破坏了service/factory/provider共享的关键。</p>
-<p>当超过一个线程想要获取相同资源的时候，竞争这种情况就会发生在多线程程序里。单例模式很容易受到竞争的影响，因此如果没有实例在一开始被初始化，两个线程可能就会创建两个对象而不是返回实例。这违背了单例模式的设计原则。因此，当开发者在多线程应用中实现单例时，必须要保证同步。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>设计模式通常在更大的应用中被使用，然而要去理解哪一个比另一个更有优势，需要从实践中得到。</p>
-<p>在构建任何应用之前，你应该全盘思考每一个行为以及他们如何与另一个进行交互。在回顾<code>Module</code>，<code>Protoytpe</code>，<code>Observer</code>和<code>Singleton</code>设计模式之后，你应该能够认识这些模式并且广泛应用他们。</p>
-<p><a href="https://scotch.io/bar-talk/4-javascript-design-patterns-you-should-know" target="_blank" rel="external">原文地址</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1285,7 +1272,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

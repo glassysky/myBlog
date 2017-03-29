@@ -1,0 +1,951 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="CSS transitions在改变CSS属性的时候，transitions提供给了开发者一共方式去控制动画的速度。
+通常来讲，属性改变所产生的影响是立刻生效的，举个例子：
+1234567.img &amp;#123;  width: 200px;&amp;#125;.img:hover &amp;#123;  width: 300px;&amp;#125;
+触发hover的时候，你将看到图片在瞬间被放大，这种突兀的变化会带来很">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS 动画之——transition">
+<meta property="og:url" content="http://glassysky.github.io/2017/03/29/css-transition/index.html">
+<meta property="og:site_name" content="前端学习之路">
+<meta property="og:description" content="CSS transitions在改变CSS属性的时候，transitions提供给了开发者一共方式去控制动画的速度。
+通常来讲，属性改变所产生的影响是立刻生效的，举个例子：
+1234567.img &amp;#123;  width: 200px;&amp;#125;.img:hover &amp;#123;  width: 300px;&amp;#125;
+触发hover的时候，你将看到图片在瞬间被放大，这种突兀的变化会带来很">
+<meta property="og:image" content="http://om38qdwes.bkt.clouddn.com/transition.png">
+<meta property="og:updated_time" content="2017-03-29T15:36:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS 动画之——transition">
+<meta name="twitter:description" content="CSS transitions在改变CSS属性的时候，transitions提供给了开发者一共方式去控制动画的速度。
+通常来讲，属性改变所产生的影响是立刻生效的，举个例子：
+1234567.img &amp;#123;  width: 200px;&amp;#125;.img:hover &amp;#123;  width: 300px;&amp;#125;
+触发hover的时候，你将看到图片在瞬间被放大，这种突兀的变化会带来很">
+<meta name="twitter:image" content="http://om38qdwes.bkt.clouddn.com/transition.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://glassysky.github.io/2017/03/29/css-transition/"/>
+
+
+
+
+
+  <title> CSS 动画之——transition | 前端学习之路 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?19e25f24e7a22e21d7d506b65abb0cda";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">前端学习之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://glassysky.github.io/2017/03/29/css-transition/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tianhao Cui">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端学习之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CSS 动画之——transition
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-29T12:29:44+08:00">
+                2017-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/29/css-transition/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/03/29/css-transition/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/03/29/css-transition/" class="leancloud_visitors" data-flag-title="CSS 动画之——transition">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="CSS-transitions"><a href="#CSS-transitions" class="headerlink" title="CSS transitions"></a>CSS transitions</h1><p>在改变CSS属性的时候，transitions提供给了开发者一共方式去控制动画的速度。</p>
+<p>通常来讲，属性改变所产生的影响是<strong>立刻生效</strong>的，举个例子：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.img</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.img</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">300px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>触发hover的时候，你将看到图片在瞬间被放大，这种突兀的变化会带来很差的用户体验。</p>
+<p>而使用CSS transitions就可以展现出变化过程中的<strong>过渡段</strong>。也就是说，transitions会将整个变化的过程展现出来，而不是简单的始态-&gt;末态。</p>
+<p>CSS transitions可以让开发者自己决定动画行为。包括动画属性、什么时间开始动画、动画持续时间以及动画的类型。</p>
+<h2 id="哪些CSS属性能够使用动画？"><a href="#哪些CSS属性能够使用动画？" class="headerlink" title="哪些CSS属性能够使用动画？"></a>哪些CSS属性能够使用动画？</h2><p>以下属性都可以使用动画</p>
+<p><img src="http://om38qdwes.bkt.clouddn.com/transition.png" alt="transition"></p>
+<p>上图中的可用属性集合可能会随着时间推移发生变化，开发者应该时刻关注最新的可用属性。</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties" target="_blank" rel="external">这里</a>可以看到最新的标准。</p>
+<h2 id="使用多个动画属性"><a href="#使用多个动画属性" class="headerlink" title="使用多个动画属性"></a>使用多个动画属性</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">    <span class="attribute">border-style</span>: solid;</div><div class="line">    <span class="attribute">border-width</span>: <span class="number">1px</span>;</div><div class="line">    <span class="attribute">display</span>: block;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#0000FF</span>;</div><div class="line">    <span class="attribute">-webkit-transition</span>: width <span class="number">2s</span>, height <span class="number">2s</span>, background-color <span class="number">2s</span>, -webkit-transform <span class="number">2s</span>;</div><div class="line">    <span class="attribute">transition</span>: width <span class="number">2s</span>, height <span class="number">2s</span>, background-color <span class="number">2s</span>, transform <span class="number">2s</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.box</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#FFCCCC</span>;</div><div class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">    <span class="attribute">-webkit-transform</span>: <span class="built_in">rotate</span>(180deg);</div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(180deg);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="用于定义transitions的CSS属性"><a href="#用于定义transitions的CSS属性" class="headerlink" title="用于定义transitions的CSS属性"></a>用于定义transitions的CSS属性</h2><p>可以看到上一个例子中，<strong>transition</strong>属性的值有一大堆，如果动画再复杂一些，这个值就会更长；为了保证程序的可读性，建议使用CSS属性对其进行定义。</p>
+<h3 id="transition-property"><a href="#transition-property" class="headerlink" title="transition-property"></a>transition-property</h3><p>指定需要应用transition的属性名称，只有被列出的这些属性在动画过程中是连续变化的，未列出的属性保持原来的行为。</p>
+<p>上面的例子可以写成如下形式：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">.box &#123;</div><div class="line">  ...</div><div class="line">  -webkit-transition-property: width, height, background-color, -webkit-transform;</div><div class="line">  transition-property: width, height, background-color, transform;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="transition-duration"><a href="#transition-duration" class="headerlink" title="transition-duration"></a>transition-duration</h3><p><strong>transiton-property</strong>只指出了需要应用动画的属性，接下来我们要使用<strong>transition-duration</strong>指定动画的过渡时间。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">.box &#123;</div><div class="line">  ...</div><div class="line">  -webkit-transition-property: width, height, background-color, -webkit-transform;</div><div class="line">  transition-property: width, height, background-color, transform;</div><div class="line">  &lt;!--new--&gt;</div><div class="line">  -webkit-transition-duration: 2s;</div><div class="line">  tansition-duration: 2s;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的程序表示所有属性的变换都经过2s时间，如果我们想要让不同的属性的变换持续时间不同呢？</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">transition-property</span>: width, height, background-color, transform;</div><div class="line">  <span class="attribute">tansition-duration</span>: <span class="number">2s</span>, <span class="number">1s</span>, <span class="number">3s</span>, <span class="number">5s</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样我们就定义了不同属性的不同持续时间。</p>
+<p>如果属性名和持续时间的数量的对应相等的，则属性名和持续时间是一一对应的关系，即上面的程序有如下的变换时间:</p>
+<ul>
+<li>width: 2s</li>
+<li>height: 1s</li>
+<li>background-color: 3s</li>
+<li>transform: 5s</li>
+</ul>
+<p>如果属性名和持续时间定义的个数不同，则按照如下规则</p>
+<p>如果属性名个数 &gt; 持续时间个数<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.box &#123;</div><div class="line">  transition-property: width, height, background-color, transform;</div><div class="line">  tansition-duration: 2s, 1s;</div><div class="line">  &lt;!--等同于--&gt;</div><div class="line">  transition-property: width, height, background-color, transform;</div><div class="line">  tansition-duration: 2s, 1s, 2s, 1s;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果属性名个数 &lt; 持续时间个数<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.box &#123;</div><div class="line">  transition-property: width, height, background-color, transform;</div><div class="line">  tansition-duration: 2s, 1s, 3s, 5s, 6s;</div><div class="line">  &lt;!--等同于--&gt;</div><div class="line">  transition-property: width, height, background-color, transform;</div><div class="line">  tansition-duration: 2s, 1s, 3s, 5s;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>总结一下就是时间个数少的进行重复，多的截取。</p>
+<h3 id="transition-timing-function"><a href="#transition-timing-function" class="headerlink" title="transition-timing-function"></a>transition-timing-function</h3><p>用贝塞尔曲线作为动画的过渡函数。它决定了变换的过程是怎样的，是<strong>快-慢-快</strong>或是<strong>慢-快-慢</strong>又或者是<strong>线性变换</strong>等等，通过设置不同的贝塞尔曲线，我们可以得到不同的过渡动画。它只改变转换的过程，但不影响变换最终的结果。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.box &#123;</div><div class="line">  transition-timing-function: ease;</div><div class="line">  transition-timing-function: linear;</div><div class="line">  transition-timing-function: step-end;</div><div class="line">  transition-timing-function: steps(4, end);</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>具体函数的说明见<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/single-transition-timing-function" target="_blank" rel="external">这篇文章</a></p>
+<h3 id="transition-delay"><a href="#transition-delay" class="headerlink" title="transition-delay"></a>transition-delay</h3><p>定义了从属性改变到变换开始之间的间隔时间。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">transition-delay</span>: <span class="number">0.5s</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="缩略写法"><a href="#缩略写法" class="headerlink" title="缩略写法"></a>缩略写法</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">transition</span>: &lt;property&gt; &lt;duration&gt; &lt;timing-function&gt; &lt;delay&gt;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="监听transitions的启动和完成"><a href="#监听transitions的启动和完成" class="headerlink" title="监听transitions的启动和完成"></a>监听transitions的启动和完成</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">el.addEventListener(<span class="string">"transitionstart"</span>, func1, <span class="literal">true</span>);</div><div class="line">el.addEventListener(<span class="string">"transitionrun"</span>, func2, <span class="literal">true</span>);</div><div class="line">el.addEventListener(<span class="string">"transitionend"</span>, func3, <span class="literal">true</span>);</div></pre></td></tr></table></figure>
+<p><strong>TransitionEvent</strong>对象除了常规<strong>Event</strong>对象所包含的属性之外，还包括了两个属性：</p>
+<ul>
+<li>propertyName</li>
+<li>elapsedTime</li>
+</ul>
+<h3 id="propertyName"><a href="#propertyName" class="headerlink" title="propertyName"></a>propertyName</h3><p>表示触发当前事件的属性名</p>
+<h3 id="elapsedTime"><a href="#elapsedTime" class="headerlink" title="elapsedTime"></a>elapsedTime</h3><p>一个用来表示转换触发了多长时间的浮点数</p>
+<p>这是一个<a href="http://jsfiddle.net/9h261pzo/291/" target="_blank" rel="external">简单的例子</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions" target="_blank" rel="external">参考文章</a></p>
+<p>转载请注明出处</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="Tianhao Cui WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.png" alt="Tianhao Cui Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/25/http-cache/" rel="next" title="HTTP 缓存机制">
+                <i class="fa fa-chevron-left"></i> HTTP 缓存机制
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Tianhao Cui" />
+          <p class="site-author-name" itemprop="name">Tianhao Cui</p>
+           
+              <p class="site-description motion-element" itemprop="description">私、気になります！</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/glassysky" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/p/1005052813146633/home?from=page_100505&mod=TAB#place" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS-transitions"><span class="nav-number">1.</span> <span class="nav-text">CSS transitions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#哪些CSS属性能够使用动画？"><span class="nav-number">1.1.</span> <span class="nav-text">哪些CSS属性能够使用动画？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用多个动画属性"><span class="nav-number">1.2.</span> <span class="nav-text">使用多个动画属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用于定义transitions的CSS属性"><span class="nav-number">1.3.</span> <span class="nav-text">用于定义transitions的CSS属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#transition-property"><span class="nav-number">1.3.1.</span> <span class="nav-text">transition-property</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#transition-duration"><span class="nav-number">1.3.2.</span> <span class="nav-text">transition-duration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#transition-timing-function"><span class="nav-number">1.3.3.</span> <span class="nav-text">transition-timing-function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#transition-delay"><span class="nav-number">1.3.4.</span> <span class="nav-text">transition-delay</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缩略写法"><span class="nav-number">1.3.5.</span> <span class="nav-text">缩略写法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#监听transitions的启动和完成"><span class="nav-number">1.4.</span> <span class="nav-text">监听transitions的启动和完成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#propertyName"><span class="nav-number">1.4.1.</span> <span class="nav-text">propertyName</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#elapsedTime"><span class="nav-number">1.4.2.</span> <span class="nav-text">elapsedTime</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tianhao Cui</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://felearn.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://glassysky.github.io/2017/03/29/css-transition/';
+          this.page.identifier = '2017/03/29/css-transition/';
+          this.page.title = 'CSS 动画之——transition';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://felearn.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("tKsvDfgQCXPvgaUQ6U3KSf1A-gzGzoHsz", "Ns0KRy56qrIpMhQApxLKISe7");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
