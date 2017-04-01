@@ -1,0 +1,967 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="总述单次变换时间函数是CSS的数据类型。我们知道在使用CSS中的transitions或者animations时，元素的某些尺寸会发生变化，而这函数就是用来描述尺寸的值的变化快慢的。这在本质上是定义了一个加速度曲线，因此在变化的过程中动画的速度总是不同的。这些函数被称为渐变函数。
+这个函数将时间与输出的比例联系到一起。0.0表示初始状态，而1.0表示终止状态。
+
+
+输出比例能够大于1.0（也可以小">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单次变换时间函数">
+<meta property="og:url" content="http://glassysky.github.io/2017/04/01/single-transition-timing-function/index.html">
+<meta property="og:site_name" content="前端学习之路">
+<meta property="og:description" content="总述单次变换时间函数是CSS的数据类型。我们知道在使用CSS中的transitions或者animations时，元素的某些尺寸会发生变化，而这函数就是用来描述尺寸的值的变化快慢的。这在本质上是定义了一个加速度曲线，因此在变化的过程中动画的速度总是不同的。这些函数被称为渐变函数。
+这个函数将时间与输出的比例联系到一起。0.0表示初始状态，而1.0表示终止状态。
+
+
+输出比例能够大于1.0（也可以小">
+<meta property="og:image" content="https://developer.mozilla.org/files/3434/TF_with_output_gt_than_1.png">
+<meta property="og:image" content="https://developer.mozilla.org/files/3435/TF_with_output_gt_than_1_clipped.png">
+<meta property="og:image" content="https://developer.mozilla.org/files/3433/cubic-bezier,%20example.png">
+<meta property="og:image" content="https://developer.mozilla.org/files/3436/steps(2,start">
+<meta property="og:image" content="https://developer.mozilla.org/files/3437/steps(4,end">
+<meta property="og:image" content="https://developer.mozilla.org/files/3425/cubic-bezier,linear.png">
+<meta property="og:image" content="https://developer.mozilla.org/files/3429/cubic-bezier,ease.png">
+<meta property="og:image" content="https://developer.mozilla.org/files/3426/cubic-bezier,ease-in.png">
+<meta property="og:image" content="https://developer.mozilla.org/files/3428/cubic-bezier,ease-in-out.png">
+<meta property="og:image" content="https://developer.mozilla.org/files/3423/steps\(1,start\">
+<meta property="og:image" content="https://developer.mozilla.org/files/3424/steps\(1,end\">
+<meta property="og:updated_time" content="2017-04-01T14:37:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="单次变换时间函数">
+<meta name="twitter:description" content="总述单次变换时间函数是CSS的数据类型。我们知道在使用CSS中的transitions或者animations时，元素的某些尺寸会发生变化，而这函数就是用来描述尺寸的值的变化快慢的。这在本质上是定义了一个加速度曲线，因此在变化的过程中动画的速度总是不同的。这些函数被称为渐变函数。
+这个函数将时间与输出的比例联系到一起。0.0表示初始状态，而1.0表示终止状态。
+
+
+输出比例能够大于1.0（也可以小">
+<meta name="twitter:image" content="https://developer.mozilla.org/files/3434/TF_with_output_gt_than_1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://glassysky.github.io/2017/04/01/single-transition-timing-function/"/>
+
+
+
+
+
+  <title> 单次变换时间函数 | 前端学习之路 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?19e25f24e7a22e21d7d506b65abb0cda";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">前端学习之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://glassysky.github.io/2017/04/01/single-transition-timing-function/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tianhao Cui">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端学习之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                单次变换时间函数
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-01T10:24:46+08:00">
+                2017-04-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/01/single-transition-timing-function/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/04/01/single-transition-timing-function/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/04/01/single-transition-timing-function/" class="leancloud_visitors" data-flag-title="单次变换时间函数">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h1><p>单次变换时间函数是CSS的数据类型。我们知道在使用CSS中的transitions或者animations时，元素的某些尺寸会发生变化，而这函数就是用来描述尺寸的值的变化快慢的。这在本质上是定义了一个加速度曲线，因此在变化的过程中动画的速度总是不同的。这些函数被称为<strong>渐变函数</strong>。</p>
+<p>这个函数将时间与输出的比例联系到一起。<strong>0.0</strong>表示初始状态，而<strong>1.0</strong>表示终止状态。</p>
+<p><img src="https://developer.mozilla.org/files/3434/TF_with_output_gt_than_1.png" alt="加速曲线"></p>
+<p><img src="https://developer.mozilla.org/files/3435/TF_with_output_gt_than_1_clipped.png" alt="加速曲线"></p>
+<p>输出比例能够大于1.0（也可以小于0.0），这是因为动画可以先超越终止状态，然后再回来，有点像<strong>弹性效果</strong>。可以举个例子，比如有一个200 <em> 200的图片，我们想让它最终达到400 </em> 400的效果，但是变化的过程中图片是可以先达到500 <em> 500再回弹到400 </em> 400的。</p>
+<p>然而，如果输出的值超过了可能的范围（例如颜色的值大于了255或者小于0），这个值就会被截取到离它最近的在允许范围内的值（在这个例子中就会被截取到255和0）。部分<strong>cubic-bezier()</strong>曲线展示了这个性质。</p>
+<h2 id="取值"><a href="#取值" class="headerlink" title="取值"></a>取值</h2><p>CSS支持两种时间函数：立方贝塞尔曲线的子集和阶跃函数。这些函数有用之处就在于它们能够通过关键字轻松的描绘出函数曲线。</p>
+<h3 id="时间函数-cubic-bezier"><a href="#时间函数-cubic-bezier" class="headerlink" title="时间函数 cubic-bezier()"></a>时间函数 cubic-bezier()</h3><p>cubic-bezier()这个函数符号定义了一个贝塞尔函数曲线。由于这个函数是连续的，因此它们通常被用来在动画的开始和结尾做平滑过渡，因此有时也被成为<strong>过度函数</strong></p>
+<p>一个贝塞尔曲线由4个点定义，分别为P0、P1、P2、P3。P0和P3是曲线的起点和终点，在CSS里面，这些点被固定在代表比例的坐标轴上(横坐标代表时间的比例，纵坐标代表输出范围的比例)。P0在（0，0）点，代表了初始时间和初始状态，P3在（1，1）表示终止时间和终止状态。</p>
+<p><img src="https://developer.mozilla.org/files/3433/cubic-bezier,%20example.png" alt="cubic-bezier curves"></p>
+<p>并不是所有的贝塞尔函数曲线都可以用作时间函数。在CSS中，P0和P3是固定的。当有且只有P1和P2的<strong>横坐标</strong>都在[0,1]范围内的时候，贝塞尔函数曲线才是合法的。</p>
+<p>贝塞尔函数曲线在纵坐标上的值如果超过了[0,1]的范围，就可能会产生弹性效果。</p>
+<p>当你定义了一个不合法的贝塞尔函数曲线，CSS会忽略掉整个属性。</p>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cubic-bezier(x1, y1, x2, y2)</div></pre></td></tr></table></figure>
+<p>其中：</p>
+<p>x1,y1,x2,y2的值代表了P1、P2点的横纵坐标，从而通过这两点定义贝塞尔曲线。x1、x2的值必须在[0,1]范围内，否则整个属性就是非法的。</p>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><p>以下贝塞尔函数曲线在CSS中是<strong>合法</strong>的：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 典型贝塞尔函数曲线 */</span></div><div class="line"><span class="selector-tag">cubic-bezier</span>(0<span class="selector-class">.1</span>, 0<span class="selector-class">.7</span>, 1<span class="selector-class">.0</span>, 0<span class="selector-class">.1</span>)   </div><div class="line"></div><div class="line"><span class="comment">/* 使用整数也是合法的 */</span></div><div class="line"><span class="selector-tag">cubic-bezier</span>(0, 0, 1, 1)           </div><div class="line"></div><div class="line"><span class="comment">/* 纵坐标上的负值是合法的，这样可以产生弹性效果 */</span></div><div class="line"><span class="selector-tag">cubic-bezier</span>(0<span class="selector-class">.1</span>, <span class="selector-tag">-0</span><span class="selector-class">.6</span>, 0<span class="selector-class">.2</span>, 0)    </div><div class="line"></div><div class="line"><span class="comment">/* 纵坐标上的值大于1也合法，同样产生弹性效果 */</span></div><div class="line"><span class="selector-tag">cubic-bezier</span>(0, 1<span class="selector-class">.1</span>, 0<span class="selector-class">.8</span>, 4)</div></pre></td></tr></table></figure>
+<p>以下贝塞尔函数曲线在CSS中是合<strong>非法</strong>的：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 尽管输出类型应该是颜色，但是贝塞尔函数只对数值起作用 */</span></div><div class="line"><span class="selector-tag">cubic-bezier</span>(0<span class="selector-class">.1</span>, <span class="selector-tag">red</span>, 1<span class="selector-class">.0</span>, <span class="selector-tag">green</span>) </div><div class="line"></div><div class="line"><span class="comment">/* 横坐标必须在[0,1]范围内，否则曲线就不是时间的函数 */</span></div><div class="line"><span class="selector-tag">cubic-bezier</span>(2<span class="selector-class">.45</span>, 0<span class="selector-class">.6</span>, 4, 0<span class="selector-class">.1</span>)    </div><div class="line"></div><div class="line"><span class="comment">/* P1、P2两个点都要定义，不存在默认值 */</span></div><div class="line"><span class="selector-tag">cubic-bezier</span>(0<span class="selector-class">.3</span>, 2<span class="selector-class">.1</span>)   </div><div class="line"></div><div class="line"><span class="comment">/* 横坐标必须在[0,1]范围内，否则曲线就不是时间的函数 */</span></div><div class="line"><span class="selector-tag">cubic-bezier</span>(<span class="selector-tag">-1</span><span class="selector-class">.9</span>, 0<span class="selector-class">.3</span>, <span class="selector-tag">-0</span><span class="selector-class">.2</span>, 2<span class="selector-class">.1</span>)</div></pre></td></tr></table></figure>
+<h3 id="时间函数-steps"><a href="#时间函数-steps" class="headerlink" title="时间函数 steps()"></a>时间函数 steps()</h3><p>steps() 函数符号定义了一个阶跃函数，它把输出值域划分为了几等份。</p>
+<p>阶跃函数的子集有时候也被成为<strong>阶梯函数</strong>。</p>
+<h4 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">steps(number_of_steps, direction)</div></pre></td></tr></table></figure>
+<p>其中：</p>
+<p>[number_of_steps]：这个参数是一个正整数，表示阶跃函数要把输出域划分为几个部分</p>
+<p>[direction]：这个参数表示这个函数是做连续的还是右连续的。</p>
+<ul>
+<li>start表示左连续，因此第一次阶跃在动画开始的时候产生</li>
+</ul>
+<p><img src="https://developer.mozilla.org/files/3436/steps(2,start" alt="">.png)</p>
+<ul>
+<li>end表示右连续，因此最后一次阶跃在动画结束时发生（默认值）</li>
+</ul>
+<p><img src="https://developer.mozilla.org/files/3437/steps(4,end" alt="">.png)</p>
+<h4 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h4><p>以下时间函数是<strong>合法</strong>的：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 有5级阶梯，最后一次阶跃发生在动画结束的瞬间 */</span></div><div class="line"><span class="selector-tag">steps</span>(5, <span class="selector-tag">end</span>)</div><div class="line"></div><div class="line"><span class="comment">/* 有两级阶梯，第一次发生在动画开始的瞬间 */</span></div><div class="line"><span class="selector-tag">steps</span>(2, <span class="selector-tag">start</span>)        </div><div class="line"></div><div class="line"><span class="comment">/* 第二个参数可选 */</span></div><div class="line"><span class="selector-tag">steps</span>(2)</div></pre></td></tr></table></figure>
+<p>以下时间函数是<strong>非法</strong>的：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 第一个参数必须是一个整数，而不是一个所谓的"值" */</span></div><div class="line"><span class="selector-tag">steps</span>(2<span class="selector-class">.0</span>, <span class="selector-tag">end</span>)</div><div class="line"></div><div class="line"><span class="comment">/* 第一个参数必须为正数 */</span></div><div class="line"><span class="selector-tag">steps</span>(<span class="selector-tag">-3</span>, <span class="selector-tag">start</span>)</div><div class="line"></div><div class="line"><span class="comment">/* 至少要有一级阶跃 */</span></div><div class="line"><span class="selector-tag">steps</span>(0, <span class="selector-tag">end</span>)</div></pre></td></tr></table></figure>
+<h3 id="时间函数-关键字"><a href="#时间函数-关键字" class="headerlink" title="时间函数 关键字"></a>时间函数 关键字</h3><h4 id="linear-线性"><a href="#linear-线性" class="headerlink" title="linear(线性)"></a>linear(线性)</h4><p>这个关键字表示函数<code>cubic-bezier(0.0, 0.0, 1.0, 1.0)</code>。使用这个时间函数，动画将会以一个固定的速度从起始状态径直过渡到终止状态。</p>
+<p><img src="https://developer.mozilla.org/files/3425/cubic-bezier,linear.png" alt="linear img"></p>
+<h4 id="ease-缓动"><a href="#ease-缓动" class="headerlink" title="ease(缓动)"></a>ease(缓动)</h4><p>这个关键字表示函数<code>cubic-bezier(0.25, 0.1, 0.25, 1.0)</code>。这个函数和接下来提到的<code>ease-in-out</code>很像，但是它在初始时刻的加速度要更大，加速度在中途变低，最后慢慢停下来。</p>
+<p><img src="https://developer.mozilla.org/files/3429/cubic-bezier,ease.png" alt="ease"></p>
+<h4 id="ease-in-缓入"><a href="#ease-in-缓入" class="headerlink" title="ease-in(缓入)"></a>ease-in(缓入)</h4><p>这个关键字表示时间函数<code>cubic-bezier(0.42, 0.0, 1.0, 1.0)</code>。动画在开始时是缓慢的，然后加速度逐渐变大，直到到达终止状态，最后动画会突然停下。</p>
+<p><img src="https://developer.mozilla.org/files/3426/cubic-bezier,ease-in.png" alt="ease-in"></p>
+<h4 id="ease-in-out-缓入缓出"><a href="#ease-in-out-缓入缓出" class="headerlink" title="ease-in-out(缓入缓出)"></a>ease-in-out(缓入缓出)</h4><p>这个关键字表示时间函数<code>cubic-bezier(0.42, 0.0, 0.58, 1.0)</code>。在这个时间函数中，动画起初变化缓慢，而后加速度变大，而后在接近最终状态的时候变慢。在动画初始阶段，它的行为类似<code>ease-in</code>；结束阶段类似<code>ease-out</code>。</p>
+<p><img src="https://developer.mozilla.org/files/3428/cubic-bezier,ease-in-out.png" alt="ease-in-out"></p>
+<h4 id="ease-out-缓出"><a href="#ease-out-缓出" class="headerlink" title="ease-out(缓出)"></a>ease-out(缓出)</h4><p>这个关键词表示时间函数<code>cubic-bezier(0.0, 0.0, 0.58, 1.0)</code>。动画在开始时快，在趋近于终止状态时变慢。</p>
+<h4 id="step-start-起始阶跃"><a href="#step-start-起始阶跃" class="headerlink" title="step-start(起始阶跃)"></a>step-start(起始阶跃)</h4><p>这个关键字表示时间函数<code>steps(1, start))</code>。使用这个时间函数，动画迅速跳转到终止状态，并且一直保持这个状态到动画结束。</p>
+<p><img src="https://developer.mozilla.org/files/3423/steps\(1,start\" alt="step-start">.png)</p>
+<h4 id="step-end-末端阶跃"><a href="#step-end-末端阶跃" class="headerlink" title="step-end(末端阶跃)"></a>step-end(末端阶跃)</h4><p>这个关键字表示时间函数<code>steps(1, end)</code>。使用这个时间函数，动画一直保持初始状态，然后在动画结束时迅速跳转到终止状态。</p>
+<p><img src="https://developer.mozilla.org/files/3424/steps\(1,end\" alt="step-end">.png)</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/single-transition-timing-function" target="_blank" rel="external">原文地址</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="Tianhao Cui WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.png" alt="Tianhao Cui Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/29/css-transition/" rel="next" title="CSS 动画之——transition">
+                <i class="fa fa-chevron-left"></i> CSS 动画之——transition
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Tianhao Cui" />
+          <p class="site-author-name" itemprop="name">Tianhao Cui</p>
+           
+              <p class="site-description motion-element" itemprop="description">私、気になります！</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/glassysky" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/p/1005052813146633/home?from=page_100505&mod=TAB#place" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#总述"><span class="nav-number">1.</span> <span class="nav-text">总述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#取值"><span class="nav-number">1.1.</span> <span class="nav-text">取值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#时间函数-cubic-bezier"><span class="nav-number">1.1.1.</span> <span class="nav-text">时间函数 cubic-bezier()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#语法"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#例子"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间函数-steps"><span class="nav-number">1.1.2.</span> <span class="nav-text">时间函数 steps()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#语法-1"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#例子-1"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间函数-关键字"><span class="nav-number">1.1.3.</span> <span class="nav-text">时间函数 关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#linear-线性"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">linear(线性)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ease-缓动"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">ease(缓动)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ease-in-缓入"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">ease-in(缓入)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ease-in-out-缓入缓出"><span class="nav-number">1.1.3.4.</span> <span class="nav-text">ease-in-out(缓入缓出)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ease-out-缓出"><span class="nav-number">1.1.3.5.</span> <span class="nav-text">ease-out(缓出)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#step-start-起始阶跃"><span class="nav-number">1.1.3.6.</span> <span class="nav-text">step-start(起始阶跃)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#step-end-末端阶跃"><span class="nav-number">1.1.3.7.</span> <span class="nav-text">step-end(末端阶跃)</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tianhao Cui</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://felearn.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://glassysky.github.io/2017/04/01/single-transition-timing-function/';
+          this.page.identifier = '2017/04/01/single-transition-timing-function/';
+          this.page.title = '单次变换时间函数';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://felearn.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("tKsvDfgQCXPvgaUQ6U3KSf1A-gzGzoHsz", "Ns0KRy56qrIpMhQApxLKISe7");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
