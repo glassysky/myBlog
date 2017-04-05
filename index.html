@@ -260,6 +260,213 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://glassysky.github.io/2017/04/05/css-animations/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tianhao Cui">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端学习之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/05/css-animations/" itemprop="url">
+                  CSS动画之——animation
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-05T12:54:15+08:00">
+                2017-04-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/05/css-animations/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/04/05/css-animations/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/04/05/css-animations/" class="leancloud_visitors" data-flag-title="CSS动画之——animation">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>CSS的<code>animation</code>可以从一个CSS样式转换到另一个。动画由两部分组成——<code>用来描述CSS动画的样式</code>和<code>表示动画开始和终止状态的关键帧的集合</code>。</p>
+<p>相对于原始的脚本驱动的动画来说，CSS animations有以下三个优势：</p>
+<ul>
+<li>对于简单的动画非常适用：开发者不需要使用JavaScript就可以创建动画</li>
+<li>在中等的系统中加载也运行良好：使用JavaScript实现简单的动画可能会有较差的表现。渲染引擎能够通过<code>frame-skipping</code>和其他技术让动画尽可能流畅</li>
+<li>将动画序列交给浏览器控制，从而让浏览器对性能进行优化：例如，降低不可见部分动画的刷新频率</li>
+</ul>
+<h1 id="animation的配置"><a href="#animation的配置" class="headerlink" title="animation的配置"></a>animation的配置</h1><p>去创建一个CSS动画序列，你要通过animation属性或者它的子属性对需要应用动画的元素进行样式设定。你可以设置定时、持续时间和其他一些你想要在动画过程中展现出的细节。但是<code>不能</code>设置动画的实际展现形式，因为它们将在<code>@keyframes</code>中被定义。</p>
+<h2 id="animation属性的子属性"><a href="#animation属性的子属性" class="headerlink" title="animation属性的子属性"></a>animation属性的子属性</h2><h3 id="animation-delay"><a href="#animation-delay" class="headerlink" title="animation-delay"></a>animation-delay</h3><p>设置从元素加载完毕到动画开始之间的时间间隔</p>
+<h3 id="animation-direction"><a href="#animation-direction" class="headerlink" title="animation-direction"></a>animation-direction</h3><p>定义在一次动画序列运行结束后，动画是改变方向还是从起点开始重复</p>
+<h3 id="animation-duration"><a href="#animation-duration" class="headerlink" title="animation-duration"></a>animation-duration</h3><p>设置动画完成一次循环需要多长时间</p>
+<h3 id="animation-iteration-count"><a href="#animation-iteration-count" class="headerlink" title="animation-iteration-count"></a>animation-iteration-count</h3><p>设置动画需要重复的次数；设置<code>infinite</code>可以无限循环</p>
+<h3 id="animation-name"><a href="#animation-name" class="headerlink" title="animation-name"></a>animation-name</h3><p>指定<code>@keyframes</code>的名字</p>
+<h3 id="animation-play-state"><a href="#animation-play-state" class="headerlink" title="animation-play-state"></a>animation-play-state</h3><p>可以暂停和恢复动画序列</p>
+<h3 id="animation-timing-function"><a href="#animation-timing-function" class="headerlink" title="animation-timing-function"></a>animation-timing-function</h3><p>设置动画的时间函数(加速曲线)</p>
+<h3 id="animation-fill-mode"><a href="#animation-fill-mode" class="headerlink" title="animation-fill-mode"></a>animation-fill-mode</h3><p>设置在执行之前和之后动画要应用的值</p>
+<h1 id="使用-keyframes-定义动画序列"><a href="#使用-keyframes-定义动画序列" class="headerlink" title="使用 keyframes 定义动画序列"></a>使用 keyframes 定义动画序列</h1><p>在设置了动画定时之后，你需要定义动画的表现。这通过使用<code>@keyframes</code>规则建立两个或者更多的关键帧来实现，关键帧使用<code>百分比</code>表示动画过程中的时刻。0%表示动画序列的第一个瞬间，100%就代表动画的终止状态。因为这两个状态太重要了，因此它们有特殊的别名：<code>from</code>和<code>to</code>。它们都是可选的。如果<code>from/0%</code>和<code>to/100%</code>没有指定，浏览器将会使用所有属性的计算值作为动画的开始和终止。</p>
+<p>你也可以在动画的起始和终止之间有选择地添加一些中间关键帧。</p>
+<h1 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h1><h2 id="使文本滑过浏览器的窗口"><a href="#使文本滑过浏览器的窗口" class="headerlink" title="使文本滑过浏览器的窗口"></a>使文本滑过浏览器的窗口</h2><p>这个简单的例子给\<p\>元素定义了样式，使得文本可以从浏览器右边边界滑入。</p\></p>
+<p>注意这个动画可能会使页面宽度大于浏览器窗口。为了避免这个问题，我们可以将这个元素放置在一个容器里，然后对这个容器设置<code>overflow:hidden</code>属性。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span> &#123;</div><div class="line">  <span class="attribute">animation-duration</span>: <span class="number">3s</span>;</div><div class="line">  <span class="attribute">animation-name</span>: slidein;</div><div class="line">  <span class="attribute">animation-iteration-count</span>: infinite;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@<span class="keyword">keyframes</span> slidein &#123;</div><div class="line">  <span class="selector-tag">from</span> &#123;</div><div class="line">    <span class="attribute">margin-left</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">width</span>: <span class="number">300%</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="selector-tag">to</span> &#123;</div><div class="line">    <span class="attribute">margin-left</span>: <span class="number">0%</span>;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在这个例子中，p元素的样式被指定了，使用<code>animation-duration</code>属性定义了它的动画从开始到结束将会持续3秒；<code>@keyframes</code>的名字被定义为”slidein”，它定义了动画序列。</p>
+<p>如果我们需要对p元素定义任何不支持CSS animations的属性，我们也可以把它写在里面；但在本例中，我们不需要除CSS animations以外的任何效果。</p>
+<p>我们使用<code>@keyframes</code>定义了关键帧。在这个例子里，我们只用了两个关键帧。第一个是在0%的时候(对应from)，这里我们将<code>margin-left</code>设置为100%，元素宽度设置为300%。这使得在动画的第一帧中标题在浏览器窗口右边界的外侧。</p>
+<p>第二个关键帧定义在100%，左外边距被设置成0%，宽度设置为100%。这使得动画结束时标题左边与内容区域对齐。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>This text will slide in from right edge of browser and repeat again and again and again and again and again and againand again<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>最后我们通过设置<code>animation-iteration-count</code>为<code>infinite</code>，这样就可以无限循环播放动画（否则将只能看到一个周期的动画）</p>
+<p><a href="https://codepen.io/glassysky/pen/vxMmMj" target="_blank" rel="external">在线预览CODEPEN</a></p>
+<h2 id="添加另外的关键帧"><a href="#添加另外的关键帧" class="headerlink" title="添加另外的关键帧"></a>添加另外的关键帧</h2><p>让我们向上一个例子中添加更多的关键帧！我们想要在标题从右到左移动的时候字体逐渐变大，然后再缩小回原来的尺寸。我们只需要添加如下关键帧：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">75% &#123;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">300%</span>;</div><div class="line">  <span class="attribute">margin-left</span>: <span class="number">25%</span>;</div><div class="line">  <span class="attribute">width</span>: <span class="number">150%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的关键帧告诉浏览器在动画进程75%的时候，标题的左外边距应该是25%，宽度应该是150%，字体变为原来的3倍。</p>
+<p><a href="https://codepen.io/glassysky/pen/ZeZJLR" target="_blank" rel="external">在线预览CODEPEN</a></p>
+<h2 id="向前和向后移动"><a href="#向前和向后移动" class="headerlink" title="向前和向后移动"></a>向前和向后移动</h2><p>在这个例子开始的时候，为了便于观察动画，我们已经设置了<code>animation-iteration-count</code>为<code>infinite</code>，这使动画在一个周期结束之后，立刻从起点再次运行动画。如果我们需要让动画实现<code>从哪来的回哪去</code>的效果，我们就需要将<code>animation-direction</code>设置为<code>alternate</code>：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span> &#123;</div><div class="line">  <span class="attribute">animation-duration</span>: <span class="number">3s</span>;</div><div class="line">  <span class="attribute">animation-name</span>: slidein;</div><div class="line">  <span class="attribute">animation-iteration-count</span>: infinite;</div><div class="line">  <span class="attribute">animation-direction</span>: alternate;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="https://codepen.io/glassysky/pen/yMropE" target="_blank" rel="external">在线预览CODEPEN</a></p>
+<h3 id="使用animation缩写"><a href="#使用animation缩写" class="headerlink" title="使用animation缩写"></a>使用animation缩写</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span> &#123;</div><div class="line">  <span class="attribute">animation-duration</span>: <span class="number">3s</span>;</div><div class="line">  <span class="attribute">animation-name</span>: slidein;</div><div class="line">  <span class="attribute">animation-iteration-count</span>: infinite;</div><div class="line">  <span class="attribute">animation-direction</span>: alternate;</div><div class="line">&#125;</div><div class="line"><span class="comment">/* 等同于 */</span></div><div class="line"><span class="selector-tag">p</span> &#123;</div><div class="line">  <span class="attribute">animation</span>:</div><div class="line">    <span class="number">3s</span></div><div class="line">    infinite</div><div class="line">    alternate</div><div class="line">    slidein;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="设置多个animation属性值"><a href="#设置多个animation属性值" class="headerlink" title="设置多个animation属性值"></a>设置多个animation属性值</h3><p>CSS animation的扩展值能够接受多个属性。这个特点在你想在单个规则里应用多个动画，并且设置不同的动画时间、重复次数时非常有用。</p>
+<p>在下面这个例子里，我们设置了三个动画名字，但是他们都有相同的动画持续时间和重复次数。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">animation-name</span>: <span class="selector-tag">fadeInOut</span>, <span class="selector-tag">moveLeft300px</span>, <span class="selector-tag">bounce</span>;</div><div class="line"><span class="selector-tag">animation-duration</span>: 3<span class="selector-tag">s</span>;</div><div class="line"><span class="selector-tag">animation-iteration-count</span>: 1;</div></pre></td></tr></table></figure>
+<p>在第二个例子中，每个动画属性名在对应位置上都有对应的值。比如<code>fadeInOut</code>的持续时间为2.5s，<code>moveLeft300px</code>的持续时间为5s</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">animation-name</span>: <span class="selector-tag">fadeInOut</span>, <span class="selector-tag">moveLeft300px</span>, <span class="selector-tag">bounce</span>;</div><div class="line"><span class="selector-tag">animation-duration</span>: 2<span class="selector-class">.5s</span>, 5<span class="selector-tag">s</span>, 1<span class="selector-tag">s</span>;</div><div class="line"><span class="selector-tag">animation-iteration-count</span>: 2, 1, 5;</div></pre></td></tr></table></figure>
+<p>在第三个例子中，给出了三个动画名，但是只给出了两个持续时间和重复次数。我们没有给出足够的值与动画名相对应，因此值会自动重复填充。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">animation-name</span>: <span class="selector-tag">fadeInOut</span>, <span class="selector-tag">moveLeft300px</span>, <span class="selector-tag">bounce</span>;</div><div class="line"><span class="selector-tag">animation-duration</span>: 2<span class="selector-class">.5s</span>, 5<span class="selector-tag">s</span>;</div><div class="line"><span class="selector-tag">animation-iteration-count</span>: 2, 1;</div><div class="line"></div><div class="line"><span class="comment">/* 等同于 */</span></div><div class="line"><span class="selector-tag">animation-name</span>: <span class="selector-tag">fadeInOut</span>, <span class="selector-tag">moveLeft300px</span>, <span class="selector-tag">bounce</span>;</div><div class="line"><span class="selector-tag">animation-duration</span>: 2<span class="selector-class">.5s</span>, 5<span class="selector-tag">s</span>, 2<span class="selector-class">.5s</span>;</div><div class="line"><span class="selector-tag">animation-iteration-count</span>: 2, 1, 2;</div></pre></td></tr></table></figure>
+<h3 id="使用animation事件"><a href="#使用animation事件" class="headerlink" title="使用animation事件"></a>使用animation事件</h3><p>你还能够从另外一种方式控制动画，那就是animation事件。<code>AnimationEvent</code>对象能够被用来监听动画开始、结束以及新循环的开始。每个事件包括它发生的时间以及触发事件的动画的名称。</p>
+<p>我们将更新滑动文本的那个例子，并且在每个事件被触发时输出一些信息，这样我们就能够知道它是如何工作的了。</p>
+<h4 id="添加CSS"><a href="#添加CSS" class="headerlink" title="添加CSS"></a>添加CSS</h4><p>回到我们最初的那个例子，稍微做一些改动：需要滑入的元素，动画周期为3s，重复三次，每个周期变换方向</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.slidein</span> &#123;</div><div class="line">  <span class="attribute">animation-duration</span>: <span class="number">3s</span>;</div><div class="line">  <span class="attribute">animation-name</span>: slidein;</div><div class="line">  <span class="attribute">animation-iteration-count</span>: <span class="number">3</span>;</div><div class="line">  <span class="attribute">animation-direction</span>: alternate;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@<span class="keyword">keyframes</span> slidein &#123;</div><div class="line">  <span class="selector-tag">from</span> &#123;</div><div class="line">    <span class="attribute">margin-left</span>:<span class="number">100%</span>;</div><div class="line">    <span class="attribute">width</span>:<span class="number">300%</span></div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="selector-tag">to</span> &#123;</div><div class="line">    <span class="attribute">margin-left</span>:<span class="number">0%</span>;</div><div class="line">    <span class="attribute">width</span>:<span class="number">100%</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="添加动画事件监听器"><a href="#添加动画事件监听器" class="headerlink" title="添加动画事件监听器"></a>添加动画事件监听器</h4><p>我们将要使用JavaScript监听所有三个可能的动画事件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> e = <span class="built_in">document</span>.getElementById(<span class="string">"watchme"</span>);</div><div class="line">e.addEventListener(<span class="string">"animationstart"</span>, listener, <span class="literal">false</span>);</div><div class="line">e.addEventListener(<span class="string">"animationend"</span>, listener, <span class="literal">false</span>);</div><div class="line">e.addEventListener(<span class="string">"animationiteration"</span>, listener, <span class="literal">false</span>);</div><div class="line"></div><div class="line">e.className = <span class="string">"slidein"</span>;</div></pre></td></tr></table></figure>
+<p>这是一段标准的事件监听程序，我们最后添加了”slidein”类名从而启动动画。我们为什么要通过这种方式启动动画？因为动画监听事件在动画开始的瞬间就被触发了，如果直接将类名写在html中，还没等JavaScript中的监听事件开始监听，<code>animationstart</code>这个事件就已经发生过了。因此我们采用这种方式主动控制动画何时开始。</p>
+<h4 id="接收事件"><a href="#接收事件" class="headerlink" title="接收事件"></a>接收事件</h4><p>事件将会被分发到监听器中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">listener</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> l = <span class="built_in">document</span>.createElement(<span class="string">"li"</span>);</div><div class="line">  <span class="keyword">switch</span>(e.type) &#123;</div><div class="line">    <span class="keyword">case</span> <span class="string">"animationstart"</span>:</div><div class="line">      l.innerHTML = <span class="string">"Started: elapsed time is "</span> + e.elapsedTime;</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="string">"animationend"</span>:</div><div class="line">      l.innerHTML = <span class="string">"Ended: elapsed time is "</span> + e.elapsedTime;</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="string">"animationiteration"</span>:</div><div class="line">      l.innerHTML = <span class="string">"New loop started at time "</span> + e.elapsedTime;</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">document</span>.getElementById(<span class="string">"output"</span>).appendChild(l);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这部分的代码也很简单，我们只需要通过<code>event.type</code>去决定我们要触发哪个事件，然后在得到事件时将内容添加到ul标签下就可以了。</p>
+<p>我们看到的输出将是这样的：</p>
+<ul>
+<li>Started: elapsed time is 0</li>
+<li>New loop started at time 3</li>
+<li>New loop started at time 6</li>
+<li>Ended: elapsed time is 9</li>
+</ul>
+<p>可以看到时间非常接近，但不完全符合在配置动画时预期的时间。需要注意的是，最后一次循环，<code>animationiteration</code>事件没有被触发，取而代之的是<code>animationend</code>事件。</p>
+<h4 id="HTML部分"><a href="#HTML部分" class="headerlink" title="HTML部分"></a>HTML部分</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">id</span>=<span class="string">"watchme"</span>&gt;</span>Watch me move<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">  This example shows how to use CSS animations to make <span class="tag">&lt;<span class="name">code</span>&gt;</span>H1<span class="tag">&lt;/<span class="name">code</span>&gt;</span></div><div class="line">  elements move across the page.</div><div class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">  In addition, we output some text each time an animation event fires,</div><div class="line">  so you can see them in action.</div><div class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"output"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><a href="https://codepen.io/glassysky/pen/rybKdV" target="_blank" rel="external">在线预览CODEPEN</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations" target="_blank" rel="external">参考内容</a></p>
+<p>转载注明出处</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://glassysky.github.io/2017/04/01/single-transition-timing-function/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -553,12 +760,12 @@
       
         
           
-            <h1 id="CSS-transitions"><a href="#CSS-transitions" class="headerlink" title="CSS transitions"></a>CSS transitions</h1><p>在改变CSS属性的时候，transitions提供给了开发者一共方式去控制动画的速度。</p>
+            <h1 id="CSS-transitions"><a href="#CSS-transitions" class="headerlink" title="CSS transitions"></a>CSS transitions</h1><p>在改变CSS属性的时候，transitions提供给了开发者一种方式去控制动画的速度。</p>
 <p>通常来讲，属性改变所产生的影响是<strong>立刻生效</strong>的，举个例子：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.img</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.img</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">300px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>触发hover的时候，你将看到图片在瞬间被放大，这种突兀的变化会带来很差的用户体验。</p>
 <p>而使用CSS transitions就可以展现出变化过程中的<strong>过渡段</strong>。也就是说，transitions会将整个变化的过程展现出来，而不是简单的始态-&gt;末态。</p>
-<p>CSS transitions可以让开发者自己决定动画行为。包括动画属性、什么时间开始动画、动画持续时间以及动画的类型。</p>
+<p>CSS transitions可以让开发者自己决定动画行为。包括动画应用属性、什么时间开始动画、动画持续时间以及动画的类型。</p>
 <h2 id="哪些CSS属性能够使用动画？"><a href="#哪些CSS属性能够使用动画？" class="headerlink" title="哪些CSS属性能够使用动画？"></a>哪些CSS属性能够使用动画？</h2><p>以下属性都可以使用动画</p>
 <p><img src="http://om38qdwes.bkt.clouddn.com/transition.png" alt="transition"></p>
 <p>上图中的可用属性集合可能会随着时间推移发生变化，开发者应该时刻关注最新的可用属性。</p>
@@ -582,8 +789,8 @@
 <li>transform: 5s</li>
 </ul>
 <p>如果属性名和持续时间定义的个数不同，则按照如下规则</p>
-<p>如果属性名个数 &gt; 持续时间个数<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.box &#123;</div><div class="line">  transition-property: width, height, background-color, transform;</div><div class="line">  tansition-duration: 2s, 1s;</div><div class="line">  &lt;!--等同于--&gt;</div><div class="line">  transition-property: width, height, background-color, transform;</div><div class="line">  tansition-duration: 2s, 1s, 2s, 1s;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>如果属性名个数 &lt; 持续时间个数<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.box &#123;</div><div class="line">  transition-property: width, height, background-color, transform;</div><div class="line">  tansition-duration: 2s, 1s, 3s, 5s, 6s;</div><div class="line">  &lt;!--等同于--&gt;</div><div class="line">  transition-property: width, height, background-color, transform;</div><div class="line">  tansition-duration: 2s, 1s, 3s, 5s;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果属性名个数 &gt; 持续时间个数<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">transition-property</span>: width, height, background-color, transform;</div><div class="line">  <span class="attribute">tansition-duration</span>: <span class="number">2s</span>, <span class="number">1s</span>;</div><div class="line">  <span class="comment">/* 等同于 */</span></div><div class="line">  <span class="attribute">transition-property</span>: width, height, background-color, transform;</div><div class="line">  <span class="attribute">tansition-duration</span>: <span class="number">2s</span>, <span class="number">1s</span>, <span class="number">2s</span>, <span class="number">1s</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果属性名个数 &lt; 持续时间个数<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">transition-property</span>: width, height, background-color, transform;</div><div class="line">  <span class="attribute">tansition-duration</span>: <span class="number">2s</span>, <span class="number">1s</span>, <span class="number">3s</span>, <span class="number">5s</span>, <span class="number">6s</span>;</div><div class="line">  <span class="comment">/* 等同于 */</span></div><div class="line">  <span class="attribute">transition-property</span>: width, height, background-color, transform;</div><div class="line">  <span class="attribute">tansition-duration</span>: <span class="number">2s</span>, <span class="number">1s</span>, <span class="number">3s</span>, <span class="number">5s</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>总结一下就是时间个数少的进行重复，多的截取。</p>
 <h3 id="transition-timing-function"><a href="#transition-timing-function" class="headerlink" title="transition-timing-function"></a>transition-timing-function</h3><p>用贝塞尔曲线作为动画的过渡函数。它决定了变换的过程是怎样的，是<strong>快-慢-快</strong>或是<strong>慢-快-慢</strong>又或者是<strong>线性变换</strong>等等，通过设置不同的贝塞尔曲线，我们可以得到不同的过渡动画。它只改变转换的过程，但不影响变换最终的结果。</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.box &#123;</div><div class="line">  transition-timing-function: ease;</div><div class="line">  transition-timing-function: linear;</div><div class="line">  transition-timing-function: step-end;</div><div class="line">  transition-timing-function: steps(4, end);</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -1070,192 +1277,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://glassysky.github.io/2017/03/14/cross-domain-methods/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tianhao Cui">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端学习之路">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/14/cross-domain-methods/" itemprop="url">
-                  跨域请求方法总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-14T23:32:04+08:00">
-                2017-03-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/14/cross-domain-methods/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/03/14/cross-domain-methods/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/03/14/cross-domain-methods/" class="leancloud_visitors" data-flag-title="跨域请求方法总结">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h2><h3 id="含义"><a href="#含义" class="headerlink" title="含义"></a>含义</h3><p>起初的含义是指，A网页设置的Cookie，B网页不能打开，除非这两个网页”同源”。所谓”同源”是指一下几个相同:</p>
-<ul>
-<li>协议相同(http,https,http2等)</li>
-<li>域名相同(www.example.com)</li>
-<li>端口相同(www.example.com:3000)</li>
-</ul>
-<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>同源策略的出现时为了保护用户信息的安全。如果用户登录了A网站，又去浏览其他网站。如果其他网站可以获取到A网站的Cookie，重要用户信息可能就会泄露。</p>
-<p>通过XHR实现Ajax的一个主要限制，来自于跨域安全策略。这种安全策略可以防止某些恶意行为，但合理的实现跨域请求对某些应用来说也是非常必要的。</p>
-<h3 id="限制范围"><a href="#限制范围" class="headerlink" title="限制范围"></a>限制范围</h3><p>目前，如果非同源，共有三种行为受到限制:</p>
-<ul>
-<li>Cookie、LocalStorage 和 IndexedDB 无法获取</li>
-<li>DOM 无法获得</li>
-<li>AJAX 请求不能发送</li>
-</ul>
-<h2 id="规避方法"><a href="#规避方法" class="headerlink" title="规避方法"></a>规避方法</h2><p>我们首先构建出一个跨域的环境方便测试:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">├── client</div><div class="line">│   ├── app.js</div><div class="line">│   ├── package.json</div><div class="line">│   └── public</div><div class="line">│       └── src</div><div class="line">│           ├── index.html</div><div class="line">│           └── index.js</div><div class="line">└── server</div><div class="line">    ├── app.js</div><div class="line">    ├── package.json</div><div class="line">    └── public</div><div class="line">        └── src</div></pre></td></tr></table></figure>
-<ul>
-<li>通过<code>express</code>分别在3000和4000端口启动两个服务</li>
-<li>默认server为3000端口、client在4000端口</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// /server/app.js</span></div><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</div><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</div><div class="line"><span class="keyword">var</span> app = express()</div><div class="line"></div><div class="line">app.use(<span class="string">'/static'</span>, express.static(path.join(__dirname, <span class="string">'public'</span>)))</div><div class="line"></div><div class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">  res.send(<span class="string">'hello world'</span>);</div><div class="line">&#125;)</div><div class="line"></div><div class="line">app.listen(<span class="number">3000</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'server app listening on port 3000!'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// /client/app.js</span></div><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</div><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</div><div class="line"><span class="keyword">var</span> app = express()</div><div class="line"></div><div class="line">app.use(<span class="string">'/static'</span>, express.static(path.join(__dirname, <span class="string">'public'</span>)))</div><div class="line"></div><div class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">  res.send(<span class="string">'client'</span>)</div><div class="line">&#125;)</div><div class="line"></div><div class="line">app.listen(<span class="number">4000</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'client app listening on port 4000!'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--/client/public/src/index.html--&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./index.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>环境搭建成功后，在4000端口上的js通过Ajax向3000端口的服务发送请求，就会触发跨域安全策略。</p>
-<p>下面就介绍几种CORS(Cross-Origin Resource Sharing)的方法:</p>
-<h3 id="原生支持"><a href="#原生支持" class="headerlink" title="原生支持"></a>原生支持</h3><p>Firefox 3.5+、Safari 4+、Chrome等主流浏览器都通过XMLHttpRequest对象实现了CORS的原生支持。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// /client/public/src/index.js</span></div><div class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line"></div><div class="line">xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (xhr.readyState === <span class="number">4</span>) &#123;</div><div class="line">    <span class="keyword">if</span> (xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span> || xhr === <span class="number">304</span>) &#123;</div><div class="line">      <span class="built_in">console</span>.log(xhr.responseText)</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'fail'</span>);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>同时需要对接口进行设置。通过设置<code>Access-Control-Allow-Origin</code>头可以决定来自哪些域的请求可以被实现。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// /server/app.js</span></div><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</div><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</div><div class="line"><span class="keyword">var</span> app = express()</div><div class="line"></div><div class="line">app.use(<span class="string">'/static'</span>, express.static(path.join(__dirname, <span class="string">'public'</span>)))</div><div class="line"></div><div class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">  + res.header(<span class="string">'Access-Control-Allow-Origin'</span>, <span class="string">'http://localhost:4000'</span>);</div><div class="line">  res.send(<span class="string">'hello world'</span>);</div><div class="line">&#125;)</div><div class="line"></div><div class="line">app.listen(<span class="number">3000</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'server app listening on port 3000!'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>设置成功后重启服务，我们可以看到这时的跨域请求已经发送成功，在client的index.html页面中已经可以看到请求得到的内容</p>
-<h3 id="图像Ping"><a href="#图像Ping" class="headerlink" title="图像Ping"></a>图像Ping</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// /client/public/src/index.js</span></div><div class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image();</div><div class="line">img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'done'</span>);</div><div class="line">&#125;</div><div class="line">img.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'fail'</span>);</div><div class="line">&#125;</div><div class="line">img.src = <span class="string">'http://localhost:3000'</span>;</div></pre></td></tr></table></figure>
-<p>通过创建一个<code>img</code>标签，并且设置对应的<code>src</code>，可以向目标url发送请求，但是这种方法无法收到返回的数据，只能发送<code>GET</code>请求。由于无法得到返回的数据，我们稍微改一下接口的代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// server/app.js</span></div><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</div><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</div><div class="line"><span class="keyword">var</span> app = express()</div><div class="line"></div><div class="line">app.use(<span class="string">'/static'</span>, express.static(path.join(__dirname, <span class="string">'public'</span>)))</div><div class="line"></div><div class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">  - res.send(<span class="string">'hello world'</span>);</div><div class="line">  + <span class="built_in">console</span>.log(<span class="string">'receive get request'</span>);</div><div class="line">&#125;)</div><div class="line"></div><div class="line">app.listen(<span class="number">3000</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'server app listening on port 3000!'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>这样我们通过命令行的输出就能够判断<code>http://localhost:3000</code>是否收到了请求。</p>
-<p>刷新index.html页面后，我们可以看到控制台输出了<code>fail</code>，即图片加载失败，但是命令行会输出<code>receive get request</code>，即已经收到了通过图像Ping发送的<code>GET</code>请求。</p>
-<h3 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h3><p>顾名思义 JSONP = JSON + Padding</p>
-<p>不理解没关系，看下面的例子就知道了</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// /client/public/src/index.js</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleResponse</span> (<span class="params">response</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(response.test);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</div><div class="line">script.src = <span class="string">'http://localhost:3000/?callback=handleResponse'</span>;</div><div class="line"><span class="built_in">document</span>.body.insertBefore(script, <span class="built_in">document</span>.body.firstChild);</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// /server/app.js</span></div><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</div><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</div><div class="line"><span class="keyword">var</span> app = express()</div><div class="line"></div><div class="line">app.use(<span class="string">'/static'</span>, express.static(path.join(__dirname, <span class="string">'public'</span>)))</div><div class="line"></div><div class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">  - res.send(<span class="string">'hello world'</span>);</div><div class="line">  + res.send(req.query.callback + <span class="string">'('</span> + <span class="string">'&#123;test: 1&#125;'</span> + <span class="string">')'</span>);</div><div class="line">&#125;)</div><div class="line"></div><div class="line">app.listen(<span class="number">3000</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'server app listening on port 3000!'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>不难看出，服务端接口此时返回一个字符串，这个字符串的格式为<code>callback({test: 1})</code>,即用一个函数包含了一个JSON，这就是JSONP名字的由来。客户端收到这个字符串后，会对其进行调用。注意这里的<code>callback</code>就是作为请求的参数传给接口的值，因此这个参数要和自己定义的回调函数同名。</p>
-<p>刷新页面重新请求时，控制台打印出<code>1</code>。这是因为返回的<code>handleResponse({test: 1})</code>字符串执行后，相当于把JSON格式的数据作为参数，这样在函数内部就能获取到了。</p>
-<p>如果实在不理解的话，可以直接访问这个<a href="http://freegeoip.net/json/?callback=handleResponse" target="_blank" rel="external">链接</a>，它会返回一个JSONP字符串。</p>
-<p>部分选自<a href="http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html?20170316133323#comment-last" target="_blank" rel="external">这篇博客</a></p>
-<p><strong>转载请注明出处</strong></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1305,7 +1326,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

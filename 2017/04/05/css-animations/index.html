@@ -1,0 +1,968 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="CSS的animation可以从一个CSS样式转换到另一个。动画由两部分组成——用来描述CSS动画的样式和表示动画开始和终止状态的关键帧的集合。
+相对于原始的脚本驱动的动画来说，CSS animations有以下三个优势：
+
+对于简单的动画非常适用：开发者不需要使用JavaScript就可以创建动画
+在中等的系统中加载也运行良好：使用JavaScript实现简单的动画可能会有较差的表现。渲染引擎能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS动画之——animation">
+<meta property="og:url" content="http://glassysky.github.io/2017/04/05/css-animations/index.html">
+<meta property="og:site_name" content="前端学习之路">
+<meta property="og:description" content="CSS的animation可以从一个CSS样式转换到另一个。动画由两部分组成——用来描述CSS动画的样式和表示动画开始和终止状态的关键帧的集合。
+相对于原始的脚本驱动的动画来说，CSS animations有以下三个优势：
+
+对于简单的动画非常适用：开发者不需要使用JavaScript就可以创建动画
+在中等的系统中加载也运行良好：使用JavaScript实现简单的动画可能会有较差的表现。渲染引擎能">
+<meta property="og:updated_time" content="2017-04-05T14:52:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS动画之——animation">
+<meta name="twitter:description" content="CSS的animation可以从一个CSS样式转换到另一个。动画由两部分组成——用来描述CSS动画的样式和表示动画开始和终止状态的关键帧的集合。
+相对于原始的脚本驱动的动画来说，CSS animations有以下三个优势：
+
+对于简单的动画非常适用：开发者不需要使用JavaScript就可以创建动画
+在中等的系统中加载也运行良好：使用JavaScript实现简单的动画可能会有较差的表现。渲染引擎能">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://glassysky.github.io/2017/04/05/css-animations/"/>
+
+
+
+
+
+  <title> CSS动画之——animation | 前端学习之路 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?19e25f24e7a22e21d7d506b65abb0cda";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">前端学习之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://glassysky.github.io/2017/04/05/css-animations/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tianhao Cui">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端学习之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CSS动画之——animation
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-05T12:54:15+08:00">
+                2017-04-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/05/css-animations/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/04/05/css-animations/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/04/05/css-animations/" class="leancloud_visitors" data-flag-title="CSS动画之——animation">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>CSS的<code>animation</code>可以从一个CSS样式转换到另一个。动画由两部分组成——<code>用来描述CSS动画的样式</code>和<code>表示动画开始和终止状态的关键帧的集合</code>。</p>
+<p>相对于原始的脚本驱动的动画来说，CSS animations有以下三个优势：</p>
+<ul>
+<li>对于简单的动画非常适用：开发者不需要使用JavaScript就可以创建动画</li>
+<li>在中等的系统中加载也运行良好：使用JavaScript实现简单的动画可能会有较差的表现。渲染引擎能够通过<code>frame-skipping</code>和其他技术让动画尽可能流畅</li>
+<li>将动画序列交给浏览器控制，从而让浏览器对性能进行优化：例如，降低不可见部分动画的刷新频率</li>
+</ul>
+<h1 id="animation的配置"><a href="#animation的配置" class="headerlink" title="animation的配置"></a>animation的配置</h1><p>去创建一个CSS动画序列，你要通过animation属性或者它的子属性对需要应用动画的元素进行样式设定。你可以设置定时、持续时间和其他一些你想要在动画过程中展现出的细节。但是<code>不能</code>设置动画的实际展现形式，因为它们将在<code>@keyframes</code>中被定义。</p>
+<h2 id="animation属性的子属性"><a href="#animation属性的子属性" class="headerlink" title="animation属性的子属性"></a>animation属性的子属性</h2><h3 id="animation-delay"><a href="#animation-delay" class="headerlink" title="animation-delay"></a>animation-delay</h3><p>设置从元素加载完毕到动画开始之间的时间间隔</p>
+<h3 id="animation-direction"><a href="#animation-direction" class="headerlink" title="animation-direction"></a>animation-direction</h3><p>定义在一次动画序列运行结束后，动画是改变方向还是从起点开始重复</p>
+<h3 id="animation-duration"><a href="#animation-duration" class="headerlink" title="animation-duration"></a>animation-duration</h3><p>设置动画完成一次循环需要多长时间</p>
+<h3 id="animation-iteration-count"><a href="#animation-iteration-count" class="headerlink" title="animation-iteration-count"></a>animation-iteration-count</h3><p>设置动画需要重复的次数；设置<code>infinite</code>可以无限循环</p>
+<h3 id="animation-name"><a href="#animation-name" class="headerlink" title="animation-name"></a>animation-name</h3><p>指定<code>@keyframes</code>的名字</p>
+<h3 id="animation-play-state"><a href="#animation-play-state" class="headerlink" title="animation-play-state"></a>animation-play-state</h3><p>可以暂停和恢复动画序列</p>
+<h3 id="animation-timing-function"><a href="#animation-timing-function" class="headerlink" title="animation-timing-function"></a>animation-timing-function</h3><p>设置动画的时间函数(加速曲线)</p>
+<h3 id="animation-fill-mode"><a href="#animation-fill-mode" class="headerlink" title="animation-fill-mode"></a>animation-fill-mode</h3><p>设置在执行之前和之后动画要应用的值</p>
+<h1 id="使用-keyframes-定义动画序列"><a href="#使用-keyframes-定义动画序列" class="headerlink" title="使用 keyframes 定义动画序列"></a>使用 keyframes 定义动画序列</h1><p>在设置了动画定时之后，你需要定义动画的表现。这通过使用<code>@keyframes</code>规则建立两个或者更多的关键帧来实现，关键帧使用<code>百分比</code>表示动画过程中的时刻。0%表示动画序列的第一个瞬间，100%就代表动画的终止状态。因为这两个状态太重要了，因此它们有特殊的别名：<code>from</code>和<code>to</code>。它们都是可选的。如果<code>from/0%</code>和<code>to/100%</code>没有指定，浏览器将会使用所有属性的计算值作为动画的开始和终止。</p>
+<p>你也可以在动画的起始和终止之间有选择地添加一些中间关键帧。</p>
+<h1 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h1><h2 id="使文本滑过浏览器的窗口"><a href="#使文本滑过浏览器的窗口" class="headerlink" title="使文本滑过浏览器的窗口"></a>使文本滑过浏览器的窗口</h2><p>这个简单的例子给\<p\>元素定义了样式，使得文本可以从浏览器右边边界滑入。</p\></p>
+<p>注意这个动画可能会使页面宽度大于浏览器窗口。为了避免这个问题，我们可以将这个元素放置在一个容器里，然后对这个容器设置<code>overflow:hidden</code>属性。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span> &#123;</div><div class="line">  <span class="attribute">animation-duration</span>: <span class="number">3s</span>;</div><div class="line">  <span class="attribute">animation-name</span>: slidein;</div><div class="line">  <span class="attribute">animation-iteration-count</span>: infinite;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@<span class="keyword">keyframes</span> slidein &#123;</div><div class="line">  <span class="selector-tag">from</span> &#123;</div><div class="line">    <span class="attribute">margin-left</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">width</span>: <span class="number">300%</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="selector-tag">to</span> &#123;</div><div class="line">    <span class="attribute">margin-left</span>: <span class="number">0%</span>;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在这个例子中，p元素的样式被指定了，使用<code>animation-duration</code>属性定义了它的动画从开始到结束将会持续3秒；<code>@keyframes</code>的名字被定义为”slidein”，它定义了动画序列。</p>
+<p>如果我们需要对p元素定义任何不支持CSS animations的属性，我们也可以把它写在里面；但在本例中，我们不需要除CSS animations以外的任何效果。</p>
+<p>我们使用<code>@keyframes</code>定义了关键帧。在这个例子里，我们只用了两个关键帧。第一个是在0%的时候(对应from)，这里我们将<code>margin-left</code>设置为100%，元素宽度设置为300%。这使得在动画的第一帧中标题在浏览器窗口右边界的外侧。</p>
+<p>第二个关键帧定义在100%，左外边距被设置成0%，宽度设置为100%。这使得动画结束时标题左边与内容区域对齐。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>This text will slide in from right edge of browser and repeat again and again and again and again and again and againand again<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>最后我们通过设置<code>animation-iteration-count</code>为<code>infinite</code>，这样就可以无限循环播放动画（否则将只能看到一个周期的动画）</p>
+<p><a href="https://codepen.io/glassysky/pen/vxMmMj" target="_blank" rel="external">在线预览CODEPEN</a></p>
+<h2 id="添加另外的关键帧"><a href="#添加另外的关键帧" class="headerlink" title="添加另外的关键帧"></a>添加另外的关键帧</h2><p>让我们向上一个例子中添加更多的关键帧！我们想要在标题从右到左移动的时候字体逐渐变大，然后再缩小回原来的尺寸。我们只需要添加如下关键帧：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">75% &#123;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">300%</span>;</div><div class="line">  <span class="attribute">margin-left</span>: <span class="number">25%</span>;</div><div class="line">  <span class="attribute">width</span>: <span class="number">150%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的关键帧告诉浏览器在动画进程75%的时候，标题的左外边距应该是25%，宽度应该是150%，字体变为原来的3倍。</p>
+<p><a href="https://codepen.io/glassysky/pen/ZeZJLR" target="_blank" rel="external">在线预览CODEPEN</a></p>
+<h2 id="向前和向后移动"><a href="#向前和向后移动" class="headerlink" title="向前和向后移动"></a>向前和向后移动</h2><p>在这个例子开始的时候，为了便于观察动画，我们已经设置了<code>animation-iteration-count</code>为<code>infinite</code>，这使动画在一个周期结束之后，立刻从起点再次运行动画。如果我们需要让动画实现<code>从哪来的回哪去</code>的效果，我们就需要将<code>animation-direction</code>设置为<code>alternate</code>：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span> &#123;</div><div class="line">  <span class="attribute">animation-duration</span>: <span class="number">3s</span>;</div><div class="line">  <span class="attribute">animation-name</span>: slidein;</div><div class="line">  <span class="attribute">animation-iteration-count</span>: infinite;</div><div class="line">  <span class="attribute">animation-direction</span>: alternate;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="https://codepen.io/glassysky/pen/yMropE" target="_blank" rel="external">在线预览CODEPEN</a></p>
+<h3 id="使用animation缩写"><a href="#使用animation缩写" class="headerlink" title="使用animation缩写"></a>使用animation缩写</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span> &#123;</div><div class="line">  <span class="attribute">animation-duration</span>: <span class="number">3s</span>;</div><div class="line">  <span class="attribute">animation-name</span>: slidein;</div><div class="line">  <span class="attribute">animation-iteration-count</span>: infinite;</div><div class="line">  <span class="attribute">animation-direction</span>: alternate;</div><div class="line">&#125;</div><div class="line"><span class="comment">/* 等同于 */</span></div><div class="line"><span class="selector-tag">p</span> &#123;</div><div class="line">  <span class="attribute">animation</span>:</div><div class="line">    <span class="number">3s</span></div><div class="line">    infinite</div><div class="line">    alternate</div><div class="line">    slidein;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="设置多个animation属性值"><a href="#设置多个animation属性值" class="headerlink" title="设置多个animation属性值"></a>设置多个animation属性值</h3><p>CSS animation的扩展值能够接受多个属性。这个特点在你想在单个规则里应用多个动画，并且设置不同的动画时间、重复次数时非常有用。</p>
+<p>在下面这个例子里，我们设置了三个动画名字，但是他们都有相同的动画持续时间和重复次数。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">animation-name</span>: <span class="selector-tag">fadeInOut</span>, <span class="selector-tag">moveLeft300px</span>, <span class="selector-tag">bounce</span>;</div><div class="line"><span class="selector-tag">animation-duration</span>: 3<span class="selector-tag">s</span>;</div><div class="line"><span class="selector-tag">animation-iteration-count</span>: 1;</div></pre></td></tr></table></figure>
+<p>在第二个例子中，每个动画属性名在对应位置上都有对应的值。比如<code>fadeInOut</code>的持续时间为2.5s，<code>moveLeft300px</code>的持续时间为5s</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">animation-name</span>: <span class="selector-tag">fadeInOut</span>, <span class="selector-tag">moveLeft300px</span>, <span class="selector-tag">bounce</span>;</div><div class="line"><span class="selector-tag">animation-duration</span>: 2<span class="selector-class">.5s</span>, 5<span class="selector-tag">s</span>, 1<span class="selector-tag">s</span>;</div><div class="line"><span class="selector-tag">animation-iteration-count</span>: 2, 1, 5;</div></pre></td></tr></table></figure>
+<p>在第三个例子中，给出了三个动画名，但是只给出了两个持续时间和重复次数。我们没有给出足够的值与动画名相对应，因此值会自动重复填充。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">animation-name</span>: <span class="selector-tag">fadeInOut</span>, <span class="selector-tag">moveLeft300px</span>, <span class="selector-tag">bounce</span>;</div><div class="line"><span class="selector-tag">animation-duration</span>: 2<span class="selector-class">.5s</span>, 5<span class="selector-tag">s</span>;</div><div class="line"><span class="selector-tag">animation-iteration-count</span>: 2, 1;</div><div class="line"></div><div class="line"><span class="comment">/* 等同于 */</span></div><div class="line"><span class="selector-tag">animation-name</span>: <span class="selector-tag">fadeInOut</span>, <span class="selector-tag">moveLeft300px</span>, <span class="selector-tag">bounce</span>;</div><div class="line"><span class="selector-tag">animation-duration</span>: 2<span class="selector-class">.5s</span>, 5<span class="selector-tag">s</span>, 2<span class="selector-class">.5s</span>;</div><div class="line"><span class="selector-tag">animation-iteration-count</span>: 2, 1, 2;</div></pre></td></tr></table></figure>
+<h3 id="使用animation事件"><a href="#使用animation事件" class="headerlink" title="使用animation事件"></a>使用animation事件</h3><p>你还能够从另外一种方式控制动画，那就是animation事件。<code>AnimationEvent</code>对象能够被用来监听动画开始、结束以及新循环的开始。每个事件包括它发生的时间以及触发事件的动画的名称。</p>
+<p>我们将更新滑动文本的那个例子，并且在每个事件被触发时输出一些信息，这样我们就能够知道它是如何工作的了。</p>
+<h4 id="添加CSS"><a href="#添加CSS" class="headerlink" title="添加CSS"></a>添加CSS</h4><p>回到我们最初的那个例子，稍微做一些改动：需要滑入的元素，动画周期为3s，重复三次，每个周期变换方向</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.slidein</span> &#123;</div><div class="line">  <span class="attribute">animation-duration</span>: <span class="number">3s</span>;</div><div class="line">  <span class="attribute">animation-name</span>: slidein;</div><div class="line">  <span class="attribute">animation-iteration-count</span>: <span class="number">3</span>;</div><div class="line">  <span class="attribute">animation-direction</span>: alternate;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@<span class="keyword">keyframes</span> slidein &#123;</div><div class="line">  <span class="selector-tag">from</span> &#123;</div><div class="line">    <span class="attribute">margin-left</span>:<span class="number">100%</span>;</div><div class="line">    <span class="attribute">width</span>:<span class="number">300%</span></div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="selector-tag">to</span> &#123;</div><div class="line">    <span class="attribute">margin-left</span>:<span class="number">0%</span>;</div><div class="line">    <span class="attribute">width</span>:<span class="number">100%</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="添加动画事件监听器"><a href="#添加动画事件监听器" class="headerlink" title="添加动画事件监听器"></a>添加动画事件监听器</h4><p>我们将要使用JavaScript监听所有三个可能的动画事件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> e = <span class="built_in">document</span>.getElementById(<span class="string">"watchme"</span>);</div><div class="line">e.addEventListener(<span class="string">"animationstart"</span>, listener, <span class="literal">false</span>);</div><div class="line">e.addEventListener(<span class="string">"animationend"</span>, listener, <span class="literal">false</span>);</div><div class="line">e.addEventListener(<span class="string">"animationiteration"</span>, listener, <span class="literal">false</span>);</div><div class="line"></div><div class="line">e.className = <span class="string">"slidein"</span>;</div></pre></td></tr></table></figure>
+<p>这是一段标准的事件监听程序，我们最后添加了”slidein”类名从而启动动画。我们为什么要通过这种方式启动动画？因为动画监听事件在动画开始的瞬间就被触发了，如果直接将类名写在html中，还没等JavaScript中的监听事件开始监听，<code>animationstart</code>这个事件就已经发生过了。因此我们采用这种方式主动控制动画何时开始。</p>
+<h4 id="接收事件"><a href="#接收事件" class="headerlink" title="接收事件"></a>接收事件</h4><p>事件将会被分发到监听器中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">listener</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> l = <span class="built_in">document</span>.createElement(<span class="string">"li"</span>);</div><div class="line">  <span class="keyword">switch</span>(e.type) &#123;</div><div class="line">    <span class="keyword">case</span> <span class="string">"animationstart"</span>:</div><div class="line">      l.innerHTML = <span class="string">"Started: elapsed time is "</span> + e.elapsedTime;</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="string">"animationend"</span>:</div><div class="line">      l.innerHTML = <span class="string">"Ended: elapsed time is "</span> + e.elapsedTime;</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="string">"animationiteration"</span>:</div><div class="line">      l.innerHTML = <span class="string">"New loop started at time "</span> + e.elapsedTime;</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">document</span>.getElementById(<span class="string">"output"</span>).appendChild(l);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这部分的代码也很简单，我们只需要通过<code>event.type</code>去决定我们要触发哪个事件，然后在得到事件时将内容添加到ul标签下就可以了。</p>
+<p>我们看到的输出将是这样的：</p>
+<ul>
+<li>Started: elapsed time is 0</li>
+<li>New loop started at time 3</li>
+<li>New loop started at time 6</li>
+<li>Ended: elapsed time is 9</li>
+</ul>
+<p>可以看到时间非常接近，但不完全符合在配置动画时预期的时间。需要注意的是，最后一次循环，<code>animationiteration</code>事件没有被触发，取而代之的是<code>animationend</code>事件。</p>
+<h4 id="HTML部分"><a href="#HTML部分" class="headerlink" title="HTML部分"></a>HTML部分</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">id</span>=<span class="string">"watchme"</span>&gt;</span>Watch me move<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">  This example shows how to use CSS animations to make <span class="tag">&lt;<span class="name">code</span>&gt;</span>H1<span class="tag">&lt;/<span class="name">code</span>&gt;</span></div><div class="line">  elements move across the page.</div><div class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">  In addition, we output some text each time an animation event fires,</div><div class="line">  so you can see them in action.</div><div class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"output"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><a href="https://codepen.io/glassysky/pen/rybKdV" target="_blank" rel="external">在线预览CODEPEN</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations" target="_blank" rel="external">参考内容</a></p>
+<p>转载注明出处</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="Tianhao Cui WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.png" alt="Tianhao Cui Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/01/single-transition-timing-function/" rel="next" title="单次变换时间函数">
+                <i class="fa fa-chevron-left"></i> 单次变换时间函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Tianhao Cui" />
+          <p class="site-author-name" itemprop="name">Tianhao Cui</p>
+           
+              <p class="site-description motion-element" itemprop="description">私、気になります！</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/glassysky" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/p/1005052813146633/home?from=page_100505&mod=TAB#place" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#animation的配置"><span class="nav-number">1.</span> <span class="nav-text">animation的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#animation属性的子属性"><span class="nav-number">1.1.</span> <span class="nav-text">animation属性的子属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#animation-delay"><span class="nav-number">1.1.1.</span> <span class="nav-text">animation-delay</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#animation-direction"><span class="nav-number">1.1.2.</span> <span class="nav-text">animation-direction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#animation-duration"><span class="nav-number">1.1.3.</span> <span class="nav-text">animation-duration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#animation-iteration-count"><span class="nav-number">1.1.4.</span> <span class="nav-text">animation-iteration-count</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#animation-name"><span class="nav-number">1.1.5.</span> <span class="nav-text">animation-name</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#animation-play-state"><span class="nav-number">1.1.6.</span> <span class="nav-text">animation-play-state</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#animation-timing-function"><span class="nav-number">1.1.7.</span> <span class="nav-text">animation-timing-function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#animation-fill-mode"><span class="nav-number">1.1.8.</span> <span class="nav-text">animation-fill-mode</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-keyframes-定义动画序列"><span class="nav-number">2.</span> <span class="nav-text">使用 keyframes 定义动画序列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#举例"><span class="nav-number">3.</span> <span class="nav-text">举例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使文本滑过浏览器的窗口"><span class="nav-number">3.1.</span> <span class="nav-text">使文本滑过浏览器的窗口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加另外的关键帧"><span class="nav-number">3.2.</span> <span class="nav-text">添加另外的关键帧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#向前和向后移动"><span class="nav-number">3.3.</span> <span class="nav-text">向前和向后移动</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用animation缩写"><span class="nav-number">3.3.1.</span> <span class="nav-text">使用animation缩写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置多个animation属性值"><span class="nav-number">3.3.2.</span> <span class="nav-text">设置多个animation属性值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用animation事件"><span class="nav-number">3.3.3.</span> <span class="nav-text">使用animation事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加CSS"><span class="nav-number">3.3.3.1.</span> <span class="nav-text">添加CSS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加动画事件监听器"><span class="nav-number">3.3.3.2.</span> <span class="nav-text">添加动画事件监听器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接收事件"><span class="nav-number">3.3.3.3.</span> <span class="nav-text">接收事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML部分"><span class="nav-number">3.3.3.4.</span> <span class="nav-text">HTML部分</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tianhao Cui</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://felearn.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://glassysky.github.io/2017/04/05/css-animations/';
+          this.page.identifier = '2017/04/05/css-animations/';
+          this.page.title = 'CSS动画之——animation';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://felearn.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("tKsvDfgQCXPvgaUQ6U3KSf1A-gzGzoHsz", "Ns0KRy56qrIpMhQApxLKISe7");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

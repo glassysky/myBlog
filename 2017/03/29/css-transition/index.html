@@ -87,7 +87,7 @@
 
 
 
-<meta name="description" content="CSS transitions在改变CSS属性的时候，transitions提供给了开发者一共方式去控制动画的速度。
+<meta name="description" content="CSS transitions在改变CSS属性的时候，transitions提供给了开发者一种方式去控制动画的速度。
 通常来讲，属性改变所产生的影响是立刻生效的，举个例子：
 1234567.img &amp;#123;  width: 200px;&amp;#125;.img:hover &amp;#123;  width: 300px;&amp;#125;
 触发hover的时候，你将看到图片在瞬间被放大，这种突兀的变化会带来很">
@@ -95,15 +95,15 @@
 <meta property="og:title" content="CSS 动画之——transition">
 <meta property="og:url" content="http://glassysky.github.io/2017/03/29/css-transition/index.html">
 <meta property="og:site_name" content="前端学习之路">
-<meta property="og:description" content="CSS transitions在改变CSS属性的时候，transitions提供给了开发者一共方式去控制动画的速度。
+<meta property="og:description" content="CSS transitions在改变CSS属性的时候，transitions提供给了开发者一种方式去控制动画的速度。
 通常来讲，属性改变所产生的影响是立刻生效的，举个例子：
 1234567.img &amp;#123;  width: 200px;&amp;#125;.img:hover &amp;#123;  width: 300px;&amp;#125;
 触发hover的时候，你将看到图片在瞬间被放大，这种突兀的变化会带来很">
 <meta property="og:image" content="http://om38qdwes.bkt.clouddn.com/transition.png">
-<meta property="og:updated_time" content="2017-04-01T14:39:11.000Z">
+<meta property="og:updated_time" content="2017-04-05T04:12:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS 动画之——transition">
-<meta name="twitter:description" content="CSS transitions在改变CSS属性的时候，transitions提供给了开发者一共方式去控制动画的速度。
+<meta name="twitter:description" content="CSS transitions在改变CSS属性的时候，transitions提供给了开发者一种方式去控制动画的速度。
 通常来讲，属性改变所产生的影响是立刻生效的，举个例子：
 1234567.img &amp;#123;  width: 200px;&amp;#125;.img:hover &amp;#123;  width: 300px;&amp;#125;
 触发hover的时候，你将看到图片在瞬间被放大，这种突兀的变化会带来很">
@@ -369,12 +369,12 @@
       
 
       
-        <h1 id="CSS-transitions"><a href="#CSS-transitions" class="headerlink" title="CSS transitions"></a>CSS transitions</h1><p>在改变CSS属性的时候，transitions提供给了开发者一共方式去控制动画的速度。</p>
+        <h1 id="CSS-transitions"><a href="#CSS-transitions" class="headerlink" title="CSS transitions"></a>CSS transitions</h1><p>在改变CSS属性的时候，transitions提供给了开发者一种方式去控制动画的速度。</p>
 <p>通常来讲，属性改变所产生的影响是<strong>立刻生效</strong>的，举个例子：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.img</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.img</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">300px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>触发hover的时候，你将看到图片在瞬间被放大，这种突兀的变化会带来很差的用户体验。</p>
 <p>而使用CSS transitions就可以展现出变化过程中的<strong>过渡段</strong>。也就是说，transitions会将整个变化的过程展现出来，而不是简单的始态-&gt;末态。</p>
-<p>CSS transitions可以让开发者自己决定动画行为。包括动画属性、什么时间开始动画、动画持续时间以及动画的类型。</p>
+<p>CSS transitions可以让开发者自己决定动画行为。包括动画应用属性、什么时间开始动画、动画持续时间以及动画的类型。</p>
 <h2 id="哪些CSS属性能够使用动画？"><a href="#哪些CSS属性能够使用动画？" class="headerlink" title="哪些CSS属性能够使用动画？"></a>哪些CSS属性能够使用动画？</h2><p>以下属性都可以使用动画</p>
 <p><img src="http://om38qdwes.bkt.clouddn.com/transition.png" alt="transition"></p>
 <p>上图中的可用属性集合可能会随着时间推移发生变化，开发者应该时刻关注最新的可用属性。</p>
@@ -398,8 +398,8 @@
 <li>transform: 5s</li>
 </ul>
 <p>如果属性名和持续时间定义的个数不同，则按照如下规则</p>
-<p>如果属性名个数 &gt; 持续时间个数<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.box &#123;</div><div class="line">  transition-property: width, height, background-color, transform;</div><div class="line">  tansition-duration: 2s, 1s;</div><div class="line">  &lt;!--等同于--&gt;</div><div class="line">  transition-property: width, height, background-color, transform;</div><div class="line">  tansition-duration: 2s, 1s, 2s, 1s;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>如果属性名个数 &lt; 持续时间个数<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.box &#123;</div><div class="line">  transition-property: width, height, background-color, transform;</div><div class="line">  tansition-duration: 2s, 1s, 3s, 5s, 6s;</div><div class="line">  &lt;!--等同于--&gt;</div><div class="line">  transition-property: width, height, background-color, transform;</div><div class="line">  tansition-duration: 2s, 1s, 3s, 5s;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果属性名个数 &gt; 持续时间个数<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">transition-property</span>: width, height, background-color, transform;</div><div class="line">  <span class="attribute">tansition-duration</span>: <span class="number">2s</span>, <span class="number">1s</span>;</div><div class="line">  <span class="comment">/* 等同于 */</span></div><div class="line">  <span class="attribute">transition-property</span>: width, height, background-color, transform;</div><div class="line">  <span class="attribute">tansition-duration</span>: <span class="number">2s</span>, <span class="number">1s</span>, <span class="number">2s</span>, <span class="number">1s</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果属性名个数 &lt; 持续时间个数<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">transition-property</span>: width, height, background-color, transform;</div><div class="line">  <span class="attribute">tansition-duration</span>: <span class="number">2s</span>, <span class="number">1s</span>, <span class="number">3s</span>, <span class="number">5s</span>, <span class="number">6s</span>;</div><div class="line">  <span class="comment">/* 等同于 */</span></div><div class="line">  <span class="attribute">transition-property</span>: width, height, background-color, transform;</div><div class="line">  <span class="attribute">tansition-duration</span>: <span class="number">2s</span>, <span class="number">1s</span>, <span class="number">3s</span>, <span class="number">5s</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>总结一下就是时间个数少的进行重复，多的截取。</p>
 <h3 id="transition-timing-function"><a href="#transition-timing-function" class="headerlink" title="transition-timing-function"></a>transition-timing-function</h3><p>用贝塞尔曲线作为动画的过渡函数。它决定了变换的过程是怎样的，是<strong>快-慢-快</strong>或是<strong>慢-快-慢</strong>又或者是<strong>线性变换</strong>等等，通过设置不同的贝塞尔曲线，我们可以得到不同的过渡动画。它只改变转换的过程，但不影响变换最终的结果。</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.box &#123;</div><div class="line">  transition-timing-function: ease;</div><div class="line">  transition-timing-function: linear;</div><div class="line">  transition-timing-function: step-end;</div><div class="line">  transition-timing-function: steps(4, end);</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -566,7 +566,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
